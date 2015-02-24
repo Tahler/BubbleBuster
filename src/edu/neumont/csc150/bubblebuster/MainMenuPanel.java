@@ -2,8 +2,6 @@ package edu.neumont.csc150.bubblebuster;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
-
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
