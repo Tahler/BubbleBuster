@@ -1,46 +1,50 @@
 package edu.neumont.csc150.bubblebuster;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 
 public class MainMenuPanel extends JPanel {
 	private JFrame frame;
 	private final JLabel title = new JLabel("Bubble Buster!");
+	private JPanel buttonPanel, soundPanel;
 	// TODO: make these all "BubbleButton"s that extend JButton and override the paintComponent method
-	private JButton survivalButton, timeTrialButton, shopButton, statisticsButton, tutorialButton, quitButton, musicButton, effectsButton;
+	private BubbleButton survivalButton, timeTrialButton, shopButton, statisticsButton, tutorialButton, quitButton, musicButton, effectsButton;
 	
 	public MainMenuPanel(JFrame frame) {
 		this.frame = frame;
+		title.setForeground(Color.WHITE);
+		initializeButtons();
+		addComponents();
+		addListeners();
+	}
+	
+	private void initializeButtons() {
+		survivalButton = new BubbleButton("Survival Mode");
+		timeTrialButton = new BubbleButton("Time Trial Mode");
+		shopButton = new BubbleButton("Shop");
+		statisticsButton = new BubbleButton("Statistics");
+		tutorialButton = new BubbleButton("Tutorial");
+		quitButton = new BubbleButton("Quit");
 		
-		// Initialize buttons
-		survivalButton = new JButton(new ImageIcon("bubble2.jpg"));
-//		survivalButton.setBorder(new EmptyBorder(0,0,0,0)); // removes the hover stuff
-		timeTrialButton = new JButton("Time Trial Mode");
-		shopButton = new JButton("Shop");
-		statisticsButton = new JButton("Statistics");
-		tutorialButton = new JButton("Tutorial");
-		quitButton = new JButton("Quit");
-		musicButton = new JButton("m");
-		effectsButton = new JButton("s");
-		
-		// Add them to the panel
+		musicButton = new BubbleButton("m");
+		effectsButton = new BubbleButton("s");
+	}
+	
+	private void addComponents() {
 		setLayout(new BorderLayout());
 		
-		JPanel buttonPanel = new JPanel(new GridBagLayout());
+		buttonPanel = new JPanel(new GridBagLayout());
+		buttonPanel.setOpaque(false);
 		GridBagConstraints c = new GridBagConstraints();
 		
 		c.anchor = GridBagConstraints.CENTER;
@@ -84,14 +88,19 @@ public class MainMenuPanel extends JPanel {
 		c.gridy = 7;
 		buttonPanel.add(quitButton, c);
 		
-		JPanel soundPanel = new JPanel();
+		soundPanel = new JPanel();
+		soundPanel.setOpaque(false);
 		soundPanel.add(musicButton);
 		soundPanel.add(effectsButton);
 		
-		addListeners();
-		
 		add(buttonPanel, BorderLayout.CENTER);
 		add(soundPanel, BorderLayout.SOUTH);
+	}
+	
+	@Override
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		g.drawImage(new ImageIcon("images/blue.jpg").getImage(), 0, 0, null);
 	}
 	
 	private void addListeners() {

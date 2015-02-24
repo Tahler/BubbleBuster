@@ -2,7 +2,9 @@ package edu.neumont.csc150.bubblebuster;
 
 import java.awt.Frame;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class GUI extends JFrame {
@@ -19,13 +21,12 @@ public class GUI extends JFrame {
 	public GUI(String title) {
 		super(title);
 		initializePanels();
-		initializeFrame();
+		initializeFrame();		
 		switchTo(mainMenuPanel);
 	}
 	
 	private void initializeFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		setSize(WIDTH, HEIGHT);
 		setExtendedState(Frame.MAXIMIZED_BOTH);
 		setLocationRelativeTo(null);
 		setResizable(false);
