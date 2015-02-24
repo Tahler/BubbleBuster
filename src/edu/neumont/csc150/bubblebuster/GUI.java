@@ -8,6 +8,8 @@ public class GUI extends JFrame {
 	public static final int HEIGHT = 720;
 	private JPanel mainMenuPanel;
 	
+	private JPanel currentPanel;
+	
 	public GUI() {
 		this("");
 	}
@@ -15,6 +17,8 @@ public class GUI extends JFrame {
 	public GUI(String title) {
 		super(title);
 		initializeFrame();
+		initializePanels();
+		switchTo(mainMenuPanel);
 	}
 	
 	private void initializeFrame() {
@@ -25,5 +29,13 @@ public class GUI extends JFrame {
 	}
 	private void initializePanels() {
 		mainMenuPanel = new MainMenuPanel();
+		
+		add(mainMenuPanel);
+	}
+	
+	public void switchTo(JPanel panel) {
+		if (currentPanel != null) currentPanel.setVisible(false);
+		currentPanel = panel;
+		panel.setVisible(true);
 	}
 }
