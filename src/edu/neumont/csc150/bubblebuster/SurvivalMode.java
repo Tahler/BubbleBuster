@@ -6,7 +6,10 @@ import javax.swing.Timer;
 
 public class SurvivalMode extends BubbleBuster {
 	private int lives;
-	private Timer timer;
+	
+	public SurvivalMode() {
+		super();
+	}
 
 	public String getTimeRunning() {
 		return null;
@@ -17,10 +20,5 @@ public class SurvivalMode extends BubbleBuster {
 	}
 	public void setLives(int lives) {
 		this.lives = lives;
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		
 	}
 }

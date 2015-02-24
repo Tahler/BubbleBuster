@@ -19,8 +19,10 @@ public class Bubble extends JComponent {
 		setX(300);
 //		setY(GUI.HEIGHT);
 		setY(1080);
-		setDiameter(rand.nextInt(MAXIMUM_DIAMETER - MAXIMUM_DIAMETER / 2) + MAXIMUM_DIAMETER / 2);
-		setSpeed(rand.nextInt(MAXIMUM_SPEED - MAXIMUM_SPEED / 2) + MAXIMUM_SPEED / 2);
+		setDiameter(100);
+		setSpeed(5);
+//		setDiameter(rand.nextInt(MAXIMUM_DIAMETER - MAXIMUM_DIAMETER / 2) + MAXIMUM_DIAMETER / 2);
+//		setSpeed(rand.nextInt(MAXIMUM_SPEED - MAXIMUM_SPEED / 2) + MAXIMUM_SPEED / 2);
 	}
 	
 	@Override
@@ -36,7 +38,7 @@ public class Bubble extends JComponent {
 	}
 	
 	public void move() {
-//		if (y < 0) // break shit.
+//		if (y < 0) // bubble flew off the screen.
 		y -= speed;
 	}
 	

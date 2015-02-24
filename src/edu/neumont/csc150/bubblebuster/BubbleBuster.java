@@ -19,6 +19,12 @@ public abstract class BubbleBuster extends JPanel implements ActionListener {
 		coinsEarned = 0;
 		paused = false;
 		bubbles = new ArrayList<Bubble>();
+		timer = new Timer(10, this);
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		repaint();
 	}
 	
 	public void checkBubbles() {

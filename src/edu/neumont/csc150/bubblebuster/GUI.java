@@ -17,16 +17,17 @@ public class GUI extends JFrame {
 	}
 	public GUI(String title) {
 		super(title);
-		initializePanels();
-		initializeFrame();		
-		switchTo(mainMenuPanel);
-	}
-	
-	private void initializeFrame() {
+		
 		setExtendedState(Frame.MAXIMIZED_BOTH);
 		WIDTH = getWidth();
 		HEIGHT = getHeight();
 		
+		initializePanels();
+		initializeFrame();
+		switchTo(mainMenuPanel);
+	}
+	
+	private void initializeFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setResizable(false);
