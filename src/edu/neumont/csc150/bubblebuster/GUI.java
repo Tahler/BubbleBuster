@@ -2,9 +2,7 @@ package edu.neumont.csc150.bubblebuster;
 
 import java.awt.Frame;
 
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class GUI extends JFrame {

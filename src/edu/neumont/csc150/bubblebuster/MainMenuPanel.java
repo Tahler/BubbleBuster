@@ -17,7 +17,6 @@ public class MainMenuPanel extends JPanel {
 	private JFrame frame;
 	private final JLabel title = new JLabel("Bubble Buster!");
 	private JPanel buttonPanel, soundPanel;
-	// TODO: make these all "BubbleButton"s that extend JButton and override the paintComponent method
 	private BubbleButton survivalButton, timeTrialButton, shopButton, statisticsButton, tutorialButton, quitButton, musicButton, effectsButton;
 	
 	public MainMenuPanel(JFrame frame) {
