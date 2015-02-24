@@ -2,6 +2,7 @@ package edu.neumont.csc150.bubblebuster;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
@@ -49,6 +50,7 @@ public class MainMenuPanel extends JPanel {
 		c.anchor = GridBagConstraints.CENTER;
 		
 		title.setFont(new Font("SansSerif", Font.BOLD, 30));
+		title.setAlignmentX(CENTER_ALIGNMENT);
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.weightx = 0;
 		c.weighty = 0;
@@ -56,7 +58,11 @@ public class MainMenuPanel extends JPanel {
 		c.gridy = 0;
 		buttonPanel.add(title, c);
 		
-		c.ipady = 40;
+		System.out.println(BubbleButton.IMG.getIconWidth());
+		c.ipadx = BubbleButton.IMG.getIconWidth();
+		System.out.println(c.ipadx);
+		
+		c.ipady = BubbleButton.IMG.getIconHeight();
 		c.insets = new Insets(40, 0, 0, 0);
 		c.gridx = 0;
 		c.gridy = 2;
