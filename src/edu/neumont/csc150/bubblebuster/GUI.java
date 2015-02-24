@@ -6,16 +6,15 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class GUI extends JFrame {
-	public static final int WIDTH = 1280;
-	public static final int HEIGHT = 720;
-	private JPanel mainMenuPanel;
+	public static int WIDTH;
+	public static int HEIGHT;
 	
+	protected JPanel mainMenuPanel, survivalPanel;
 	private JPanel currentPanel;
 	
 	public GUI() {
 		this("");
 	}
-	
 	public GUI(String title) {
 		super(title);
 		initializePanels();
@@ -24,8 +23,11 @@ public class GUI extends JFrame {
 	}
 	
 	private void initializeFrame() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setExtendedState(Frame.MAXIMIZED_BOTH);
+		WIDTH = getWidth();
+		HEIGHT = getHeight();
+		
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setResizable(false);
 		setUndecorated(true);
@@ -33,7 +35,9 @@ public class GUI extends JFrame {
 	}
 	private void initializePanels() {
 		mainMenuPanel = new MainMenuPanel(this);
+		survivalPanel = new SurvivalPanel(this);
 		
+		add(survivalPanel);
 		add(mainMenuPanel);
 	}
 	

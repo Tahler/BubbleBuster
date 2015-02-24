@@ -10,17 +10,16 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class MainMenuPanel extends JPanel {
-	private JFrame frame;
+	private GUI frame;
 	private final JLabel title = new JLabel("Bubble Buster!");
 	private JPanel buttonPanel, soundPanel;
 	private BubbleButton survivalButton, timeTrialButton, shopButton, statisticsButton, tutorialButton, quitButton, musicButton, effectsButton;
 	
-	public MainMenuPanel(JFrame frame) {
+	public MainMenuPanel(GUI frame) {
 		this.frame = frame;
 		title.setForeground(Color.WHITE);
 		initializeButtons();
@@ -93,6 +92,8 @@ public class MainMenuPanel extends JPanel {
 		c.gridy = 7;
 		buttonPanel.add(quitButton, c);
 		
+		System.out.println(c.ipadx);
+		
 		soundPanel = new JPanel();
 		soundPanel.setOpaque(false);
 		soundPanel.add(musicButton);
@@ -109,6 +110,9 @@ public class MainMenuPanel extends JPanel {
 	}
 	
 	private void addListeners() {
+		survivalButton.addActionListener(e -> {
+			frame.switchTo(frame.survivalPanel);
+		});
 		quitButton.addActionListener(e -> {
 			frame.dispose();
 		});

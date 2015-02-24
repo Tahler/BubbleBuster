@@ -1,12 +1,44 @@
 package edu.neumont.csc150.bubblebuster;
 
-public class Bubble {
+import java.awt.Graphics;
+import java.util.Random;
 
-	private int x;
-	private int y;
+import javax.swing.JComponent;
+
+public class Bubble extends JComponent {
+	public static final int MAXIMUM_DIAMETER = 100;
+	public static final int MAXIMUM_SPEED = 10;
+	private int x, y;
 	private int diameter;
 	private int speed;
+	private int points;
 	
+	public Bubble() {
+		Random rand = new Random();
+//		setX(rand.nextInt(GUI.WIDTH));
+		setX(300);
+//		setY(GUI.HEIGHT);
+		setY(1080);
+		setDiameter(rand.nextInt(MAXIMUM_DIAMETER - MAXIMUM_DIAMETER / 2) + MAXIMUM_DIAMETER / 2);
+		setSpeed(rand.nextInt(MAXIMUM_SPEED - MAXIMUM_SPEED / 2) + MAXIMUM_SPEED / 2);
+	}
+	
+	@Override
+	protected void paintComponent(Graphics g) {
+		System.out.println("painting");
+		super.paintComponent(g);
+		g.drawOval(x, y, diameter, diameter);
+		move();
+	}
+	
+	public void pop() {
+		
+	}
+	
+	public void move() {
+//		if (y < 0) // break shit.
+		y -= speed;
+	}
 	
 	public int getX() {
 		return x;
@@ -32,17 +64,10 @@ public class Bubble {
 	public void setSpeed(int speed) {
 		this.speed = speed;
 	}
-	
-
-	
-	
-	
-	public void po () {
-		
+	public int getPoints() {
+		return points;
 	}
-	
-	public void move() {
-		
-	}
-	
+	public void setPoints(int points) {
+		this.points = points;
+	}	
 }
