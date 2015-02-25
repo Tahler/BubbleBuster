@@ -3,13 +3,15 @@ package edu.neumont.csc150.bubblebuster;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Random;
 
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-public abstract class BubbleBuster extends JPanel implements ActionListener {
+public abstract class BubbleBuster extends JPanel implements ActionListener, MouseListener {
 	public static final int MINIMUM_BUBBLE_INTERVAL = 5;
 	public static final int MAXIMUM_BUBBLE_INTERVAL = 20;
 	private int bubbleInterval;
@@ -32,27 +34,28 @@ public abstract class BubbleBuster extends JPanel implements ActionListener {
 	}
 	
 	@Override
+	public void mouseClicked(MouseEvent e) {
+		System.out.println("clicked");
+		for (Bubble bubble : getBubbles()) {
+			if (bubble.isInside(e.getLocationOnScreen())) {
+//				this.setEnabled(false);
+				bubbles.remove(bubble);
+				remove(bubble);
+				System.out.println("pop");
+			}
+		}
+	}
+	
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		waitOrAddBubble();
-		// next bubble appears counter randomized then counted down
 		// checkBubbles() // remove if they go off screen
-//		for (Bubble bubble : bubbles) {
-//			System.out.println(bubble);
-////			bubble.repaint();
-////			repaint();
-//		}
 		repaint();
 	}
 	
-//	@Override
-//	protected void paintComponent(Graphics g) {
-//		super.paintComponent(g);
-//		System.out.println("painting BubbleBuster");
-//	}
-	
 	private void waitOrAddBubble() {
 		if (bubbleInterval == 0) {bubbleInterval = new Random().nextInt(MAXIMUM_BUBBLE_INTERVAL - MINIMUM_BUBBLE_INTERVAL) + MINIMUM_BUBBLE_INTERVAL;
-			bubbles.add(new Bubble());
+			bubbles.add(new Bubble(bubbles));
 			add(bubbles.get(bubbles.size() - 1));
 		}
 		else bubbleInterval--;	
@@ -101,5 +104,22 @@ public abstract class BubbleBuster extends JPanel implements ActionListener {
 	}
 	public void setBubbles(ArrayList<Bubble> bubbles) {
 		this.bubbles = bubbles;
+	}
+	
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		
+	}
+	@Override
+	public void mouseExited(MouseEvent e) {
+		
+	}
+	@Override
+	public void mousePressed(MouseEvent e) {
+		
+	}
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		
 	}
 }

@@ -111,7 +111,9 @@ public class MainMenuPanel extends JPanel {
 	
 	private void addListeners() {
 		survivalButton.addActionListener(e -> {
-			frame.switchTo(new SurvivalMode(frame));
+			SurvivalMode s = new SurvivalMode(frame);
+			frame.switchTo(s);
+			frame.addMouseListener(s);
 		});
 		quitButton.addActionListener(e -> {
 			frame.dispose();
