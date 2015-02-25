@@ -1,5 +1,6 @@
 package edu.neumont.csc150.bubblebuster;
 
+import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,6 +23,8 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Mou
 	private ArrayList<Bubble> bubbles;
 	
 	public BubbleBuster() {
+//		setLayout(new BorderLayout()); // TODO: maybe do this on another panel; this would be BorderLayout.center
+		
 		score = 0;
 		coinsEarned = 0;
 		paused = false;

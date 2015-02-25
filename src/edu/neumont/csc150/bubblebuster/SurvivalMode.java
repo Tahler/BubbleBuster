@@ -1,7 +1,6 @@
 package edu.neumont.csc150.bubblebuster;
 
 import java.awt.Color;
-import java.awt.Graphics;
 
 public class SurvivalMode extends BubbleBuster {
 	private int lives;
