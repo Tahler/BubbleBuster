@@ -29,7 +29,7 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Mou
 		coinsEarned = 0;
 		paused = false;
 		bubbles = new ArrayList<Bubble>();
-		
+		addMouseListener(this); // move to JFrame?? where should this be
 		waitOrAddBubble();
 		
 		timer = new Timer(20, this);

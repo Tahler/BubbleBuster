@@ -1,11 +1,7 @@
 package edu.neumont.csc150.bubblebuster;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.util.ArrayList;
 import java.util.Random;
 
 import javax.swing.JComponent;
@@ -35,15 +31,6 @@ public class Bubble extends JComponent {
 		g.fillOval(x, y, diameter, diameter);
 		move();
 	}
-	
-//	@Override
-//	public void paint(Graphics g) {
-////		System.out.println("painting Bubble");
-////		super.paint(g);
-////		g.setColor(Color.BLACK);
-//		g.fillOval(x, y, diameter, diameter);
-//		move();
-//	}
 	
 	protected boolean isInside(Point point) {
 		if (point.x > x && point.x < x + diameter) {
