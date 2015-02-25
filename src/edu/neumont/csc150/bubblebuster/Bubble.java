@@ -11,10 +11,11 @@ public class Bubble extends JComponent {
 	public static final int MAXIMUM_DIAMETER = 400;
 	public static final int MINIMUM_SPEED = 3;
 	public static final int MAXIMUM_SPEED = 8;
+	public static final int POINTS = 10;
 	private int x, y;
 	private int diameter;
 	private int speed;
-	private int points;
+//	private int points; // maybe needed later if points are worth more as the bubble gets smaller and faster
 	private boolean popped;
 	
 	public Bubble() {
@@ -42,7 +43,6 @@ public class Bubble extends JComponent {
 	}
 	
 	public void pop() {
-		// add points
 		popped = true;
 	}
 	
@@ -85,11 +85,5 @@ public class Bubble extends JComponent {
 	}
 	public void setSpeed(int speed) {
 		this.speed = speed;
-	}
-	public int getPoints() {
-		return points;
-	}
-	public void setPoints(int points) {
-		this.points = points;
 	}
 }

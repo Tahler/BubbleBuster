@@ -59,6 +59,7 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Mou
 			if (bubble.isInside(e.getLocationOnScreen())) {
 				System.out.print(" Pop");
 				bubble.pop();
+				addScore(Bubble.POINTS);
 			}
 		}
 		System.out.println();

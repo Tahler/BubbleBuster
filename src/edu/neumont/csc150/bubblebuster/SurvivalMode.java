@@ -5,8 +5,9 @@ import java.awt.Font;
 import java.awt.Graphics;
 
 public class SurvivalMode extends BubbleBuster {
-	private int lives;
+	private static final int PADDING = 30;
 	private GUI frame;
+	private int lives;
 	private long startTime;
 	private long currentTime;
 	
@@ -23,7 +24,8 @@ public class SurvivalMode extends BubbleBuster {
 		
 		g.setColor(Color.WHITE);
 		g.setFont(new Font("SansSerif", Font.BOLD, 24));
-		g.drawString(getTimeRunning(), 50, 50);
+		g.drawString(getScore() + "", GUI.WIDTH - (int) g.getFontMetrics().getStringBounds(getScore() + "", g).getWidth() - PADDING, PADDING);
+		g.drawString(getTimeRunning(), GUI.WIDTH - (int) g.getFontMetrics().getStringBounds(getTimeRunning(), g).getWidth() - PADDING, PADDING * 2);
 	}
 
 	public String getTimeRunning() {
