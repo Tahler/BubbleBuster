@@ -42,11 +42,11 @@ public abstract class BubbleBuster extends JPanel implements ActionListener {
 		repaint();
 	}
 	
-	@Override
-	protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		System.out.println("painting BubbleBuster");
-	}
+//	@Override
+//	protected void paintComponent(Graphics g) {
+//		super.paintComponent(g);
+//		System.out.println("painting BubbleBuster");
+//	}
 	
 	public void checkBubbles() {
 		

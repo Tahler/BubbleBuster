@@ -35,10 +35,9 @@ public class Bubble extends JComponent {
 	@Override
 	public void paint(Graphics g) {
 		System.out.println("painting Bubble");
-		move();
 //		super.paint(g);
-		g.setColor(Color.BLACK);
-		g.drawOval(x, y, diameter, diameter);
+//		g.setColor(Color.BLACK);
+		g.fillOval(x, y, diameter, diameter);
 		move();
 	}
 	
