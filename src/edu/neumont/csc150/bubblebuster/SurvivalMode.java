@@ -1,6 +1,7 @@
 package edu.neumont.csc150.bubblebuster;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 
 public class SurvivalMode extends BubbleBuster {
@@ -19,13 +20,18 @@ public class SurvivalMode extends BubbleBuster {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		System.out.println(getTimeRunning());
+		
+		g.setColor(Color.WHITE);
+		g.setFont(new Font("SansSerif", Font.BOLD, 24));
+		g.drawString(getTimeRunning(), 50, 50);
 	}
 
 	public String getTimeRunning() {
 		currentTime = System.currentTimeMillis() - startTime;
 		
-		return (currentTime / 60000) % 60 + ":" + (currentTime / 1000) % 60 + "." + currentTime % 10;
+		return (((currentTime / 60000) % 60 < 10) ? "0" + ((currentTime / 60000) % 60) : "" + (currentTime / 60000) % 60)
+				+ ":" + (((currentTime / 1000) % 60 < 10) ? "0" + ((currentTime / 1000) % 60) : "" + ((currentTime / 1000) % 60))
+				+ "." + currentTime % 10;
 	}
 	
 	public int getLives() {

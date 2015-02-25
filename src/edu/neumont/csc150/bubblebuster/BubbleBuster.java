@@ -39,6 +39,9 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Mou
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
+		
+		// drawstring score
+		
 		int tempSize = bubbles.size();
 		for (int i = 0; i < tempSize; i++) {
 			if (bubbles.get(i).isPopped()) {
