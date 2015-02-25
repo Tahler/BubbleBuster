@@ -12,8 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 public abstract class BubbleBuster extends JPanel implements ActionListener, MouseListener {
-	public static final int MINIMUM_BUBBLE_INTERVAL = 5;
-	public static final int MAXIMUM_BUBBLE_INTERVAL = 20;
+	public static final int MINIMUM_BUBBLE_INTERVAL = 50;
+	public static final int MAXIMUM_BUBBLE_INTERVAL = 500;
 	private int bubbleInterval;
 	private int score;
 	private Timer timer;
@@ -34,13 +34,24 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Mou
 	}
 	
 	@Override
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		int tempSize = bubbles.size();
+		for (int i = 0; i < tempSize; i++) {
+			if (bubbles.get(i).isPopped()) {
+				bubbles.remove(i);
+				tempSize--;
+			}
+			else bubbles.get(i).paintComponent(g);
+		}
+	}
+	
+	@Override
 	public void mouseClicked(MouseEvent e) {
 		System.out.println("clicked");
 		for (Bubble bubble : getBubbles()) {
 			if (bubble.isInside(e.getLocationOnScreen())) {
-//				this.setEnabled(false);
-				bubbles.remove(bubble);
-				remove(bubble);
+				bubble.pop();
 				System.out.println("pop");
 			}
 		}
@@ -54,8 +65,9 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Mou
 	}
 	
 	private void waitOrAddBubble() {
-		if (bubbleInterval == 0) {bubbleInterval = new Random().nextInt(MAXIMUM_BUBBLE_INTERVAL - MINIMUM_BUBBLE_INTERVAL) + MINIMUM_BUBBLE_INTERVAL;
-			bubbles.add(new Bubble(bubbles));
+		if (bubbleInterval == 0) {
+			bubbleInterval = new Random().nextInt(MAXIMUM_BUBBLE_INTERVAL - MINIMUM_BUBBLE_INTERVAL) + MINIMUM_BUBBLE_INTERVAL;
+			bubbles.add(new Bubble());
 			add(bubbles.get(bubbles.size() - 1));
 		}
 		else bubbleInterval--;	

@@ -19,9 +19,6 @@ public class SurvivalMode extends BubbleBuster {
 //		System.out.println("painting SurvivalMode");
 		super.paintComponent(g);
 //		paintComponents(g);
-		for (Bubble bubble : getBubbles()) {
-			bubble.paintComponent(g);
-		}
 	}
 
 	public String getTimeRunning() {

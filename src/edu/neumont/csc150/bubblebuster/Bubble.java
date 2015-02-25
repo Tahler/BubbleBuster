@@ -13,16 +13,16 @@ import javax.swing.JComponent;
 public class Bubble extends JComponent {
 	public static final int MINIMUM_DIAMETER = 50;
 	public static final int MAXIMUM_DIAMETER = 400;
-	public static final int MINIMUM_SPEED = 3;
-	public static final int MAXIMUM_SPEED = 10;
+	public static final int MINIMUM_SPEED = 1;
+	public static final int MAXIMUM_SPEED = 5;
 	private int x, y;
 	private int diameter;
 	private int speed;
 	private int points;
-	private ArrayList<Bubble> bubbles;
+	private boolean popped;
 	
-	public Bubble(ArrayList<Bubble> bubbles) {
-		this.bubbles = bubbles;
+	public Bubble() {
+		popped = false;
 		Random rand = new Random();
 		setDiameter(rand.nextInt(MAXIMUM_DIAMETER - MINIMUM_DIAMETER) + MINIMUM_DIAMETER);
 		setSpeed(rand.nextInt(MAXIMUM_SPEED - MINIMUM_SPEED) + MINIMUM_SPEED);
@@ -56,12 +56,12 @@ public class Bubble extends JComponent {
 	
 	public void pop() {
 		// add points
-		// remove the bubble
+		popped = true;
 		System.out.println("popped bubble");
 	}
 	
 	public void move() {
-		if (y + diameter < 0) bubbles.remove(this);
+		if (y + diameter < 0) popped = true;
 		y -= speed;
 	}
 	
@@ -70,6 +70,9 @@ public class Bubble extends JComponent {
 		return "x:" + getX() + " y:" + getY() + " r:" + (getDiameter() / 2) + " spd:" + getSpeed();
 	}
 	
+	public boolean isPopped() {
+		return popped;
+	}
 	public int getX() {
 		return x;
 	}
