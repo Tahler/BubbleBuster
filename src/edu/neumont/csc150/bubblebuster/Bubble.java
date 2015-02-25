@@ -13,8 +13,8 @@ import javax.swing.JComponent;
 public class Bubble extends JComponent {
 	public static final int MINIMUM_DIAMETER = 50;
 	public static final int MAXIMUM_DIAMETER = 400;
-	public static final int MINIMUM_SPEED = 1;
-	public static final int MAXIMUM_SPEED = 5;
+	public static final int MINIMUM_SPEED = 3;
+	public static final int MAXIMUM_SPEED = 8;
 	private int x, y;
 	private int diameter;
 	private int speed;

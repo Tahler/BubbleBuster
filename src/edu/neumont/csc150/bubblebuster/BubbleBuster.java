@@ -13,7 +13,7 @@ import javax.swing.Timer;
 
 public abstract class BubbleBuster extends JPanel implements ActionListener, MouseListener {
 	public static final int MINIMUM_BUBBLE_INTERVAL = 50;
-	public static final int MAXIMUM_BUBBLE_INTERVAL = 500;
+	public static final int MAXIMUM_BUBBLE_INTERVAL = 100;
 	private int bubbleInterval;
 	private int score;
 	private Timer timer;
@@ -29,7 +29,7 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Mou
 		
 		waitOrAddBubble();
 		
-		timer = new Timer(1, this);
+		timer = new Timer(20, this);
 		timer.start();
 	}
 	
@@ -48,11 +48,14 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Mou
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
+		System.out.print("Click");
 		for (Bubble bubble : getBubbles()) {
 			if (bubble.isInside(e.getLocationOnScreen())) {
+				System.out.print(" Pop");
 				bubble.pop();
 			}
 		}
+		System.out.println();
 	}
 	
 	@Override
