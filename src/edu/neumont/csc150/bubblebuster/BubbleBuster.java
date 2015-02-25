@@ -4,11 +4,15 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
 public abstract class BubbleBuster extends JPanel implements ActionListener {
+	public static final int MINIMUM_BUBBLE_INTERVAL = 5;
+	public static final int MAXIMUM_BUBBLE_INTERVAL = 20;
+	private int bubbleInterval;
 	private int score;
 	private Timer timer;
 	private int coinsEarned;
@@ -21,24 +25,22 @@ public abstract class BubbleBuster extends JPanel implements ActionListener {
 		paused = false;
 		bubbles = new ArrayList<Bubble>();
 		
-		bubbles.add(new Bubble());
-//		bubbles.add(new Bubble());
+		waitOrAddBubble();
 		
-		add(bubbles.get(0));
-		
-		timer = new Timer(1000, this);
+		timer = new Timer(1, this);
 		timer.start();
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		waitOrAddBubble();
 		// next bubble appears counter randomized then counted down
 		// checkBubbles() // remove if they go off screen
-		for (Bubble bubble : bubbles) {
-			System.out.println(bubble);
-//			bubble.repaint();
-//			repaint();
-		}
+//		for (Bubble bubble : bubbles) {
+//			System.out.println(bubble);
+////			bubble.repaint();
+////			repaint();
+//		}
 		repaint();
 	}
 	
@@ -48,6 +50,14 @@ public abstract class BubbleBuster extends JPanel implements ActionListener {
 //		System.out.println("painting BubbleBuster");
 //	}
 	
+	private void waitOrAddBubble() {
+		if (bubbleInterval == 0) {bubbleInterval = new Random().nextInt(MAXIMUM_BUBBLE_INTERVAL - MINIMUM_BUBBLE_INTERVAL) + MINIMUM_BUBBLE_INTERVAL;
+			bubbles.add(new Bubble());
+			add(bubbles.get(bubbles.size() - 1));
+		}
+		else bubbleInterval--;	
+	}
+
 	public void checkBubbles() {
 		
 	}
