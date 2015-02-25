@@ -2,7 +2,6 @@ package edu.neumont.csc150.bubblebuster;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
@@ -38,7 +37,6 @@ public class MainMenuPanel extends JPanel {
 		musicButton = new BubbleButton("m");
 		effectsButton = new BubbleButton("s");
 	}
-	
 	private void addComponents() {
 		setLayout(new BorderLayout());
 		
@@ -113,7 +111,7 @@ public class MainMenuPanel extends JPanel {
 		survivalButton.addActionListener(e -> {
 			SurvivalMode s = new SurvivalMode(frame);
 			frame.switchTo(s);
-			frame.addMouseListener(s);
+//			frame.addMouseListener(s);
 		});
 		quitButton.addActionListener(e -> {
 			frame.dispose();

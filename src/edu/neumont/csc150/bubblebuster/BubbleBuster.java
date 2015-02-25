@@ -48,11 +48,9 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Mou
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		System.out.println("clicked");
 		for (Bubble bubble : getBubbles()) {
 			if (bubble.isInside(e.getLocationOnScreen())) {
 				bubble.pop();
-				System.out.println("pop");
 			}
 		}
 	}
@@ -60,7 +58,6 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Mou
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		waitOrAddBubble();
-		// checkBubbles() // remove if they go off screen
 		repaint();
 	}
 	

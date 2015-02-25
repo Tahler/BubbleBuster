@@ -57,7 +57,6 @@ public class Bubble extends JComponent {
 	public void pop() {
 		// add points
 		popped = true;
-		System.out.println("popped bubble");
 	}
 	
 	public void move() {

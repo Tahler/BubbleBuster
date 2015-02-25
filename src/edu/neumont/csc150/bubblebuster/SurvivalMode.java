@@ -11,14 +11,9 @@ public class SurvivalMode extends BubbleBuster {
 		super();
 		this.frame = frame;
 		
+		addMouseListener(this); // move to JFrame?? where should this be
+		
 		setBackground(new Color(0, 195, 217));
-	}
-	
-	@Override
-	protected void paintComponent(Graphics g) {
-//		System.out.println("painting SurvivalMode");
-		super.paintComponent(g);
-//		paintComponents(g);
 	}
 
 	public String getTimeRunning() {
