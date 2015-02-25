@@ -1,5 +1,6 @@
 package edu.neumont.csc150.bubblebuster;
 
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -19,12 +20,32 @@ public abstract class BubbleBuster extends JPanel implements ActionListener {
 		coinsEarned = 0;
 		paused = false;
 		bubbles = new ArrayList<Bubble>();
-		timer = new Timer(10, this);
+		
+		bubbles.add(new Bubble());
+//		bubbles.add(new Bubble());
+		
+		add(bubbles.get(0));
+		
+		timer = new Timer(1000, this);
+		timer.start();
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		// next bubble appears counter randomized then counted down
+		// checkBubbles() // remove if they go off screen
+		for (Bubble bubble : bubbles) {
+			System.out.println(bubble);
+//			bubble.repaint();
+//			repaint();
+		}
 		repaint();
+	}
+	
+	@Override
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		System.out.println("painting BubbleBuster");
 	}
 	
 	public void checkBubbles() {
@@ -33,6 +54,8 @@ public abstract class BubbleBuster extends JPanel implements ActionListener {
 
 	public void togglePause() {
 		paused = !paused;
+		if (paused) timer.stop();
+		else timer.start();
 	}
 	
 	public void addScore(int score) {

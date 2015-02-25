@@ -1,12 +1,15 @@
 package edu.neumont.csc150.bubblebuster;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Random;
 
 import javax.swing.JComponent;
 
 public class Bubble extends JComponent {
-	public static final int MAXIMUM_DIAMETER = 100;
+	public static final int MINIMUM_DIAMETER = 50;
+	public static final int MAXIMUM_DIAMETER = 400;
+	public static final int MINIMUM_SPEED = 3;
 	public static final int MAXIMUM_SPEED = 10;
 	private int x, y;
 	private int diameter;
@@ -15,20 +18,26 @@ public class Bubble extends JComponent {
 	
 	public Bubble() {
 		Random rand = new Random();
-//		setX(rand.nextInt(GUI.WIDTH));
-		setX(300);
-//		setY(GUI.HEIGHT);
-		setY(1080);
-		setDiameter(100);
-		setSpeed(5);
-//		setDiameter(rand.nextInt(MAXIMUM_DIAMETER - MAXIMUM_DIAMETER / 2) + MAXIMUM_DIAMETER / 2);
-//		setSpeed(rand.nextInt(MAXIMUM_SPEED - MAXIMUM_SPEED / 2) + MAXIMUM_SPEED / 2);
+		setDiameter(rand.nextInt(MAXIMUM_DIAMETER - MINIMUM_DIAMETER) + MINIMUM_DIAMETER);
+		setSpeed(rand.nextInt(MAXIMUM_SPEED - MINIMUM_SPEED) + MINIMUM_SPEED);
+		setX(rand.nextInt(GUI.WIDTH - diameter));
+		setY(GUI.HEIGHT);
 	}
 	
+//	@Override
+//	protected void paintComponent(Graphics g) {
+//		System.out.println("painting");
+////		super.paintComponent(g);
+//		g.drawOval(x, y, diameter, diameter);
+//		move();
+//	}
+	
 	@Override
-	protected void paintComponent(Graphics g) {
-		System.out.println("painting");
-		super.paintComponent(g);
+	public void paint(Graphics g) {
+		System.out.println("painting Bubble");
+		move();
+//		super.paint(g);
+		g.setColor(Color.BLACK);
 		g.drawOval(x, y, diameter, diameter);
 		move();
 	}
@@ -40,6 +49,11 @@ public class Bubble extends JComponent {
 	public void move() {
 //		if (y < 0) // bubble flew off the screen.
 		y -= speed;
+	}
+	
+	@Override
+	public String toString() {
+		return "x:" + getX() + " y:" + getY() + " r:" + (getDiameter() / 2) + " spd:" + getSpeed();
 	}
 	
 	public int getX() {
