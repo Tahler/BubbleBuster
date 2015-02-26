@@ -1,20 +1,20 @@
 package edu.neumont.csc150.bubblebuster;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics;
 
 public class SurvivalMode extends BubbleBuster {
-	private static final int PADDING = 30;
-	private GUI frame;
+	public static final int STARTING_LIVES = 5;
+	
 	private int lives;
 	private long startTime;
 	private long currentTime;
 	
 	public SurvivalMode(GUI frame) {
-		super();
-		this.frame = frame;
-		this.startTime = System.currentTimeMillis();
+		super(frame);
+		
+		setLives(STARTING_LIVES);
+		startTime = System.currentTimeMillis();
 		setBackground(new Color(0, 195, 217));
 	}
 	
@@ -22,10 +22,8 @@ public class SurvivalMode extends BubbleBuster {
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
-		g.setColor(Color.WHITE);
-		g.setFont(new Font("SansSerif", Font.BOLD, 24));
-		g.drawString(getScore() + "", GUI.WIDTH - (int) g.getFontMetrics().getStringBounds(getScore() + "", g).getWidth() - PADDING, PADDING);
-		g.drawString(getTimeRunning(), GUI.WIDTH - (int) g.getFontMetrics().getStringBounds(getTimeRunning(), g).getWidth() - PADDING, PADDING * 2);
+		g.drawString(getTimeRunning(), GUI.WIDTH - (int) g.getFontMetrics().getStringBounds(getTimeRunning(), g).getWidth() - STRING_PADDING, STRING_PADDING * 2);
+		g.drawString(getLives() + "", GUI.WIDTH - (int) g.getFontMetrics().getStringBounds(getLives() + "", g).getWidth() - STRING_PADDING, STRING_PADDING * 3);
 	}
 
 	public String getTimeRunning() {
@@ -36,6 +34,14 @@ public class SurvivalMode extends BubbleBuster {
 				+ "." + currentTime % 10;
 	}
 	
+	public void loseLife() {
+		this.lives--;
+		if (lives <= 0) {
+// 			frame.switchTo(new GameOverPanel(getScore(), getTimeRunning()));
+			frame.survivalPanel = null;
+			System.out.println("Game over");
+		}
+	}
 	public int getLives() {
 		return lives;
 	}

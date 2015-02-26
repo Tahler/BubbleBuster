@@ -47,11 +47,15 @@ public class Bubble extends JComponent {
 	}
 	
 	public void move() {
-		if (y + diameter < 0) {
-			popped = true;
-//			remove a life;
-		}
+//		if (y + diameter < 0) {
+//			popped = true;
+////			remove a life;
+//		}
 		y -= speed;
+	}
+	
+	public boolean isOffScreen() {
+		return (y + diameter < 0);
 	}
 	
 	@Override

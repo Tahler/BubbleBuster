@@ -1,6 +1,7 @@
 package edu.neumont.csc150.bubblebuster;
 
-import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,6 +16,8 @@ import javax.swing.Timer;
 public abstract class BubbleBuster extends JPanel implements ActionListener, MouseListener {
 	public static final int MINIMUM_BUBBLE_INTERVAL = 50;
 	public static final int MAXIMUM_BUBBLE_INTERVAL = 100;
+	protected static final int STRING_PADDING = 30;
+	protected GUI frame;
 	private int bubbleInterval;
 	private int score;
 	private Timer timer;
@@ -22,8 +25,8 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Mou
 	private boolean paused;
 	private ArrayList<Bubble> bubbles;
 	
-	public BubbleBuster() {
-//		setLayout(new BorderLayout()); // TODO: maybe do this on another panel; this would be BorderLayout.center
+	public BubbleBuster(GUI frame) {
+		this.frame = frame;
 		
 		score = 0;
 		coinsEarned = 0;
@@ -40,11 +43,20 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Mou
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
-		// drawstring score
+		g.setColor(Color.WHITE);
+		g.setFont(new Font("SansSerif", Font.BOLD, 24));
+		g.drawString(getScore() + "", GUI.WIDTH - (int) g.getFontMetrics().getStringBounds(getScore() + "", g).getWidth() - STRING_PADDING, STRING_PADDING);
 		
 		int tempSize = bubbles.size();
 		for (int i = 0; i < tempSize; i++) {
 			if (bubbles.get(i).isPopped()) {
+				bubbles.remove(i);
+				tempSize--;
+			}
+			else if (bubbles.get(i).isOffScreen()) {
+				if (this instanceof SurvivalMode) {
+					((SurvivalMode) this).loseLife();
+				}
 				bubbles.remove(i);
 				tempSize--;
 			}
@@ -78,10 +90,6 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Mou
 			add(bubbles.get(bubbles.size() - 1));
 		}
 		else bubbleInterval--;	
-	}
-
-	public void checkBubbles() {
-		
 	}
 
 	public void togglePause() {
