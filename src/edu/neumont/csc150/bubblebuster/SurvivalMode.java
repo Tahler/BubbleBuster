@@ -37,7 +37,7 @@ public class SurvivalMode extends BubbleBuster {
 	public void loseLife() {
 		this.lives--;
 		if (lives <= 0) {
-// 			frame.switchTo(new GameOverPanel(getScore(), getTimeRunning()));
+ 			frame.switchTo(new SurvivalGameOverPanel(frame, getScore(), getTimeRunning()));
 			frame.survivalPanel = null;
 			System.out.println("Game over");
 		}
