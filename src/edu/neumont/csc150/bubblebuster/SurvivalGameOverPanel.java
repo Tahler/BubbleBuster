@@ -7,22 +7,32 @@ import javax.swing.JLabel;
 public class SurvivalGameOverPanel extends GameOverPanel {
 	private JLabel timeLabel, timeSurvivedLabel, timeRecordLabel;
 	
-	public SurvivalGameOverPanel(GUI frame, int score, String time) {
+	public SurvivalGameOverPanel(GUI frame, int score, Time time) {
 		super(frame, score);
-		
-//		Statistics.survivalLongestTime
-//		Statistics.survivalLongestStreak
-		Statistics.survivalHighScore += score;
-		Statistics.survivalGamesPlayed++;
-		
+		updateStatistics(score, time);
 		initializeComponents(time);
 		addComponents();
 	}
-	private void initializeComponents(String time) {
+	private void updateStatistics(int score, Time time) {
+		if (Statistics.survivalLongestTime != null) {
+			if (time.compareTo(Statistics.survivalLongestTime) > 0) {
+				Statistics.survivalLongestTime = time;
+			}
+		}
+		else {
+			Statistics.survivalLongestTime = time;
+		}
+//		Statistics.survivalLongestStreak
+		Statistics.survivalHighScore += score;
+		Statistics.survivalGamesPlayed++;
+	}
+	private void initializeComponents(Time time) {
+		pointsRecordLabel.setText(Statistics.survivalHighScore + "");
+		
 		timeLabel = new JLabel("Time Survived: ", JLabel.RIGHT);
-		timeSurvivedLabel = new JLabel(time, JLabel.CENTER);
-		timeRecordLabel = new JLabel("", JLabel.CENTER);
-//		timeRecordLabel = new JLabel(Statistics.survivalLongestTime);
+		timeSurvivedLabel = new JLabel(time.toString(), JLabel.CENTER);
+		if (Statistics.survivalLongestTime != null) timeRecordLabel = new JLabel(Statistics.survivalLongestTime.toString(), JLabel.CENTER);
+		else timeRecordLabel = new JLabel("", JLabel.CENTER);
 		
 		Font headerFont = new Font("Arial", Font.BOLD, 24);
 		Font contentFont = new Font("Arial", Font.PLAIN, 18);

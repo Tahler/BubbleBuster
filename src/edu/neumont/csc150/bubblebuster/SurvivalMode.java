@@ -27,13 +27,14 @@ public class SurvivalMode extends BubbleBuster {
 	}
 
 	public String getTimeRunning() {
-		return new Time(System.currentTimeMillis() - startTime).toString();
+		currentTime = new Time(System.currentTimeMillis() - startTime);
+		return currentTime.toString();
 	}
 	
 	public void loseLife() {
 		this.lives--;
 		if (lives <= 0) {
- 			frame.switchTo(new SurvivalGameOverPanel(frame, getScore(), getTimeRunning()));
+ 			frame.switchTo(new SurvivalGameOverPanel(frame, getScore(), currentTime));
 			frame.survivalPanel = null;
 		}
 	}

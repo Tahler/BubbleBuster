@@ -15,7 +15,6 @@ import javax.swing.JPanel;
 
 public abstract class GameOverPanel extends JPanel {
 	protected GUI frame;
-//	protected JPanel tablePanel, buttonPanel;
 	protected JLabel titleLabel, col1Label, col2Label, pointsLabel, pointsEarnedLabel, pointsRecordLabel,
 		coinsLabel, coinsEarnedLabel, coinsRecordLabel,
 		currentCoinsLabel, balanceLabel;
@@ -24,25 +23,19 @@ public abstract class GameOverPanel extends JPanel {
 	// TODO: USE GRIDBAGLAYOUT
 	public GameOverPanel(GUI frame, int score) {
 		this.frame = frame;
-		
-		// Update statistics
-		Statistics.walletCoins += score / 10;
-		Statistics.totalCoinsAllTime += score / 10;
-		Statistics.totalPointsAllTime += score;
-		
+		updateStatistics(score);
 		setBackground(new Color(0, 195, 217));
 		initializeComponents(score);
 		addActionListeners();
-//		setLayout(new BorderLayout(0, 0)); // TODO use spacing
 		GridLayout grid = new GridLayout(10, 4);
 		setLayout(grid);
 	}
+	private void updateStatistics(int score) {
+		Statistics.walletCoins += score / 10;
+		Statistics.totalCoinsAllTime += score / 10;
+		Statistics.totalPointsAllTime += score;
+	}
 	private void initializeComponents(int score) {
-//		tablePanel = new JPanel(new GridLayout(5, 3)); // TODO use spacing
-//		buttonPanel = new JPanel(new GridLayout(1, 2, 0, 100));
-//		tablePanel.setBackground(this.getBackground());
-//		buttonPanel.setBackground(this.getBackground());
-		
 		titleLabel = new JLabel("Game Over", JLabel.CENTER);
 		titleLabel.setFont(new Font("Arial", Font.BOLD, 36));
 		
@@ -50,15 +43,13 @@ public abstract class GameOverPanel extends JPanel {
 		col2Label = new JLabel("Record", JLabel.CENTER);
 		pointsLabel = new JLabel("Points: ", JLabel.RIGHT);
 		pointsEarnedLabel = new JLabel(score + "", JLabel.CENTER);
-		pointsRecordLabel = new JLabel("", JLabel.CENTER);
-//		pointsRecordLabel = new JLabel(Statistics.survivalHighScore + "");
+		pointsRecordLabel = new JLabel("", JLabel.CENTER); // will be updated in the subclass
 		coinsLabel = new JLabel("Coins: ", JLabel.RIGHT);
 		coinsEarnedLabel = new JLabel((score / 10) + "", JLabel.CENTER);
 		coinsRecordLabel = new JLabel("", JLabel.CENTER);
 //		coinsRecordLabel = new JLabel(Statistics.)
 		currentCoinsLabel = new JLabel("Your coins: ", JLabel.RIGHT);
-//		balanceLabel = new JLabel(Statistics.walletCoins + "");
-		balanceLabel = new JLabel("", JLabel.CENTER);
+		balanceLabel = new JLabel(Statistics.walletCoins + "", JLabel.CENTER);
 		
 		Font headerFont = new Font("Arial", Font.BOLD, 24);
 		Font contentFont = new Font("Arial", Font.PLAIN, 18);
