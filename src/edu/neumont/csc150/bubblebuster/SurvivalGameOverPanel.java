@@ -14,8 +14,6 @@ public class SurvivalGameOverPanel extends GameOverPanel {
 		// update statistics
 		initializeComponents(time);
 		addComponents();
-		
-		setBackground(new Color(0, 195, 217));
 	}
 	private void initializeComponents(String time) {
 		timeLabel = new JLabel("Time Survived: ", JLabel.RIGHT);

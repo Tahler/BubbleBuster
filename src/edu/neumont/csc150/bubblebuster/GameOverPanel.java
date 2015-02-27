@@ -1,6 +1,7 @@
 package edu.neumont.csc150.bubblebuster;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 
@@ -17,6 +18,7 @@ public abstract class GameOverPanel extends JPanel {
 	private JButton playAgainButton, menuButton;
 	
 	public GameOverPanel(GUI frame, int score) {
+		setBackground(new Color(0, 195, 217));
 		initializeComponents(score);
 		addActionListeners();
 		setLayout(new BorderLayout(0, 0)); // TODO use spacing
