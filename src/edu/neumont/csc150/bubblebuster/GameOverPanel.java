@@ -24,6 +24,12 @@ public abstract class GameOverPanel extends JPanel {
 	// TODO: USE GRIDBAGLAYOUT
 	public GameOverPanel(GUI frame, int score) {
 		this.frame = frame;
+		
+		// Update statistics
+		Statistics.walletCoins += score / 10;
+		Statistics.totalCoinsAllTime += score / 10;
+		Statistics.totalPointsAllTime += score;
+		
 		setBackground(new Color(0, 195, 217));
 		initializeComponents(score);
 		addActionListeners();

@@ -8,7 +8,7 @@ public class SurvivalMode extends BubbleBuster {
 	
 	private int lives;
 	private long startTime;
-	private long currentTime;
+	private Time currentTime;
 	
 	public SurvivalMode(GUI frame) {
 		super(frame);
@@ -27,11 +27,7 @@ public class SurvivalMode extends BubbleBuster {
 	}
 
 	public String getTimeRunning() {
-		currentTime = System.currentTimeMillis() - startTime;
-		
-		return (((currentTime / 60000) % 60 < 10) ? "0" + ((currentTime / 60000) % 60) : "" + (currentTime / 60000) % 60)
-				+ ":" + (((currentTime / 1000) % 60 < 10) ? "0" + ((currentTime / 1000) % 60) : "" + ((currentTime / 1000) % 60))
-				+ "." + currentTime % 10;
+		return new Time(System.currentTimeMillis() - startTime).toString();
 	}
 	
 	public void loseLife() {

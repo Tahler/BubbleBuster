@@ -9,7 +9,12 @@ public class SurvivalGameOverPanel extends GameOverPanel {
 	
 	public SurvivalGameOverPanel(GUI frame, int score, String time) {
 		super(frame, score);
-		// update statistics
+		
+//		Statistics.survivalLongestTime
+//		Statistics.survivalLongestStreak
+		Statistics.survivalHighScore += score;
+		Statistics.survivalGamesPlayed++;
+		
 		initializeComponents(time);
 		addComponents();
 	}
