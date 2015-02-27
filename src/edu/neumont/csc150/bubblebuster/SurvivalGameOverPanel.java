@@ -1,10 +1,8 @@
 package edu.neumont.csc150.bubblebuster;
 
-import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 public class SurvivalGameOverPanel extends GameOverPanel {
 	private JLabel timeLabel, timeSurvivedLabel, timeRecordLabel;
@@ -35,5 +33,12 @@ public class SurvivalGameOverPanel extends GameOverPanel {
 		tablePanel.add(timeSurvivedLabel);
 		tablePanel.add(timeRecordLabel);
 		super.addComponents();
+	}
+	protected void addActionListeners() {
+		super.addActionListeners();
+		playAgainButton.addActionListener(e -> {
+			frame.survivalPanel = new SurvivalMode(frame);
+			frame.switchTo(frame.survivalPanel);
+		});
 	}
 }

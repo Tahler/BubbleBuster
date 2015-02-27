@@ -10,14 +10,15 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public abstract class GameOverPanel extends JPanel {
-	private GUI frame;
+	protected GUI frame;
 	protected JPanel tablePanel, buttonPanel;
 	protected JLabel titleLabel, col1Label, col2Label, pointsLabel, pointsEarnedLabel, pointsRecordLabel,
 		coinsLabel, coinsEarnedLabel, coinsRecordLabel,
 		currentCoinsLabel, balanceLabel;
-	private JButton playAgainButton, menuButton;
+	protected JButton playAgainButton, menuButton;
 	
 	public GameOverPanel(GUI frame, int score) {
+		this.frame = frame;
 		setBackground(new Color(0, 195, 217));
 		initializeComponents(score);
 		addActionListeners();
@@ -61,15 +62,13 @@ public abstract class GameOverPanel extends JPanel {
 		playAgainButton = new JButton("Play Again");
 		menuButton = new JButton("Back to Menu");
 	}
-	private void addActionListeners() {
-		playAgainButton.addActionListener(e -> {
-			frame.survivalPanel = new SurvivalMode(frame);
-			frame.switchTo(frame.survivalPanel);
-		});
+	protected void addActionListeners() {
 		menuButton.addActionListener(e -> {
 			frame.switchTo(frame.mainMenuPanel);
 		});
 	}
+	
+	// Not called by the constructor, must be called from child classes
 	protected void addComponents() {
 		tablePanel.add(pointsLabel);
 		tablePanel.add(pointsEarnedLabel);
