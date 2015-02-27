@@ -3,6 +3,7 @@ package edu.neumont.csc150.bubblebuster;
 import java.awt.Color;
 import java.awt.Graphics;
 
+@SuppressWarnings("serial")
 public class SurvivalMode extends BubbleBuster {
 	public static final int STARTING_LIVES = 1;
 	

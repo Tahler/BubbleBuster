@@ -1,18 +1,16 @@
 package edu.neumont.csc150.bubblebuster;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridLayout;
-import java.awt.Toolkit;
 
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public abstract class GameOverPanel extends JPanel {
 	protected GUI frame;
 	protected JLabel titleLabel, col1Label, col2Label, pointsLabel, pointsEarnedLabel, pointsRecordLabel,

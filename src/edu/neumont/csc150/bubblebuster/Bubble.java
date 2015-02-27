@@ -6,6 +6,7 @@ import java.util.Random;
 
 import javax.swing.JComponent;
 
+@SuppressWarnings("serial")
 public class Bubble extends JComponent {
 	public static final int MINIMUM_DIAMETER = 50;
 	public static final int MAXIMUM_DIAMETER = 400;

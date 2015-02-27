@@ -4,6 +4,7 @@ import java.awt.Font;
 
 import javax.swing.JLabel;
 
+@SuppressWarnings("serial")
 public class SurvivalGameOverPanel extends GameOverPanel {
 	private JLabel timeLabel, timeSurvivedLabel, timeRecordLabel;
 	
@@ -23,7 +24,7 @@ public class SurvivalGameOverPanel extends GameOverPanel {
 			Statistics.survivalLongestTime = time;
 		}
 //		Statistics.survivalLongestStreak
-		Statistics.survivalHighScore += score;
+		if (score > Statistics.survivalHighScore) Statistics.survivalHighScore = score;
 		Statistics.survivalGamesPlayed++;
 	}
 	private void initializeComponents(Time time) {

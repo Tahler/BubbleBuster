@@ -13,6 +13,7 @@ import java.util.Random;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+@SuppressWarnings("serial")
 public abstract class BubbleBuster extends JPanel implements ActionListener, MouseListener {
 	public static final int MINIMUM_BUBBLE_INTERVAL = 50;
 	public static final int MAXIMUM_BUBBLE_INTERVAL = 100;

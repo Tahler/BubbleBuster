@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class MainMenuPanel extends JPanel {
 	private GUI frame;
 	private final JLabel title = new JLabel("Bubble Buster!");
