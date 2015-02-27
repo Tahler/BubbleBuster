@@ -1,6 +1,7 @@
 package edu.neumont.csc150.bubblebuster;
 
 import java.awt.Font;
+import java.io.IOException;
 
 import javax.swing.JLabel;
 
@@ -26,6 +27,13 @@ public class SurvivalGameOverPanel extends GameOverPanel {
 //		Statistics.survivalLongestStreak
 		if (score > Statistics.survivalHighScore) Statistics.survivalHighScore = score;
 		Statistics.survivalGamesPlayed++;
+		
+		try {
+			Statistics.save();
+		} 
+		catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	private void initializeComponents(Time time) {
 		pointsRecordLabel.setText(Statistics.survivalHighScore + "");

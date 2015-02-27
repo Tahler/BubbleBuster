@@ -6,6 +6,7 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class GUI extends JFrame {
 	public static int WIDTH;
 	public static int HEIGHT;
