@@ -3,9 +3,12 @@ package edu.neumont.csc150.bubblebuster;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -18,6 +21,7 @@ public abstract class GameOverPanel extends JPanel {
 		currentCoinsLabel, balanceLabel;
 	protected JButton playAgainButton, menuButton;
 	
+	// TODO: USE GRIDBAGLAYOUT
 	public GameOverPanel(GUI frame, int score) {
 		this.frame = frame;
 		setBackground(new Color(0, 195, 217));
@@ -26,7 +30,6 @@ public abstract class GameOverPanel extends JPanel {
 //		setLayout(new BorderLayout(0, 0)); // TODO use spacing
 		GridLayout grid = new GridLayout(10, 4);
 		setLayout(grid);
-		
 	}
 	private void initializeComponents(int score) {
 //		tablePanel = new JPanel(new GridLayout(5, 3)); // TODO use spacing
@@ -63,6 +66,10 @@ public abstract class GameOverPanel extends JPanel {
 		coinsEarnedLabel.setFont(contentFont);
 		balanceLabel.setFont(contentFont);
 		
+//		playAgainButton = new JButton(new ImageIcon(Toolkit.getDefaultToolkit().getImage("images\\button.png")));
+//		playAgainButton.setBackground(null);
+//		playAgainButton.setBorder(null);
+//		playAgainButton.setText("Play Again");
 		playAgainButton = new BubbleButton("Play Again");
 		menuButton = new BubbleButton("Back to Menu");
 	}
@@ -103,6 +110,13 @@ public abstract class GameOverPanel extends JPanel {
 		add(new JLabel());
 		
 		addEmptyRow();
+	}
+	
+	@Override
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		g.setFont(new Font("Arial", Font.BOLD, 36));
+		g.drawString("Game Over", GUI.WIDTH / 2 - (int) g.getFontMetrics().getStringBounds("Game Over", g).getWidth() / 2, GUI.HEIGHT / 5);
 	}
 	
 	public void animateTransfer() {
