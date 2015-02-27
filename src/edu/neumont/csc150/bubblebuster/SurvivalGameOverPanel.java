@@ -26,12 +26,16 @@ public class SurvivalGameOverPanel extends GameOverPanel {
 		timeRecordLabel.setFont(contentFont);
 	}
 	protected void addComponents() {
-		tablePanel.add(new JLabel());
-		tablePanel.add(col1Label);
-		tablePanel.add(col2Label);
-		tablePanel.add(timeLabel);
-		tablePanel.add(timeSurvivedLabel);
-		tablePanel.add(timeRecordLabel);
+		addEmptyRow();
+		addEmptyRow();
+		add(new JLabel());
+		add(col1Label);
+		add(col2Label);
+		add(new JLabel());
+		add(timeLabel);
+		add(timeSurvivedLabel);
+		add(timeRecordLabel);
+		add(new JLabel());
 		super.addComponents();
 	}
 	protected void addActionListeners() {

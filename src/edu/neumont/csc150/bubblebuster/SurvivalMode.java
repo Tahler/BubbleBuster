@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 public class SurvivalMode extends BubbleBuster {
-	public static final int STARTING_LIVES = 5;
+	public static final int STARTING_LIVES = 1;
 	
 	private int lives;
 	private long startTime;

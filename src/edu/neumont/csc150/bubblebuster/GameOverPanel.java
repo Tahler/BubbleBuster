@@ -5,13 +5,14 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 
+import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public abstract class GameOverPanel extends JPanel {
 	protected GUI frame;
-	protected JPanel tablePanel, buttonPanel;
+//	protected JPanel tablePanel, buttonPanel;
 	protected JLabel titleLabel, col1Label, col2Label, pointsLabel, pointsEarnedLabel, pointsRecordLabel,
 		coinsLabel, coinsEarnedLabel, coinsRecordLabel,
 		currentCoinsLabel, balanceLabel;
@@ -22,13 +23,16 @@ public abstract class GameOverPanel extends JPanel {
 		setBackground(new Color(0, 195, 217));
 		initializeComponents(score);
 		addActionListeners();
-		setLayout(new BorderLayout(0, 0)); // TODO use spacing
+//		setLayout(new BorderLayout(0, 0)); // TODO use spacing
+		GridLayout grid = new GridLayout(10, 4);
+		setLayout(grid);
+		
 	}
 	private void initializeComponents(int score) {
-		tablePanel = new JPanel(new GridLayout(5, 3)); // TODO use spacing
-		buttonPanel = new JPanel(new GridLayout(1, 2, 0, 100));
-		tablePanel.setBackground(this.getBackground());
-		buttonPanel.setBackground(this.getBackground());
+//		tablePanel = new JPanel(new GridLayout(5, 3)); // TODO use spacing
+//		buttonPanel = new JPanel(new GridLayout(1, 2, 0, 100));
+//		tablePanel.setBackground(this.getBackground());
+//		buttonPanel.setBackground(this.getBackground());
 		
 		titleLabel = new JLabel("Game Over", JLabel.CENTER);
 		titleLabel.setFont(new Font("Arial", Font.BOLD, 36));
@@ -59,8 +63,8 @@ public abstract class GameOverPanel extends JPanel {
 		coinsEarnedLabel.setFont(contentFont);
 		balanceLabel.setFont(contentFont);
 		
-		playAgainButton = new JButton("Play Again");
-		menuButton = new JButton("Back to Menu");
+		playAgainButton = new BubbleButton("Play Again");
+		menuButton = new BubbleButton("Back to Menu");
 	}
 	protected void addActionListeners() {
 		menuButton.addActionListener(e -> {
@@ -69,23 +73,36 @@ public abstract class GameOverPanel extends JPanel {
 	}
 	
 	// Not called by the constructor, must be called from child classes
+	protected void addEmptyRow() {
+		add(new JLabel());
+		add(new JLabel());
+		add(new JLabel());
+		add(new JLabel());
+	}
 	protected void addComponents() {
-		tablePanel.add(pointsLabel);
-		tablePanel.add(pointsEarnedLabel);
-		tablePanel.add(pointsRecordLabel);
-		tablePanel.add(coinsLabel);
-		tablePanel.add(coinsEarnedLabel);
-		tablePanel.add(coinsRecordLabel);
-		tablePanel.add(currentCoinsLabel);
-		tablePanel.add(balanceLabel);
-		tablePanel.add(new JLabel());
+		add(pointsLabel);
+		add(pointsEarnedLabel);
+		add(pointsRecordLabel);
+		add(new JLabel());
 		
-		buttonPanel.add(playAgainButton);
-		buttonPanel.add(menuButton);
+		add(coinsLabel);
+		add(coinsEarnedLabel);
+		add(coinsRecordLabel);
+		add(new JLabel());
 		
-		add(titleLabel, BorderLayout.NORTH);
-		add(tablePanel, BorderLayout.CENTER);
-		add(buttonPanel, BorderLayout.SOUTH);
+		add(currentCoinsLabel);
+		add(balanceLabel);
+		add(new JLabel());
+		add(new JLabel());
+		
+		addEmptyRow();
+		
+		add(new JLabel());
+		add(playAgainButton, Alignment.CENTER);
+		add(menuButton, Alignment.CENTER);
+		add(new JLabel());
+		
+		addEmptyRow();
 	}
 	
 	public void animateTransfer() {

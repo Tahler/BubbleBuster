@@ -1,13 +1,11 @@
 package edu.neumont.csc150.bubblebuster;
 
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.geom.Rectangle2D;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.border.EmptyBorder;
 
 public class BubbleButton extends JButton {
 	public static final ImageIcon IMG = new ImageIcon("images\\button2.png");
