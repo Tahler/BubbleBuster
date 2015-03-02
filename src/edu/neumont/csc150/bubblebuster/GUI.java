@@ -11,7 +11,7 @@ public class GUI extends JFrame {
 	public static int WIDTH;
 	public static int HEIGHT;
 	
-	protected JPanel mainMenuPanel, survivalPanel;
+	protected JPanel mainMenuPanel, survivalPanel, statisticsPanel;
 	private JPanel currentPanel;
 	
 	public GUI() {

@@ -113,6 +113,10 @@ public class MainMenuPanel extends JPanel {
 			frame.survivalPanel = new SurvivalMode(frame);
 			frame.switchTo(frame.survivalPanel);
 		});
+		statisticsButton.addActionListener(e -> {
+			frame.statisticsPanel = new StatisticsPanel(frame);
+			frame.switchTo(frame.statisticsPanel);
+		});
 		quitButton.addActionListener(e -> {
 			frame.dispose();
 		});
