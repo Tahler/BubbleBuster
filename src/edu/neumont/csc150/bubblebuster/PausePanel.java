@@ -11,22 +11,28 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class PausePanel extends JPanel {
+	private GUI frame;
 	private JButton resumeButton, menuButton, 
 		musicButton, effectsButton;
 	private JPanel panel1, panel2;
 	private final JLabel title = new JLabel("Paused");
 	
-	public PausePanel() {
+	public PausePanel(GUI frame) {
+		this.frame = frame;
 		initializeButtons();
 		addComponents();
 		setVisible(true);
 	}
 	
 	private void initializeButtons() {
-		resumeButton = new BubbleButton("Resume") ;
-		menuButton = new BubbleButton("Main Menu") ;
-		musicButton = new BubbleButton("m") ;
-		effectsButton = new BubbleButton("s") ;
+		resumeButton = new BubbleButton("Resume");
+		menuButton = new BubbleButton("Main Menu");
+		musicButton = new BubbleButton("m");
+		effectsButton = new BubbleButton("s");
+		
+		menuButton.addActionListener(e -> {
+			frame.switchTo(frame.mainMenuPanel);
+		});
 	}
 	private void addComponents() {
 		setLayout(new BorderLayout());
@@ -45,12 +51,12 @@ public class PausePanel extends JPanel {
 		c.insets = new Insets(40, 0, 0, 0);
 		c.gridx = 0;
 		c.gridy = 2;
-		panel1.add(menuButton, c);
+		panel1.add(resumeButton, c);
 		
 		c.insets = new Insets(10, 0, 0, 0);
 		c.gridx = 0;
 		c.gridy = 3;
-		panel1.add(resumeButton, c);
+		panel1.add(menuButton, c);
 		
 		panel2 = new JPanel();
 		panel2.add(musicButton);

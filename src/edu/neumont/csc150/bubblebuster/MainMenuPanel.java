@@ -17,7 +17,8 @@ public class MainMenuPanel extends JPanel {
 	private GUI frame;
 	private final JLabel title = new JLabel("Bubble Buster!");
 	private JPanel buttonPanel, soundPanel;
-	private BubbleButton survivalButton, timeTrialButton, shopButton, statisticsButton, tutorialButton, quitButton, musicButton, effectsButton;
+	private BubbleButton survivalButton, timeTrialButton, shopButton, statisticsButton, tutorialButton, quitButton, 
+		musicButton, effectsButton;
 	
 	public MainMenuPanel(GUI frame) {
 		this.frame = frame;
@@ -101,13 +102,6 @@ public class MainMenuPanel extends JPanel {
 		add(buttonPanel, BorderLayout.CENTER);
 		add(soundPanel, BorderLayout.SOUTH);
 	}
-	
-	@Override
-	protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		g.drawImage(new ImageIcon("images/blue.jpg").getImage(), 0, 0, null);
-	}
-	
 	private void addListeners() {
 		survivalButton.addActionListener(e -> {
 			frame.survivalPanel = new SurvivalMode(frame);
@@ -116,5 +110,14 @@ public class MainMenuPanel extends JPanel {
 		quitButton.addActionListener(e -> {
 			frame.dispose();
 		});
+		musicButton.addActionListener(e -> { // TODO: only a test for now
+			frame.switchTo(new PausePanel(frame));
+		});
+	}
+	
+	@Override
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		g.drawImage(new ImageIcon("images/blue.jpg").getImage(), 0, 0, null);
 	}
 }
