@@ -14,6 +14,13 @@ public class Time implements Comparable<Time>, Serializable {
 		milliseconds = systemMilliseconds;
 	}
 	
+	public void addTime(long milliseconds) {
+		this.milliseconds += milliseconds;
+	}
+	public void addTime(Time time) {
+		this.milliseconds += time.milliseconds;
+	}
+	
 	public String toString() {
 		return (((milliseconds / 60000) % 60 < 10) ? "0" + ((milliseconds / 60000) % 60) : "" + (milliseconds / 60000) % 60)
 				+ ":" + (((milliseconds / 1000) % 60 < 10) ? "0" + ((milliseconds / 1000) % 60) : "" + ((milliseconds / 1000) % 60))

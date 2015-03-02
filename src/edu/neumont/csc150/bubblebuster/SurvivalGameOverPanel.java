@@ -28,6 +28,13 @@ public class SurvivalGameOverPanel extends GameOverPanel {
 		if (score > Statistics.survivalHighScore) Statistics.survivalHighScore = score;
 		Statistics.survivalGamesPlayed++;
 		
+		if (Statistics.totalPlaytime != null) {
+			Statistics.totalPlaytime.addTime(time);
+		}
+		else {
+			Statistics.totalPlaytime = time;
+		}
+		
 		try {
 			Statistics.save();
 		} 
