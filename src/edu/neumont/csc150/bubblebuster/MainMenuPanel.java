@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class MainMenuPanel extends JPanel {
 	private GUI frame;
-	private final JLabel title = new JLabel("Bubble Buster!");
+	private final JLabel title = new JLabel("Bubble Buster!", JLabel.CENTER);
 	private JPanel buttonPanel, soundPanel;
 	private BubbleButton survivalButton, timeTrialButton, shopButton, statisticsButton, tutorialButton, quitButton, musicButton, effectsButton;
 	

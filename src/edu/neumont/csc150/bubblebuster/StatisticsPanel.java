@@ -65,18 +65,20 @@ public class StatisticsPanel extends JPanel {
 		
 		c.gridx = 0;
 		c.gridy = 0;
+		c.gridwidth = 2;
 		add(title, c);
 		
 		c.gridx = 0;
 		c.gridy = 1;
+		c.gridwidth = 2;
 		add(general, c);
 		
 		c.gridx = 0;
 		c.gridy = 2;
+		c.gridwidth = 1;
 		add(totalPointsAllTimeLabel, c);
 
 		c.gridx = 1;
-		c.gridy = 2;
 		add(totalPointsAllTime, c);
 
 		c.gridx = 0;
@@ -84,7 +86,6 @@ public class StatisticsPanel extends JPanel {
 		add(totalCoinsAllTimeLabel, c);
 
 		c.gridx = 1;
-		c.gridy = 3;
 		add(totalCoinsAllTime, c);
 
 		c.gridx = 0;
@@ -92,19 +93,19 @@ public class StatisticsPanel extends JPanel {
 		add(totalPlaytimeLabel, c);
 
 		c.gridx = 1;
-		c.gridy = 4;
 		add(totalPlaytime, c);
 
 		c.gridx = 0;
 		c.gridy = 5;
+		c.gridwidth = 2;
 		add(survival, c);
 
 		c.gridx = 0;
 		c.gridy = 6;
+		c.gridwidth = 1;
 		add(survivalHighScoreLabel, c);
 
 		c.gridx = 1;
-		c.gridy = 6;
 		add(survivalHighScore, c);
 
 		c.gridx = 0;
@@ -112,7 +113,6 @@ public class StatisticsPanel extends JPanel {
 		add(survivalGamesPlayedLabel, c);
 
 		c.gridx = 1;
-		c.gridy = 7;
 		add(survivalGamesPlayed, c);
 
 		c.gridx = 0;
@@ -120,15 +120,16 @@ public class StatisticsPanel extends JPanel {
 		add(survivalLongestTimeLabel, c);
 
 		c.gridx = 1;
-		c.gridy = 8;
 		add(survivalLongestTime, c);
 
 		c.gridx = 0;
 		c.gridy = 9;
+		c.gridwidth = 2;
 		add(timeTrial, c);
 
 		c.gridx = 0;
 		c.gridy = 10;
+		c.gridwidth = 1;
 		add(timeTrialHighScoreLabel, c);
 
 		c.gridx = 1;
@@ -140,7 +141,6 @@ public class StatisticsPanel extends JPanel {
 		add(timeTrialGamesPlayedLabel, c);
 
 		c.gridx = 1;
-		c.gridy = 11;
 		add(timeTrialGamesPlayed, c);
 
 		c.gridx = 0;
@@ -148,11 +148,11 @@ public class StatisticsPanel extends JPanel {
 		add(timeTrialMostBubblesLabel, c);
 
 		c.gridx = 1;
-		c.gridy = 12;
 		add(timeTrialMostBubbles, c);
 
 		c.gridx = 0;
 		c.gridy = 13;
+		c.gridwidth = 2;
 		add(menuButton, c);
 	}
 	
