@@ -2,18 +2,15 @@ package edu.neumont.csc150.bubblebuster;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
-import java.awt.Frame;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class PausePanel extends JPanel {
-
 	private JButton resumeButton, menuButton, 
 		musicButton, effectsButton;
 	private JPanel panel1, panel2;
