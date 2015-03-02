@@ -63,6 +63,8 @@ public class StatisticsPanel extends JPanel {
 		GridBagConstraints c = new GridBagConstraints();
 		c.anchor = GridBagConstraints.CENTER;
 		
+		c.weightx = 0.1;
+		c.weighty = 0.1;
 		c.gridx = 0;
 		c.gridy = 0;
 		c.gridwidth = 2;
