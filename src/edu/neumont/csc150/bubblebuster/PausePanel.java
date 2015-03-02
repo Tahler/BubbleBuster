@@ -12,74 +12,27 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class PausePanel extends JPanel{
+public class PausePanel extends JPanel {
 
-	private JButton resumeButton;
-	private JButton menuButton;
-	private JButton musicButton;
-	private JButton effectsButton;
+	private JButton resumeButton, menuButton, 
+		musicButton, effectsButton;
 	private JPanel panel1, panel2;
 	private final JLabel title = new JLabel("Paused");
 	
-	public JButton getResumeButton() {
-		return resumeButton;
-	}
-	public void setResumeButton(JButton resumeButton) {
-		this.resumeButton = resumeButton;
-	}
-	public JButton getMenuButton() {
-		return menuButton;
-	}
-	public void setMenuButton(JButton menuButton) {
-		this.menuButton = menuButton;
-	}
-	public JButton getMusicButton() {
-		return musicButton;
-	}
-	public void setMusicButton(JButton musicButton) {
-		this.musicButton = musicButton;
-	}
-	public JButton getEffectsButton() {
-		return effectsButton;
-	}
-	public void setEffectsButton(JButton effectsButton) {
-		this.effectsButton = effectsButton;
-	}
-	
-	
-	public static void main(String[] args) {
-		JFrame bob = new JFrame();
-		bob.setExtendedState(Frame.MAXIMIZED_BOTH);
-		bob.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		bob.setLocationRelativeTo(null);
-		bob.setResizable(false);
-		bob.setUndecorated(true);
-	
-		
-		PausePanel p = new PausePanel();
-		
-		bob.add(p);
-		bob.setContentPane(p);
-		bob.setVisible(true);
-		
-	}
 	public PausePanel() {
 		initializeButtons();
 		addComponents();
 		setVisible(true);
 	}
 	
-	public void initializeButtons() {
+	private void initializeButtons() {
 		resumeButton = new BubbleButton("Resume") ;
 		menuButton = new BubbleButton("Main Menu") ;
 		musicButton = new BubbleButton("m") ;
 		effectsButton = new BubbleButton("s") ;
-		
 	}
-	
 	private void addComponents() {
 		setLayout(new BorderLayout());
-//		setLayout( new GridBagLayout());
 		
 		panel1 = new JPanel(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
@@ -92,7 +45,6 @@ public class PausePanel extends JPanel{
 		c.gridy = 0;
 		panel1.add(title, c);
 		
-		
 		c.insets = new Insets(40, 0, 0, 0);
 		c.gridx = 0;
 		c.gridy = 2;
@@ -102,9 +54,6 @@ public class PausePanel extends JPanel{
 		c.gridx = 0;
 		c.gridy = 3;
 		panel1.add(resumeButton, c);
-		
-		
-		
 		
 		panel2 = new JPanel();
 		panel2.add(musicButton);
