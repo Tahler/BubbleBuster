@@ -1,7 +1,10 @@
 package edu.neumont.csc150.bubblebuster;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -21,13 +24,14 @@ public class StatisticsPanel extends JPanel {
 
 	public StatisticsPanel(GUI frame) {
 		this.frame = frame;
-		
+		setBackground(new Color(0, 195, 217));
 		initializeComponents();
 		addComponents();
 	}
 
 	private void initializeComponents() {
 		title = new JLabel("Statistics");
+		title.setFont(new Font("Arial", Font.BOLD, 36));
 		
 		general = new JLabel("General");
 		totalPointsAllTimeLabel = new JLabel("Total Points Earned");
@@ -63,21 +67,24 @@ public class StatisticsPanel extends JPanel {
 		GridBagConstraints c = new GridBagConstraints();
 		c.anchor = GridBagConstraints.CENTER;
 		
-		c.weightx = 0.1;
-		c.weighty = 0.1;
+		c.weightx = 0.0;
+		c.weighty = 0.0;
 		c.gridx = 0;
 		c.gridy = 0;
 		c.gridwidth = 2;
+		c.insets = new Insets(0, 0, 20, 0);
 		add(title, c);
 		
 		c.gridx = 0;
 		c.gridy = 1;
 		c.gridwidth = 2;
+		c.insets = new Insets(20, 0, 20, 0);
 		add(general, c);
 		
 		c.gridx = 0;
 		c.gridy = 2;
 		c.gridwidth = 1;
+		c.insets = new Insets(0, 0, 10, 10);
 		add(totalPointsAllTimeLabel, c);
 
 		c.gridx = 1;
@@ -100,11 +107,13 @@ public class StatisticsPanel extends JPanel {
 		c.gridx = 0;
 		c.gridy = 5;
 		c.gridwidth = 2;
+		c.insets = new Insets(20, 0, 20, 0);
 		add(survival, c);
 
 		c.gridx = 0;
 		c.gridy = 6;
 		c.gridwidth = 1;
+		c.insets = new Insets(0, 0, 10, 10);
 		add(survivalHighScoreLabel, c);
 
 		c.gridx = 1;
@@ -127,11 +136,13 @@ public class StatisticsPanel extends JPanel {
 		c.gridx = 0;
 		c.gridy = 9;
 		c.gridwidth = 2;
+		c.insets = new Insets(20, 0, 20, 0);
 		add(timeTrial, c);
 
 		c.gridx = 0;
 		c.gridy = 10;
 		c.gridwidth = 1;
+		c.insets = new Insets(0, 0, 10, 10);
 		add(timeTrialHighScoreLabel, c);
 
 		c.gridx = 1;

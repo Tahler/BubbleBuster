@@ -32,8 +32,6 @@ public class GUI extends JFrame {
 	private void initializeFrame() {
 		setExtendedState(Frame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setLocationRelativeTo(null);
-		setResizable(false);
 		setUndecorated(true);
 		setVisible(true);
 	}
