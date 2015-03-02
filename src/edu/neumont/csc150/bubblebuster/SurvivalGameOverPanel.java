@@ -10,7 +10,7 @@ public class SurvivalGameOverPanel extends GameOverPanel {
 	private JLabel timeLabel, timeSurvivedLabel, timeRecordLabel;
 	
 	public SurvivalGameOverPanel(GUI frame, int score, Time time) {
-		super(frame, score);
+		super(frame, score, time);
 		updateStatistics(score, time);
 		initializeComponents(time);
 		addComponents();

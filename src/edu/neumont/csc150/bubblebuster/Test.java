@@ -8,7 +8,7 @@ public class Test {
 		try {
 			Statistics.load();
 		} 
-		catch (ClassNotFoundException | IOException e) {
+		catch (Exception e) {
 			try {
 				Statistics.save();
 			} 

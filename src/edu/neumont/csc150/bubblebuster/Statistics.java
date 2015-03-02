@@ -14,8 +14,8 @@ public class Statistics implements Serializable {
 
 	public static int walletCoins,
 		totalPointsAllTime, totalCoinsAllTime, 
-		survivalHighScore, survivalGamesPlayed, survivalLongestStreak,
-		timeTrialHighScore, timeTrialGamesPlayed, timeTrialLongestStreak, timeTrialMostBubbles;
+		survivalHighScore, survivalGamesPlayed,
+		timeTrialHighScore, timeTrialGamesPlayed, timeTrialMostBubbles;
 	public static Time totalPlaytime, survivalLongestTime;
 	
 	public static void save() throws IOException {
@@ -26,11 +26,9 @@ public class Statistics implements Serializable {
 		out.writeObject(totalPlaytime);
 		out.writeObject(survivalHighScore);
 		out.writeObject(survivalGamesPlayed);
-		out.writeObject(survivalLongestStreak);
 		out.writeObject(survivalLongestTime);
 		out.writeObject(timeTrialHighScore);
 		out.writeObject(timeTrialGamesPlayed);
-		out.writeObject(timeTrialLongestStreak);
 		out.writeObject(timeTrialMostBubbles);
 		out.close();
 	}
@@ -42,11 +40,9 @@ public class Statistics implements Serializable {
 		totalPlaytime = (Time) in.readObject();
 		survivalHighScore = (int) in.readObject();
 		survivalGamesPlayed = (int) in.readObject();
-		survivalLongestStreak = (int) in.readObject();
 		survivalLongestTime = (Time) in.readObject();
 		timeTrialHighScore = (int) in.readObject();
 		timeTrialGamesPlayed = (int) in.readObject();
-		timeTrialLongestStreak = (int) in.readObject();
 		timeTrialMostBubbles = (int) in.readObject();
 		in.close();
 	}
@@ -54,8 +50,8 @@ public class Statistics implements Serializable {
 	public static String staticToString() {
 		return  walletCoins + "\n" + 
 				totalPointsAllTime + "\n" + totalCoinsAllTime + "\n" + totalPlaytime + "\n" + 
-				survivalHighScore + "\n" + survivalGamesPlayed + "\n" + survivalLongestStreak + "\n" + survivalLongestTime + "\n" + 
-				timeTrialHighScore + "\n" + timeTrialGamesPlayed + "\n" + timeTrialLongestStreak + "\n" + timeTrialMostBubbles;
+				survivalHighScore + "\n" + survivalGamesPlayed + "\n" + survivalLongestTime + "\n" + 
+				timeTrialHighScore + "\n" + timeTrialGamesPlayed + "\n" + timeTrialMostBubbles;
 	}
 	
 	public static void printAllFields() {
@@ -65,11 +61,9 @@ public class Statistics implements Serializable {
 		System.out.println(totalPlaytime);
 		System.out.println(survivalHighScore);
 		System.out.println(survivalGamesPlayed);
-		System.out.println(survivalLongestStreak);
 		System.out.println(survivalLongestTime);
 		System.out.println(timeTrialHighScore);
 		System.out.println(timeTrialGamesPlayed);
-		System.out.println(timeTrialLongestStreak);
 		System.out.println(timeTrialMostBubbles);
 	}
 }

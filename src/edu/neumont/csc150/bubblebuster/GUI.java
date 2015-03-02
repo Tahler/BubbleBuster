@@ -11,7 +11,7 @@ public class GUI extends JFrame {
 	public static int WIDTH;
 	public static int HEIGHT;
 	
-	protected JPanel mainMenuPanel, survivalPanel;
+	protected JPanel mainMenuPanel, survivalPanel, statisticsPanel;
 	private JPanel currentPanel;
 	
 	public GUI() {
@@ -32,8 +32,6 @@ public class GUI extends JFrame {
 	private void initializeFrame() {
 		setExtendedState(Frame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setLocationRelativeTo(null);
-		setResizable(false);
 		setUndecorated(true);
 		setVisible(true);
 	}
