@@ -19,19 +19,22 @@ public abstract class GameOverPanel extends JPanel {
 	protected JButton playAgainButton, menuButton;
 	
 	// TODO: USE GRIDBAGLAYOUT
-	public GameOverPanel(GUI frame, int score) {
+	public GameOverPanel(GUI frame, int score, Time time) {
 		this.frame = frame;
-		updateStatistics(score);
+		updateStatistics(score, time);
 		setBackground(new Color(0, 195, 217));
 		initializeComponents(score);
 		addActionListeners();
 		GridLayout grid = new GridLayout(10, 4);
 		setLayout(grid);
 	}
-	private void updateStatistics(int score) {
+	private void updateStatistics(int score, Time time) {
 		Statistics.walletCoins += score / 10;
 		Statistics.totalCoinsAllTime += score / 10;
 		Statistics.totalPointsAllTime += score;
+		
+		if (Statistics.totalPlaytime != null) Statistics.totalPlaytime.addTime(time);
+		else Statistics.totalPlaytime = time;
 	}
 	private void initializeComponents(int score) {
 		titleLabel = new JLabel("Game Over", JLabel.CENTER);

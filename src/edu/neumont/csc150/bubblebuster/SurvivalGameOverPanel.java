@@ -10,7 +10,7 @@ public class SurvivalGameOverPanel extends GameOverPanel {
 	private JLabel timeLabel, timeSurvivedLabel, timeRecordLabel;
 	
 	public SurvivalGameOverPanel(GUI frame, int score, Time time) {
-		super(frame, score);
+		super(frame, score, time);
 		updateStatistics(score, time);
 		initializeComponents(time);
 		addComponents();
@@ -27,13 +27,6 @@ public class SurvivalGameOverPanel extends GameOverPanel {
 //		Statistics.survivalLongestStreak
 		if (score > Statistics.survivalHighScore) Statistics.survivalHighScore = score;
 		Statistics.survivalGamesPlayed++;
-		
-		if (Statistics.totalPlaytime != null) {
-			Statistics.totalPlaytime.addTime(time);
-		}
-		else {
-			Statistics.totalPlaytime = time;
-		}
 		
 		try {
 			Statistics.save();
