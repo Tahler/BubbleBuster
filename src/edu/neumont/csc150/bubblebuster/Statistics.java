@@ -9,7 +9,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-public class Statistics implements Serializable {
+public abstract class Statistics implements Serializable {
 	private static final long serialVersionUID = 4869437529924444269L;
 
 	public static int walletCoins,
