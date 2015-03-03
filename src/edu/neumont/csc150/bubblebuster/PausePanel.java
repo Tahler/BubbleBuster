@@ -10,16 +10,21 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class PausePanel extends JPanel {
 	private GUI frame;
-	private JButton resumeButton, menuButton, 
-		musicButton, effectsButton;
+	private JButton resumeButton, menuButton;
 	private JPanel panel1, panel2;
 	private final JLabel title = new JLabel("Paused");
+	private JButton	musicButton, effectsButton;
+	private final ImageIcon musicButtonImage = new ImageIcon("images/music.png");
+	private final ImageIcon musicButtonImageX = new ImageIcon("images/musicx.png");
+	private final ImageIcon effectsButtonImage = new ImageIcon("images/soundFX.png");
+	private final ImageIcon effectsButtonImageX = new ImageIcon("images/soundFXx.png");
 	
 	public PausePanel(GUI frame) {
 		this.frame = frame;
@@ -43,8 +48,8 @@ public class PausePanel extends JPanel {
 	private void initializeButtons() {
 		resumeButton = new BubbleButton("Resume");
 		menuButton = new BubbleButton("Main Menu");
-		musicButton = new BubbleButton("m");
-		effectsButton = new BubbleButton("s");
+		musicButton = new JButton(musicButtonImage);
+		effectsButton = new JButton(effectsButtonImage);
 		
 		resumeButton.addActionListener(e -> {
 			System.out.println("clicked resume");
@@ -63,6 +68,14 @@ public class PausePanel extends JPanel {
 		});
 		menuButton.addActionListener(e -> {
 			frame.switchTo(frame.mainMenuPanel);
+		});
+		musicButton.addActionListener(e -> {
+			if (musicButton.getIcon().equals(musicButtonImage)) musicButton.setIcon(musicButtonImageX);
+			else musicButton.setIcon(musicButtonImage);
+		});
+		effectsButton.addActionListener(e -> {
+			if (effectsButton.getIcon().equals(effectsButtonImage)) effectsButton.setIcon(effectsButtonImageX);
+			else effectsButton.setIcon(effectsButtonImage);
 		});
 	}
 	private void addComponents() {
