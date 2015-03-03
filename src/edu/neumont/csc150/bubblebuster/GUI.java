@@ -23,10 +23,9 @@ public class GUI extends JFrame {
 		WIDTH = Toolkit.getDefaultToolkit().getScreenSize().width;
 		HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().height;
 		
-		initializePanels();
 		initializeFrame();
-		currentPanel = mainMenuPanel;
-		switchTo(mainMenuPanel);
+		
+		switchTo(new MainMenuPanel(this));
 	}
 	
 	private void initializeFrame() {
@@ -35,22 +34,16 @@ public class GUI extends JFrame {
 		setUndecorated(true);
 		setVisible(true);
 	}
-	private void initializePanels() {
-		mainMenuPanel = new MainMenuPanel(this);
-//		survivalPanel = new SurvivalMode(this);
-		
-//		add(survivalPanel);
-		//add(mainMenuPanel);
-		this.getContentPane().add(mainMenuPanel);
-	}
 	
 	public void switchTo(JPanel panel) {
+//		setVisible(false);
 		System.out.println("in switchTo");
 		if (currentPanel != null) {
 			this.getContentPane().remove(currentPanel);
 		}
 		currentPanel = panel;
 		this.getContentPane().add(currentPanel);
+		setVisible(true);
 		//currentPanel.setVisible(true);
 		//setContentPane(currentPanel);
 	}
