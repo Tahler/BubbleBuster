@@ -32,19 +32,14 @@ public class GUI extends JFrame {
 		setExtendedState(Frame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setUndecorated(true);
-		setVisible(true);
 	}
 	
 	public void switchTo(JPanel panel) {
-//		setVisible(false);
-		System.out.println("in switchTo");
 		if (currentPanel != null) {
 			this.getContentPane().remove(currentPanel);
 		}
 		currentPanel = panel;
 		this.getContentPane().add(currentPanel);
 		setVisible(true);
-		//currentPanel.setVisible(true);
-		//setContentPane(currentPanel);
 	}
 }
