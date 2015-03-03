@@ -7,6 +7,7 @@ import java.awt.geom.Rectangle2D;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
+@SuppressWarnings("serial")
 public class BubbleButton extends JButton {
 	public static final ImageIcon IMG = new ImageIcon("images\\button2.png");
 	

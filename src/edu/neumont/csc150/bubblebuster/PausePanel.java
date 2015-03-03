@@ -1,6 +1,7 @@
 package edu.neumont.csc150.bubblebuster;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -15,6 +16,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class PausePanel extends JPanel {
 	private GUI frame;
 	private JButton resumeButton, menuButton;
@@ -28,8 +30,10 @@ public class PausePanel extends JPanel {
 	
 	public PausePanel(GUI frame) {
 		this.frame = frame;
+		
 		initializeButtons();
 		addComponents();
+		
 		addMouseListener(new MouseListener() {
 			public void mouseReleased(MouseEvent e) {}
 			public void mousePressed(MouseEvent e) {
@@ -42,6 +46,7 @@ public class PausePanel extends JPanel {
 				requestFocusInWindow();
 			}
 		});
+		
 		setVisible(true);
 	}
 	
@@ -82,6 +87,8 @@ public class PausePanel extends JPanel {
 		setLayout(new BorderLayout());
 		
 		panel1 = new JPanel(new GridBagLayout());
+		panel1.setBackground(new Color(0, 195, 217));
+		
 		GridBagConstraints c = new GridBagConstraints();
 		
 		c.anchor = GridBagConstraints.CENTER;
@@ -103,6 +110,8 @@ public class PausePanel extends JPanel {
 		panel1.add(menuButton, c);
 		
 		panel2 = new JPanel();
+		panel2.setBackground(new Color(0, 195, 217));
+		
 		panel2.add(musicButton);
 		panel2.add(effectsButton);
 		
