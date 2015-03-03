@@ -2,9 +2,6 @@ package edu.neumont.csc150.bubblebuster;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.event.KeyEvent;
-
-import org.apache.commons.lang3.time.StopWatch;
 
 @SuppressWarnings("serial")
 public class SurvivalMode extends BubbleBuster {
