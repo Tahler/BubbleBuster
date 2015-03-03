@@ -20,6 +20,10 @@ public class MainMenuPanel extends JPanel {
 	private JPanel buttonPanel, soundPanel;
 	private BubbleButton survivalButton, timeTrialButton, shopButton, statisticsButton, tutorialButton, quitButton;
 	private JButton	musicButton, effectsButton;
+	private final ImageIcon musicButtonImage = new ImageIcon("images/music.png");
+	private final ImageIcon musicButtonImageX = new ImageIcon("images/musicx.png");
+	private final ImageIcon effectsButtonImage = new ImageIcon("images/soundFX.png");
+	private final ImageIcon effectsButtonImageX = new ImageIcon("images/soundFXx.png");
 	
 	public MainMenuPanel(GUI frame) {
 		this.frame = frame;
@@ -37,8 +41,8 @@ public class MainMenuPanel extends JPanel {
 		tutorialButton = new BubbleButton("Tutorial");
 		quitButton = new BubbleButton("Quit");
 		
-		musicButton = new JButton("m");
-		effectsButton = new BubbleButton("s");
+		musicButton = new JButton(musicButtonImage);
+		effectsButton = new JButton(effectsButtonImage);
 	}
 	private void addComponents() {
 		setLayout(new BorderLayout());
@@ -115,8 +119,13 @@ public class MainMenuPanel extends JPanel {
 		quitButton.addActionListener(e -> {
 			frame.dispose();
 		});
-		musicButton.addActionListener(e -> { // TODO: only a test for now
-			frame.switchTo(new PausePanel(frame));
+		musicButton.addActionListener(e -> {
+			if (musicButton.getIcon().equals(musicButtonImage)) musicButton.setIcon(musicButtonImageX);
+			else musicButton.setIcon(musicButtonImage);
+		});
+		effectsButton.addActionListener(e -> {
+			if (effectsButton.getIcon().equals(effectsButtonImage)) effectsButton.setIcon(effectsButtonImageX);
+			else effectsButton.setIcon(effectsButtonImage);
 		});
 	}
 	
