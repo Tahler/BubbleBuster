@@ -47,6 +47,7 @@ public class PausePanel extends JPanel {
 		effectsButton = new BubbleButton("s");
 		
 		resumeButton.addActionListener(e -> {
+			System.out.println("clicked resume");
 			((BubbleBuster) frame.survivalPanel).togglePause();
 			frame.switchTo(frame.survivalPanel);
 		});

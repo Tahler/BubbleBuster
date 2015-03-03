@@ -116,9 +116,13 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Mou
 	public void togglePause() {
 		paused = !paused;
 		if (paused) {
+			watch.suspend();
 			timer.stop();
 		}
-		else timer.start();
+		else {
+			watch.resume();
+			timer.start();
+		}
 	}
 	
 	public void addScore(int score) {
