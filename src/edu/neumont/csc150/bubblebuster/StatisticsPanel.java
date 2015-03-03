@@ -31,18 +31,18 @@ public class StatisticsPanel extends JPanel {
 	}
 
 	private void initializeComponents() {
-		title = new JLabel("Statistics");
+		title = new JLabel("Statistics", JLabel.CENTER);
 		title.setFont(new Font("Arial", Font.BOLD, 36));
 		
-		general = new JLabel("General");
-		totalPointsAllTimeLabel = new JLabel("Total Points Earned");
+		general = new JLabel("General", JLabel.CENTER);
+		totalPointsAllTimeLabel = new JLabel("Total Points Earned", JLabel.LEFT);
 		totalPointsAllTime = new JLabel(Statistics.totalPointsAllTime + "");
-		totalCoinsAllTimeLabel = new JLabel("Total Coins Earned");
+		totalCoinsAllTimeLabel = new JLabel("Total Coins Earned", JLabel.LEFT);
 		totalCoinsAllTime = new JLabel(Statistics.totalCoinsAllTime + "");
-		totalPlaytimeLabel = new JLabel("Total Playtime");
+		totalPlaytimeLabel = new JLabel("Total Playtime", JLabel.LEFT);
 		totalPlaytime = new JLabel(Statistics.totalPlaytime + "");
 		
-		survival = new JLabel("Survival");
+		survival = new JLabel("Survival Mode", JLabel.CENTER);
 		survivalHighScoreLabel = new JLabel("High Score");
 		survivalHighScore = new JLabel(Statistics.survivalHighScore + "");
 		survivalGamesPlayedLabel = new JLabel("Games Played");
@@ -50,7 +50,7 @@ public class StatisticsPanel extends JPanel {
 		survivalLongestTimeLabel = new JLabel("Longest Time Survived");
 		survivalLongestTime = new JLabel(Statistics.survivalLongestTime + "");
 		
-		timeTrial = new JLabel("Time Trial");
+		timeTrial = new JLabel("Time-Trial Mode", JLabel.CENTER);
 		timeTrialHighScoreLabel = new JLabel("High Score");
 		timeTrialHighScore = new JLabel(Statistics.timeTrialHighScore + "");
 		timeTrialGamesPlayedLabel = new JLabel("Games Played");
@@ -62,13 +62,38 @@ public class StatisticsPanel extends JPanel {
 		menuButton.addActionListener(e -> {
 			frame.switchTo(frame.mainMenuPanel);
 		});
+		
+		Font headerFont = new Font("Arial", Font.BOLD, 24);
+		Font contentFont = new Font("Arial", Font.PLAIN, 18);
+		
+		general.setFont(headerFont);
+		totalPointsAllTimeLabel.setFont(contentFont);
+		totalPointsAllTime.setFont(contentFont);
+		totalCoinsAllTimeLabel.setFont(contentFont);
+		totalCoinsAllTime.setFont(contentFont);
+		totalPlaytimeLabel.setFont(contentFont);
+		totalPlaytime.setFont(contentFont);
+		survival.setFont(headerFont);
+		survivalHighScoreLabel.setFont(contentFont);
+		survivalHighScore.setFont(contentFont);
+		survivalGamesPlayedLabel.setFont(contentFont);
+		survivalGamesPlayed.setFont(contentFont);
+		survivalLongestTimeLabel.setFont(contentFont);
+		survivalLongestTime.setFont(contentFont);
+		timeTrial.setFont(headerFont);
+		timeTrialHighScoreLabel.setFont(contentFont);
+		timeTrialHighScore.setFont(contentFont);
+		timeTrialGamesPlayedLabel.setFont(contentFont);
+		timeTrialGamesPlayed.setFont(contentFont);
+		timeTrialMostBubblesLabel.setFont(contentFont);
+		timeTrialMostBubbles.setFont(contentFont);
 	}
 	private void addComponents() {
 		setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		c.anchor = GridBagConstraints.CENTER;
 		
-		c.weightx = 0.0;
+		c.weightx = 0.1;
 		c.weighty = 0.0;
 		c.gridx = 0;
 		c.gridy = 0;
