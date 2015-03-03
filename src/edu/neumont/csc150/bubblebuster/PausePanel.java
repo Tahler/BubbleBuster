@@ -11,7 +11,6 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -22,11 +21,8 @@ public class PausePanel extends JPanel {
 	private JButton resumeButton, menuButton;
 	private JPanel panel1, panel2;
 	private final JLabel title = new JLabel("Paused");
-	private JButton	musicButton, effectsButton;
-	private final ImageIcon musicButtonImage = new ImageIcon("images/music.png");
-	private final ImageIcon musicButtonImageX = new ImageIcon("images/musicx.png");
-	private final ImageIcon effectsButtonImage = new ImageIcon("images/soundFX.png");
-	private final ImageIcon effectsButtonImageX = new ImageIcon("images/soundFXx.png");
+	private MusicButton musicButton;
+	private SoundButton	effectsButton;
 	
 	public PausePanel(GUI frame) {
 		this.frame = frame;
@@ -40,15 +36,14 @@ public class PausePanel extends JPanel {
 			public void mouseExited(MouseEvent e) {}
 			public void mouseEntered(MouseEvent e) {}
 			public void mouseClicked(MouseEvent e) {
-				System.out.println("click");
 				requestFocusInWindow();
 			}
 		});
+		
 		addKeyListener(new KeyListener() {
 			public void keyReleased(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-					System.out.println("key");
-					resumeButton.doClick();
+					resume();
 				}
 			}
 			public void keyTyped(KeyEvent e) {}
@@ -61,22 +56,14 @@ public class PausePanel extends JPanel {
 	private void initializeButtons() {
 		resumeButton = new BubbleButton("Resume");
 		menuButton = new BubbleButton("Main Menu");
-		musicButton = new JButton(musicButtonImage);
-		effectsButton = new JButton(effectsButtonImage);
+		musicButton = new MusicButton();
+		effectsButton = new SoundButton();
 
 		resumeButton.addActionListener(e -> {
 			resume();
 		});
 		menuButton.addActionListener(e -> {
 			frame.switchTo(new MainMenuPanel(frame));
-		});
-		musicButton.addActionListener(e -> {
-			if (musicButton.getIcon().equals(musicButtonImage)) musicButton.setIcon(musicButtonImageX);
-			else musicButton.setIcon(musicButtonImage);
-		});
-		effectsButton.addActionListener(e -> {
-			if (effectsButton.getIcon().equals(effectsButtonImage)) effectsButton.setIcon(effectsButtonImageX);
-			else effectsButton.setIcon(effectsButtonImage);
 		});
 	}
 	private void addComponents() {

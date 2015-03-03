@@ -21,18 +21,18 @@ public class Test { // TODO: remove sysout and rename to Program or Main or Driv
 		// Load or make preferences
 		try {
 			Preferences.load();
-		}
-		catch (Exception e) {
+		} 
+		catch (IOException e) {
+			Preferences.musicEnabled = true;
+			Preferences.soundFXEnabled = true;
+			Preferences.skinFolderLocation = "";
+			Preferences.ambianceFolderLocation = "";
+			Preferences.cursorImageFile = "";
 			try {
-				Preferences.musicEnabled = true;
-				Preferences.soundEffectsEnabled = true;
-				Preferences.skinFolderLocation = "";
-				Preferences.ambianceFolderLocation = "";
-				Preferences.cursorImageFile = "";
 				Preferences.save();
-			}
+			} 
 			catch (IOException e1) {
-				System.out.println("Super broken af");
+				e1.printStackTrace();
 			}
 		}
 		
