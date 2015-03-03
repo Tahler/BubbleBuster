@@ -15,14 +15,11 @@ public class GUI extends JFrame {
 	private JPanel currentPanel;
 	
 	public GUI() {
-		this("");
-	}
-	public GUI(String title) {
-		super(title);
+		super("Bubble Buster");
 		WIDTH = Toolkit.getDefaultToolkit().getScreenSize().width;
 		HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().height;
 		initializeFrame();
-		switchTo(new MainMenuPanel(this));
+		switchTo(new MainMenuPanel(this));	
 	}
 	
 	private void initializeFrame() {

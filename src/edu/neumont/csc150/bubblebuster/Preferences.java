@@ -23,13 +23,33 @@ public abstract class Preferences implements Serializable {
 		properties.setProperty("CursorImageLocation", cursorImageFile + "");
 		properties.store(new FileWriter(new File("bubblebuster.properties")), "");
 	}
-	public static void load() throws FileNotFoundException, IOException {
-		properties.load(new FileReader(new File("bubblebuster.properties")));
-		musicEnabled = Boolean.parseBoolean(properties.getProperty("MusicEnabled"));
-		soundFXEnabled = Boolean.parseBoolean(properties.getProperty("SoundFXEnabled"));
-		skinFolderLocation = properties.getProperty("SkinFolderLocation");
-		ambianceFolderLocation = properties.getProperty("AmbianceFolderLocation");
-		cursorImageFile = properties.getProperty("CursorImageLocation");
+	/**
+	 * Tries to load a currently existing preferences file.  If no such file exists, the file will be created with defaults.
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
+	public static void load() {
+		try {
+			properties.load(new FileReader(new File("bubblebuster.properties")));
+			musicEnabled = Boolean.parseBoolean(properties.getProperty("MusicEnabled"));
+			soundFXEnabled = Boolean.parseBoolean(properties.getProperty("SoundFXEnabled"));
+			skinFolderLocation = properties.getProperty("SkinFolderLocation");
+			ambianceFolderLocation = properties.getProperty("AmbianceFolderLocation");
+			cursorImageFile = properties.getProperty("CursorImageLocation");
+		}
+		catch (IOException e) {
+			Preferences.musicEnabled = true;
+			Preferences.soundFXEnabled = true;
+			Preferences.skinFolderLocation = "";
+			Preferences.ambianceFolderLocation = "";
+			Preferences.cursorImageFile = "";
+			try {
+				Preferences.save();
+			} 
+			catch (IOException e1) {
+				e1.printStackTrace(); // Should never really be reached.
+			}
+		}
 	}
 	
 	public static void printAllFields() {

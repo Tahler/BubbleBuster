@@ -32,19 +32,36 @@ public abstract class Statistics implements Serializable {
 		out.writeObject(timeTrialMostBubbles);
 		out.close();
 	}
-	public static void load() throws FileNotFoundException, IOException, ClassNotFoundException {
-		ObjectInputStream in = new ObjectInputStream(new FileInputStream(new File("statistics")));
-		walletCoins = (int) in.readObject();
-		totalPointsAllTime = (int) in.readObject();
-		totalCoinsAllTime = (int) in.readObject();
-		totalPlaytime = (Time) in.readObject();
-		survivalHighScore = (int) in.readObject();
-		survivalGamesPlayed = (int) in.readObject();
-		survivalLongestTime = (Time) in.readObject();
-		timeTrialHighScore = (int) in.readObject();
-		timeTrialGamesPlayed = (int) in.readObject();
-		timeTrialMostBubbles = (int) in.readObject();
-		in.close();
+	/**
+	 * Tries to load a currently existing statistics file.  If no such file exists, the file will be created with defaults.
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
+	public static void load() {
+		try {
+			ObjectInputStream in = new ObjectInputStream(new FileInputStream(new File("statistics")));
+			walletCoins = (int) in.readObject();
+			totalPointsAllTime = (int) in.readObject();
+			totalCoinsAllTime = (int) in.readObject();
+			totalPlaytime = (Time) in.readObject();
+			survivalHighScore = (int) in.readObject();
+			survivalGamesPlayed = (int) in.readObject();
+			survivalLongestTime = (Time) in.readObject();
+			timeTrialHighScore = (int) in.readObject();
+			timeTrialGamesPlayed = (int) in.readObject();
+			timeTrialMostBubbles = (int) in.readObject();
+			in.close();
+		}
+		catch (Exception e) {
+			try {
+				Statistics.save();
+			}
+			catch (IOException e1) {
+				// Should never really be reached.
+				e1.printStackTrace();
+			}
+		}
 	}
 	
 	public static String staticToString() {
