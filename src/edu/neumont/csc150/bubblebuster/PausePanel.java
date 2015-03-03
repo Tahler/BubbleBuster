@@ -50,7 +50,7 @@ public class PausePanel extends JPanel {
 		menuButton = new BubbleButton("Main Menu");
 		musicButton = new JButton(musicButtonImage);
 		effectsButton = new JButton(effectsButtonImage);
-		
+
 		resumeButton.addActionListener(e -> {
 			System.out.println("clicked resume");
 			((BubbleBuster) frame.survivalPanel).togglePause();
