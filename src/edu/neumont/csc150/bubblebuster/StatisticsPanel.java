@@ -67,16 +67,25 @@ public class StatisticsPanel extends JPanel {
 		
 		general.setFont(headerFont);
 		totalPointsAllTimeLabel.setFont(contentFont);
+		totalPointsAllTime.setFont(contentFont);
 		totalCoinsAllTimeLabel.setFont(contentFont);
+		totalCoinsAllTime.setFont(contentFont);
 		totalPlaytimeLabel.setFont(contentFont);
+		totalPlaytime.setFont(contentFont);
 		survival.setFont(headerFont);
 		survivalHighScoreLabel.setFont(contentFont);
+		survivalHighScore.setFont(contentFont);
 		survivalGamesPlayedLabel.setFont(contentFont);
+		survivalGamesPlayed.setFont(contentFont);
 		survivalLongestTimeLabel.setFont(contentFont);
+		survivalLongestTime.setFont(contentFont);
 		timeTrial.setFont(headerFont);
 		timeTrialHighScoreLabel.setFont(contentFont);
+		timeTrialHighScore.setFont(contentFont);
 		timeTrialGamesPlayedLabel.setFont(contentFont);
+		timeTrialGamesPlayed.setFont(contentFont);
 		timeTrialMostBubblesLabel.setFont(contentFont);
+		timeTrialMostBubbles.setFont(contentFont);
 	}
 	private void addComponents() {
 		setLayout(new GridBagLayout());
