@@ -58,8 +58,8 @@ public class PausePanel extends JPanel {
 
 		resumeButton.addActionListener(e -> {
 			System.out.println("clicked resume");
-			((BubbleBuster) frame.survivalPanel).togglePause();
-			frame.switchTo(frame.survivalPanel);
+			((BubbleBuster) frame.gamePanel).togglePause();
+			frame.switchTo(frame.gamePanel);
 		});
 		resumeButton.addKeyListener(new KeyListener() {
 			public void keyReleased(KeyEvent e) {
@@ -72,7 +72,7 @@ public class PausePanel extends JPanel {
 			public void keyPressed(KeyEvent e) {}
 		});
 		menuButton.addActionListener(e -> {
-			frame.switchTo(frame.mainMenuPanel);
+			frame.switchTo(new MainMenuPanel(frame));
 		});
 		musicButton.addActionListener(e -> {
 			if (musicButton.getIcon().equals(musicButtonImage)) musicButton.setIcon(musicButtonImageX);

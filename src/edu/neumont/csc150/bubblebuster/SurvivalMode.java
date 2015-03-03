@@ -30,7 +30,7 @@ public class SurvivalMode extends BubbleBuster {
 		this.lives--;
 		if (lives <= 0) {
  			frame.switchTo(new SurvivalGameOverPanel(frame, getScore(), watch.getTime()));
-			frame.survivalPanel = null;
+			frame.gamePanel = null;
 		}
 	}
 	public int getLives() {

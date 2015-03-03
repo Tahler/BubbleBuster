@@ -111,8 +111,12 @@ public class MainMenuPanel extends JPanel {
 	}
 	private void addListeners() {
 		survivalButton.addActionListener(e -> {
-			frame.survivalPanel = new SurvivalMode(frame);
-			frame.switchTo(frame.survivalPanel);
+			frame.gamePanel = new SurvivalMode(frame);
+			frame.switchTo(frame.gamePanel);
+		});
+		timeTrialButton.addActionListener(e -> {
+			frame.gamePanel = new TimeTrialMode(frame);
+			frame.switchTo(frame.gamePanel);
 		});
 		statisticsButton.addActionListener(e -> {
 			frame.statisticsPanel = new StatisticsPanel(frame);

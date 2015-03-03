@@ -73,7 +73,7 @@ public abstract class GameOverPanel extends JPanel {
 	}
 	protected void addActionListeners() {
 		menuButton.addActionListener(e -> {
-			frame.switchTo(frame.mainMenuPanel);
+			frame.switchTo(new MainMenuPanel(frame));
 		});
 	}
 	
