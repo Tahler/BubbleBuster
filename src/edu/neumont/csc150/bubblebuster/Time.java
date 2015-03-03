@@ -10,8 +10,8 @@ public class Time implements Comparable<Time>, Serializable {
 	public Time() {
 		milliseconds = System.currentTimeMillis();
 	}
-	public Time(long systemMilliseconds) {
-		milliseconds = systemMilliseconds;
+	public Time(long milliseconds) {
+		this.milliseconds = milliseconds;
 	}
 	
 	public void addTime(long milliseconds) {

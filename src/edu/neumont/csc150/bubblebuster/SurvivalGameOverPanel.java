@@ -20,8 +20,9 @@ public class SurvivalGameOverPanel extends GameOverPanel {
 			if (time > Statistics.survivalLongestTime.getMilliseconds()) Statistics.survivalLongestTime = new Time(time);
 		}
 		else Statistics.survivalLongestTime = new Time(time);
-//		Statistics.survivalLongestStreak
+		
 		if (score > Statistics.survivalHighScore) Statistics.survivalHighScore = score;
+		
 		Statistics.survivalGamesPlayed++;
 		
 		try {
