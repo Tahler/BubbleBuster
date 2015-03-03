@@ -18,8 +18,10 @@ public class MainMenuPanel extends JPanel {
 	private GUI frame;
 	private final JLabel title = new JLabel("Bubble Buster!", JLabel.CENTER);
 	private JPanel buttonPanel, soundPanel;
+	
 	private BubbleButton survivalButton, timeTrialButton, shopButton, statisticsButton, tutorialButton, quitButton;
 	private JButton	musicButton, effectsButton;
+	
 	private final ImageIcon musicButtonImage = new ImageIcon("images/music.png");
 	private final ImageIcon musicButtonImageX = new ImageIcon("images/musicx.png");
 	private final ImageIcon effectsButtonImage = new ImageIcon("images/soundFX.png");
@@ -32,7 +34,6 @@ public class MainMenuPanel extends JPanel {
 		addComponents();
 		addListeners();
 	}
-	
 	private void initializeButtons() {
 		survivalButton = new BubbleButton("Survival Mode");
 		timeTrialButton = new BubbleButton("Time Trial Mode");
