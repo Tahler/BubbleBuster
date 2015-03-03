@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class StatisticsPanel extends JPanel {
 	private GUI frame;
 	private JLabel title;

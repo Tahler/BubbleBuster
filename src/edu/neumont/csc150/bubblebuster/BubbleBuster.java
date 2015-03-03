@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -14,7 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 @SuppressWarnings("serial")
-public abstract class BubbleBuster extends JPanel implements ActionListener, MouseListener {
+public abstract class BubbleBuster extends JPanel implements ActionListener, MouseListener, KeyListener {
 	public static final int MINIMUM_BUBBLE_INTERVAL = 50;
 	public static final int MAXIMUM_BUBBLE_INTERVAL = 100;
 	protected static final int STRING_PADDING = 30;
@@ -33,7 +35,9 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Mou
 		coinsEarned = 0;
 		paused = false;
 		bubbles = new ArrayList<Bubble>();
-		addMouseListener(this); // move to JFrame?? where should this be
+		System.out.println(isFocusable());
+		addMouseListener(this);
+		addKeyListener(this);
 		waitOrAddBubble();
 		
 		timer = new Timer(20, this);
@@ -67,6 +71,7 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Mou
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
+		requestFocusInWindow(); // TODO: BUG ARISES HERE, CANNOT PAUSE UNTIL CLICKING
 		System.out.print("Click");
 		for (Bubble bubble : getBubbles()) {
 			if (bubble.isInside(e.getLocationOnScreen())) {
@@ -83,6 +88,15 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Mou
 		waitOrAddBubble();
 		repaint();
 	}
+	
+	@Override
+	public void keyReleased(KeyEvent e) {
+		if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+			System.out.println("Pausing");
+			frame.switchTo(new PausePanel(frame));
+		}
+	}
+
 	
 	private void waitOrAddBubble() {
 		if (bubbleInterval == 0) {
@@ -132,6 +146,16 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Mou
 	}
 	public void setBubbles(ArrayList<Bubble> bubbles) {
 		this.bubbles = bubbles;
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		
 	}
 	
 	@Override
