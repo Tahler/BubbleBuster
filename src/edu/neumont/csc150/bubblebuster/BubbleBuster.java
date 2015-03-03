@@ -102,7 +102,6 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Mou
 			frame.switchTo(new PausePanel(frame));
 		}
 	}
-
 	
 	private void waitOrAddBubble() {
 		if (bubbleInterval == 0) {
@@ -133,30 +132,10 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Mou
 		return score;
 	}
 
-	@Override
-	public void keyPressed(KeyEvent e) {
-		
-	}
-
-	@Override
-	public void keyTyped(KeyEvent e) {
-		
-	}
-	
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		
-	}
-	@Override
-	public void mouseExited(MouseEvent e) {
-		
-	}
-	@Override
-	public void mousePressed(MouseEvent e) {
-		
-	}
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		
-	}
+	public void keyPressed(KeyEvent e) {}
+	public void keyTyped(KeyEvent e) {}
+	public void mouseEntered(MouseEvent e) {}
+	public void mouseExited(MouseEvent e) {}
+	public void mousePressed(MouseEvent e) {}
+	public void mouseReleased(MouseEvent e) {}
 }

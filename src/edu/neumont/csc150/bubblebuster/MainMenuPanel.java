@@ -9,6 +9,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -17,8 +18,8 @@ public class MainMenuPanel extends JPanel {
 	private GUI frame;
 	private final JLabel title = new JLabel("Bubble Buster!", JLabel.CENTER);
 	private JPanel buttonPanel, soundPanel;
-	private BubbleButton survivalButton, timeTrialButton, shopButton, statisticsButton, tutorialButton, quitButton, 
-		musicButton, effectsButton;
+	private BubbleButton survivalButton, timeTrialButton, shopButton, statisticsButton, tutorialButton, quitButton;
+	private JButton	musicButton, effectsButton;
 	
 	public MainMenuPanel(GUI frame) {
 		this.frame = frame;
@@ -36,7 +37,7 @@ public class MainMenuPanel extends JPanel {
 		tutorialButton = new BubbleButton("Tutorial");
 		quitButton = new BubbleButton("Quit");
 		
-		musicButton = new BubbleButton("m");
+		musicButton = new JButton("m");
 		effectsButton = new BubbleButton("s");
 	}
 	private void addComponents() {
