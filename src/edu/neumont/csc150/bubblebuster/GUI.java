@@ -41,7 +41,7 @@ public class GUI extends JFrame {
 		
 //		add(survivalPanel);
 		//add(mainMenuPanel);
-		//this.getContentPane().add(mainMenuPanel);
+		this.getContentPane().add(mainMenuPanel);
 	}
 	
 	public void switchTo(JPanel panel) {
