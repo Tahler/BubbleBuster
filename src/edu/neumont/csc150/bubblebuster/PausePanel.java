@@ -62,7 +62,7 @@ public class PausePanel extends JPanel {
 			public void keyPressed(KeyEvent e) {}
 		});
 		menuButton.addActionListener(e -> {
-			frame.switchTo(frame.mainMenuPanel);
+			frame.switchTo(new MainMenuPanel(frame));
 		});
 	}
 	private void addComponents() {
