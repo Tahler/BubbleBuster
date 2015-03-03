@@ -93,6 +93,7 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Mou
 	public void keyReleased(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
 			System.out.println("Pausing");
+			togglePause();
 			frame.switchTo(new PausePanel(frame));
 		}
 	}

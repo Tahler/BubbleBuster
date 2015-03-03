@@ -5,6 +5,10 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -21,6 +25,18 @@ public class PausePanel extends JPanel {
 		this.frame = frame;
 		initializeButtons();
 		addComponents();
+		addMouseListener(new MouseListener() {
+			public void mouseReleased(MouseEvent e) {}
+			public void mousePressed(MouseEvent e) {
+				System.out.println("mouse");
+			}
+			public void mouseExited(MouseEvent e) {}
+			public void mouseEntered(MouseEvent e) {}
+			public void mouseClicked(MouseEvent e) {
+				System.out.println("click");
+				requestFocusInWindow();
+			}
+		});
 		setVisible(true);
 	}
 	
@@ -30,6 +46,20 @@ public class PausePanel extends JPanel {
 		musicButton = new BubbleButton("m");
 		effectsButton = new BubbleButton("s");
 		
+		resumeButton.addActionListener(e -> {
+			((BubbleBuster) frame.survivalPanel).togglePause();
+			frame.switchTo(frame.survivalPanel);
+		});
+		resumeButton.addKeyListener(new KeyListener() {
+			public void keyReleased(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+					System.out.println("key");
+					resumeButton.doClick();
+				}
+			}
+			public void keyTyped(KeyEvent e) {}
+			public void keyPressed(KeyEvent e) {}
+		});
 		menuButton.addActionListener(e -> {
 			frame.switchTo(frame.mainMenuPanel);
 		});

@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Time implements Comparable<Time>, Serializable {
 	private static final long serialVersionUID = -4849158459742175670L;
-
+	
 	private long milliseconds;
 	
 	public Time() {
