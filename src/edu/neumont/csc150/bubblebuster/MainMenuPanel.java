@@ -7,8 +7,6 @@ import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -119,8 +117,7 @@ public class MainMenuPanel extends JPanel {
 			frame.switchTo(frame.gamePanel);
 		});
 		statisticsButton.addActionListener(e -> {
-			frame.statisticsPanel = new StatisticsPanel(frame);
-			frame.switchTo(frame.statisticsPanel);
+			frame.switchTo(new StatisticsPanel(frame));
 		});
 		quitButton.addActionListener(e -> {
 			frame.dispose();

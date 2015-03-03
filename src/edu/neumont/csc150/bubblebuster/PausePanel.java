@@ -36,15 +36,23 @@ public class PausePanel extends JPanel {
 		
 		addMouseListener(new MouseListener() {
 			public void mouseReleased(MouseEvent e) {}
-			public void mousePressed(MouseEvent e) {
-				System.out.println("mouse");
-			}
+			public void mousePressed(MouseEvent e) {}
 			public void mouseExited(MouseEvent e) {}
 			public void mouseEntered(MouseEvent e) {}
 			public void mouseClicked(MouseEvent e) {
 				System.out.println("click");
 				requestFocusInWindow();
 			}
+		});
+		addKeyListener(new KeyListener() {
+			public void keyReleased(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+					System.out.println("key");
+					resumeButton.doClick();
+				}
+			}
+			public void keyTyped(KeyEvent e) {}
+			public void keyPressed(KeyEvent e) {}
 		});
 		
 		setVisible(true);
@@ -57,19 +65,7 @@ public class PausePanel extends JPanel {
 		effectsButton = new JButton(effectsButtonImage);
 
 		resumeButton.addActionListener(e -> {
-			System.out.println("clicked resume");
-			((BubbleBuster) frame.gamePanel).togglePause();
-			frame.switchTo(frame.gamePanel);
-		});
-		resumeButton.addKeyListener(new KeyListener() {
-			public void keyReleased(KeyEvent e) {
-				if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-					System.out.println("key");
-					resumeButton.doClick();
-				}
-			}
-			public void keyTyped(KeyEvent e) {}
-			public void keyPressed(KeyEvent e) {}
+			resume();
 		});
 		menuButton.addActionListener(e -> {
 			frame.switchTo(new MainMenuPanel(frame));
@@ -119,4 +115,8 @@ public class PausePanel extends JPanel {
 		add(panel2, BorderLayout.SOUTH);
 	}
 	
+	public void resume() {
+		((BubbleBuster) frame.gamePanel).togglePause();
+		frame.switchTo(frame.gamePanel);
+	}
 }

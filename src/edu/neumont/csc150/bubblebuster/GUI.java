@@ -11,7 +11,7 @@ public class GUI extends JFrame {
 	public static int WIDTH;
 	public static int HEIGHT;
 	
-	protected JPanel mainMenuPanel, gamePanel, statisticsPanel;
+	protected JPanel gamePanel;
 	private JPanel currentPanel;
 	
 	public GUI() {
@@ -19,12 +19,9 @@ public class GUI extends JFrame {
 	}
 	public GUI(String title) {
 		super(title);
-		
 		WIDTH = Toolkit.getDefaultToolkit().getScreenSize().width;
 		HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().height;
-		
 		initializeFrame();
-		
 		switchTo(new MainMenuPanel(this));
 	}
 	
@@ -35,9 +32,7 @@ public class GUI extends JFrame {
 	}
 	
 	public void switchTo(JPanel panel) {
-		if (currentPanel != null) {
-			this.getContentPane().remove(currentPanel);
-		}
+		if (currentPanel != null) this.getContentPane().remove(currentPanel);
 		currentPanel = panel;
 		this.getContentPane().add(currentPanel);
 		setVisible(true);

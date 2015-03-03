@@ -60,7 +60,7 @@ public class StatisticsPanel extends JPanel {
 		
 		menuButton = new BubbleButton("Back to Menu");
 		menuButton.addActionListener(e -> {
-			frame.switchTo(frame.mainMenuPanel);
+			frame.switchTo(new MainMenuPanel(frame));
 		});
 		
 		Font headerFont = new Font("Arial", Font.BOLD, 24);
@@ -194,5 +194,4 @@ public class StatisticsPanel extends JPanel {
 		c.gridwidth = 2;
 		add(menuButton, c);
 	}
-	
 }

@@ -16,6 +16,8 @@ public class Test {
 				System.out.println("Super broken af");
 			}
 		}
+		
+		@SuppressWarnings("unused")
 		GUI gui = new GUI("Bubble Buster");
 	}
 
