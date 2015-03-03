@@ -9,21 +9,17 @@ import javax.swing.JLabel;
 public class SurvivalGameOverPanel extends GameOverPanel {
 	private JLabel timeLabel, timeSurvivedLabel, timeRecordLabel;
 	
-	public SurvivalGameOverPanel(GUI frame, int score, Time time) {
+	public SurvivalGameOverPanel(GUI frame, int score, long time) {
 		super(frame, score, time);
 		updateStatistics(score, time);
 		initializeComponents(time);
 		addComponents();
 	}
-	private void updateStatistics(int score, Time time) {
+	private void updateStatistics(int score, long time) {
 		if (Statistics.survivalLongestTime != null) {
-			if (time.compareTo(Statistics.survivalLongestTime) > 0) {
-				Statistics.survivalLongestTime = time;
-			}
+			if (time > Statistics.survivalLongestTime.getMilliseconds()) Statistics.survivalLongestTime = new Time(time);
 		}
-		else {
-			Statistics.survivalLongestTime = time;
-		}
+		else Statistics.survivalLongestTime = new Time(time);
 //		Statistics.survivalLongestStreak
 		if (score > Statistics.survivalHighScore) Statistics.survivalHighScore = score;
 		Statistics.survivalGamesPlayed++;
@@ -35,11 +31,11 @@ public class SurvivalGameOverPanel extends GameOverPanel {
 			e.printStackTrace();
 		}
 	}
-	private void initializeComponents(Time time) {
+	private void initializeComponents(long time) {
 		pointsRecordLabel.setText(Statistics.survivalHighScore + "");
 		
 		timeLabel = new JLabel("Time Survived: ", JLabel.RIGHT);
-		timeSurvivedLabel = new JLabel(time.toString(), JLabel.CENTER);
+		timeSurvivedLabel = new JLabel(Time.toString(time), JLabel.CENTER);
 		if (Statistics.survivalLongestTime != null) timeRecordLabel = new JLabel(Statistics.survivalLongestTime.toString(), JLabel.CENTER);
 		else timeRecordLabel = new JLabel("", JLabel.CENTER);
 		

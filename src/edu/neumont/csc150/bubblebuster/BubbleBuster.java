@@ -15,6 +15,8 @@ import java.util.Random;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import org.apache.commons.lang3.time.StopWatch;
+
 @SuppressWarnings("serial")
 public abstract class BubbleBuster extends JPanel implements ActionListener, MouseListener, KeyListener {
 	public static final int MINIMUM_BUBBLE_INTERVAL = 50;
@@ -24,9 +26,10 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Mou
 	private int bubbleInterval;
 	private int score;
 	private Timer timer;
-	private int coinsEarned;
+	private int coinsEarned; // TODO: MAY BE USED LATER IF 10 POINTS != 1 COIN
 	private boolean paused;
 	private ArrayList<Bubble> bubbles;
+	protected StopWatch watch;
 	
 	public BubbleBuster(GUI frame) {
 		this.frame = frame;
@@ -40,6 +43,8 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Mou
 		addKeyListener(this);
 		waitOrAddBubble();
 		
+		watch = new StopWatch();
+		watch.start();
 		timer = new Timer(20, this);
 		timer.start();
 	}
@@ -73,7 +78,7 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Mou
 	public void mouseClicked(MouseEvent e) {
 		requestFocusInWindow(); // TODO: BUG ARISES HERE, CANNOT PAUSE UNTIL CLICKING
 		System.out.print("Click");
-		for (Bubble bubble : getBubbles()) {
+		for (Bubble bubble : bubbles) {
 			if (bubble.isInside(e.getLocationOnScreen())) {
 				System.out.print(" Pop");
 				bubble.pop();
@@ -110,7 +115,9 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Mou
 
 	public void togglePause() {
 		paused = !paused;
-		if (paused) timer.stop();
+		if (paused) {
+			timer.stop();
+		}
 		else timer.start();
 	}
 	
@@ -120,33 +127,6 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Mou
 	
 	public int getScore() {
 		return score;
-	}
-	public void setScore(int score) {
-		this.score = score;
-	}
-	public Timer getTimer() {
-		return timer;
-	}
-	public void setTimer(Timer timer) {
-		this.timer = timer;
-	}
-	public int getCoinsEarned() {
-		return coinsEarned;
-	}
-	public void setCoinsEarned(int coinsEarned) {
-		this.coinsEarned = coinsEarned;
-	}
-	public boolean isPaused() {
-		return paused;
-	}
-	public void setPaused(boolean paused) {
-		this.paused = paused;
-	}
-	public ArrayList<Bubble> getBubbles() {
-		return bubbles;
-	}
-	public void setBubbles(ArrayList<Bubble> bubbles) {
-		this.bubbles = bubbles;
 	}
 
 	@Override
