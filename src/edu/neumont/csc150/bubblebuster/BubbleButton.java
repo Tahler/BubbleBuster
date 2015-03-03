@@ -21,6 +21,7 @@ public class BubbleButton extends JButton {
 	
 	@Override
 	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
 		g.drawImage(IMG.getImage(), 0, 0, null);
 		g.setFont(new Font("SansSerif", Font.BOLD, 36));
 		

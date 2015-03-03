@@ -40,13 +40,18 @@ public class GUI extends JFrame {
 //		survivalPanel = new SurvivalMode(this);
 		
 //		add(survivalPanel);
-		add(mainMenuPanel);
+		//add(mainMenuPanel);
+		//this.getContentPane().add(mainMenuPanel);
 	}
 	
 	public void switchTo(JPanel panel) {
-		if (currentPanel != null) currentPanel.setVisible(false);
+		System.out.println("in switchTo");
+		if (currentPanel != null) {
+			this.getContentPane().remove(currentPanel);
+		}
 		currentPanel = panel;
-		currentPanel.setVisible(true);
-		setContentPane(currentPanel);
+		this.getContentPane().add(currentPanel);
+		//currentPanel.setVisible(true);
+		//setContentPane(currentPanel);
 	}
 }
