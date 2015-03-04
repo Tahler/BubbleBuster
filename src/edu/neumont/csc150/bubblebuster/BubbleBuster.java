@@ -46,24 +46,10 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Mou
 		addKeyListener(this);
 		waitOrAddBubble();
 		
-		playMusic();
-		
 		watch = new StopWatch();
 		watch.start();
 		timer = new Timer(20, this);
 		timer.start();
-	}
-	
-	public void playMusic() {
-		try {
-			Clip clip = AudioSystem.getClip();
-	        AudioInputStream inputStream = AudioSystem.getAudioInputStream(new File(Preferences.ambianceFolderLocation + "/music.wav"));
-	        clip.open(inputStream);
-	        clip.loop(Clip.LOOP_CONTINUOUSLY);
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 	
 	@Override

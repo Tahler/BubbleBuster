@@ -10,16 +10,18 @@ public class MusicButton extends JButton {
 	
 	public MusicButton() {
 		super();
-		
+
 		addActionListener(e -> {
 			if (getIcon().equals(musicButtonImage)) {
 				Preferences.musicEnabled = false;
 				setIcon(musicButtonImageX);
+				Music.getInstance().stop();
 			}
 			else {
 				Preferences.musicEnabled = true;
 				setIcon(musicButtonImage);
-			}			
+				Music.getInstance().start();
+			}
 			Preferences.save();
 		});
 		

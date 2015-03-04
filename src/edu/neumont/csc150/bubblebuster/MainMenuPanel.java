@@ -117,6 +117,7 @@ public class MainMenuPanel extends JPanel {
 		});
 		quitButton.addActionListener(e -> {
 			frame.dispose();
+			System.exit(0);
 		});
 	}
 	
