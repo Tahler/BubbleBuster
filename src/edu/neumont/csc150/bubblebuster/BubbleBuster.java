@@ -9,6 +9,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -16,6 +18,11 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import org.apache.commons.lang3.time.StopWatch;
+
+import sun.audio.AudioData;
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
+import sun.audio.ContinuousAudioDataStream;
 
 @SuppressWarnings("serial")
 public abstract class BubbleBuster extends JPanel implements ActionListener, MouseListener, KeyListener {
@@ -33,7 +40,6 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Mou
 	
 	public BubbleBuster(GUI frame) {
 		this.frame = frame;
-		
 		score = 0;
 		coinsEarned = 0;
 		paused = false;
@@ -43,10 +49,27 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Mou
 		addKeyListener(this);
 		waitOrAddBubble();
 		
+		playMusic();
+		
 		watch = new StopWatch();
 		watch.start();
 		timer = new Timer(20, this);
 		timer.start();
+	}
+	
+	public void playMusic() {
+		AudioStream backgroundMusic;
+		AudioData musicData;
+		AudioPlayer musicPlayer = AudioPlayer.player;
+		ContinuousAudioDataStream loop = null;
+		try {
+		   backgroundMusic = new AudioStream(new FileInputStream("C:/Windows/Media/chord.wav"));
+		   musicData = backgroundMusic.getData();
+		   loop = new ContinuousAudioDataStream(musicData);
+		   musicPlayer.start(loop);
+		} catch (IOException error) {
+		   System.out.println(error);
+		}
 	}
 	
 	@Override
