@@ -9,20 +9,17 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import org.apache.commons.lang3.time.StopWatch;
-
-import sun.audio.AudioData;
-import sun.audio.AudioPlayer;
-import sun.audio.AudioStream;
-import sun.audio.ContinuousAudioDataStream;
 
 @SuppressWarnings("serial")
 public abstract class BubbleBuster extends JPanel implements ActionListener, MouseListener, KeyListener {
@@ -37,7 +34,6 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Mou
 	private boolean paused;
 	private ArrayList<Bubble> bubbles;
 	protected StopWatch watch;
-	private AudioPlayer musicPlayer;
 	
 	public BubbleBuster(GUI frame) {
 		this.frame = frame;
@@ -58,16 +54,14 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Mou
 		timer.start();
 	}
 	
-	@SuppressWarnings("resource")
 	public void playMusic() {
 		try {
-			AudioStream backgroundMusic = new AudioStream(new FileInputStream(Preferences.ambianceFolderLocation + "/chord.wav"));
-			AudioData musicData = backgroundMusic.getData();
-			musicPlayer = AudioPlayer.player; // This is a thread.
-			ContinuousAudioDataStream loop = new ContinuousAudioDataStream(musicData);
-			musicPlayer.start(loop);
+			Clip clip = AudioSystem.getClip();
+	        AudioInputStream inputStream = AudioSystem.getAudioInputStream(new File(Preferences.ambianceFolderLocation + "/music.wav"));
+	        clip.open(inputStream);
+	        clip.loop(Clip.LOOP_CONTINUOUSLY);
 		}
-		catch (IOException e) {
+		catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
