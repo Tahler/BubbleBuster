@@ -35,12 +35,7 @@ public class Bubble extends JComponent {
 	}
 	
 	protected boolean isInside(Point point) {
-		if (point.x > x && point.x < x + diameter) {
-			if (point.y > y && point.y < y + diameter) {
-				return true;
-			}
-		}
-		return false;
+		return ((point.x > x && point.x < x + diameter) && (point.y > y && point.y < y + diameter));
 	}
 	
 	public void pop() {

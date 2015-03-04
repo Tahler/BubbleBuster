@@ -12,7 +12,6 @@ public class SoundButton extends JButton {
 		super();
 		
 		addActionListener(e -> {
-			System.out.println("touching sound");
 			if (getIcon().equals(effectsButtonImage)) {
 				Preferences.soundFXEnabled = false;
 				setIcon(effectsButtonImageX);
@@ -21,12 +20,7 @@ public class SoundButton extends JButton {
 				Preferences.soundFXEnabled = true;
 				setIcon(effectsButtonImage);
 			}
-			
-			try {
-				Preferences.save();
-			} catch (Exception e1) {
-				e1.printStackTrace();
-			}
+			Preferences.save();
 		});
 		
 		if (Preferences.soundFXEnabled) setIcon(effectsButtonImage);

@@ -15,13 +15,19 @@ public abstract class Preferences implements Serializable {
 	public static boolean musicEnabled, soundFXEnabled;
 	public static String skinFolderLocation, ambianceFolderLocation, cursorImageFile;
 	
-	public static void save() throws IOException {
+	public static void save() {
 		properties.setProperty("MusicEnabled", musicEnabled + "");
 		properties.setProperty("SoundFXEnabled", soundFXEnabled + "");
 		properties.setProperty("SkinFolderLocation", skinFolderLocation + "");
 		properties.setProperty("AmbianceFolderLocation", ambianceFolderLocation + "");
 		properties.setProperty("CursorImageLocation", cursorImageFile + "");
-		properties.store(new FileWriter(new File("bubblebuster.properties")), "");
+		
+		try {
+			properties.store(new FileWriter(new File("bubblebuster.properties")), "");
+		} 
+		catch (IOException e) {
+			e.printStackTrace(); // Should never really happen
+		}
 	}
 	/**
 	 * Tries to load a currently existing preferences file.  If no such file exists, the file will be created with defaults.
@@ -43,12 +49,7 @@ public abstract class Preferences implements Serializable {
 			Preferences.skinFolderLocation = "";
 			Preferences.ambianceFolderLocation = "";
 			Preferences.cursorImageFile = "";
-			try {
-				Preferences.save();
-			} 
-			catch (IOException e1) {
-				e1.printStackTrace(); // Should never really be reached.
-			}
+			Preferences.save();
 		}
 	}
 	

@@ -19,14 +19,8 @@ public class MusicButton extends JButton {
 			else {
 				Preferences.musicEnabled = true;
 				setIcon(musicButtonImage);
-			}
-			
-			try {
-				Preferences.save();
-			} 
-			catch (Exception e1) {
-				e1.printStackTrace();
-			}
+			}			
+			Preferences.save();
 		});
 		
 		if (Preferences.musicEnabled) setIcon(musicButtonImage);
