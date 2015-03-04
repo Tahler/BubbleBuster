@@ -9,6 +9,9 @@ public class Main {
 		// Load or make preferences
 		Preferences.load();
 		
+		// Initialize the Sounds according to the preferences
+		Sound.getInstance();
+		
 		// Run the program
 		@SuppressWarnings("unused")
 		GUI gui = new GUI();

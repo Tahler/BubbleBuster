@@ -46,7 +46,7 @@ public abstract class Preferences implements Serializable {
 		catch (IOException e) {
 			Preferences.musicEnabled = true;
 			Preferences.soundFXEnabled = true;
-			Preferences.skinFolderLocation = "";
+			Preferences.skinFolderLocation = "resources/skins/default";
 			Preferences.ambianceFolderLocation = "resources/ambiance/default";
 			Preferences.cursorImageFile = "";
 			Preferences.save();

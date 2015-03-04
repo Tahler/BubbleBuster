@@ -39,6 +39,7 @@ public class Bubble extends JComponent {
 	}
 	
 	public void pop() {
+		if (Preferences.soundFXEnabled) Sound.getInstance().playPop();
 		popped = true;
 	}
 	

@@ -21,7 +21,7 @@ public class GUI extends JFrame {
 		initializeFrame();
 		switchTo(new MainMenuPanel(this));
 		
-		if (Preferences.musicEnabled) Music.getInstance().start();
+		if (Preferences.musicEnabled) Sound.getInstance().startMusic();
 	}
 	
 	private void initializeFrame() {
