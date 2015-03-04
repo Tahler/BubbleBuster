@@ -11,7 +11,7 @@ import javax.sound.sampled.Clip;
 public class Sound {
 	protected Clip music;
 	protected Clip[] popEffects;
-	private final int nSounds = 2; // TODO: make this dynamic to how many .wav files are in the skinfolder
+	private static final int nSounds = new File(Preferences.skinFolderLocation).list().length - 1; // Not sure why it provides one more than exists
 	public static Sound instance = null;
 	
 	public static Sound getInstance() {
