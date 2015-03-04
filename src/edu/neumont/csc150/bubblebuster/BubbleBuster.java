@@ -37,6 +37,7 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Mou
 	private boolean paused;
 	private ArrayList<Bubble> bubbles;
 	protected StopWatch watch;
+	private AudioPlayer musicPlayer;
 	
 	public BubbleBuster(GUI frame) {
 		this.frame = frame;
@@ -57,18 +58,17 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Mou
 		timer.start();
 	}
 	
+	@SuppressWarnings("resource")
 	public void playMusic() {
-		AudioStream backgroundMusic;
-		AudioData musicData;
-		AudioPlayer musicPlayer = AudioPlayer.player;
-		ContinuousAudioDataStream loop = null;
 		try {
-		   backgroundMusic = new AudioStream(new FileInputStream("C:/Windows/Media/chord.wav"));
-		   musicData = backgroundMusic.getData();
-		   loop = new ContinuousAudioDataStream(musicData);
-		   musicPlayer.start(loop);
-		} catch (IOException error) {
-		   System.out.println(error);
+			AudioStream backgroundMusic = new AudioStream(new FileInputStream(Preferences.ambianceFolderLocation + "/chord.wav"));
+			AudioData musicData = backgroundMusic.getData();
+			musicPlayer = AudioPlayer.player; // This is a thread.
+			ContinuousAudioDataStream loop = new ContinuousAudioDataStream(musicData);
+			musicPlayer.start(loop);
+		}
+		catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 	
