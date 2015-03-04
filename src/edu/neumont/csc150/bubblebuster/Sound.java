@@ -11,7 +11,7 @@ import javax.sound.sampled.Clip;
 public class Sound {
 	protected Clip music;
 	protected Clip[] popEffects;
-	private static final int nSounds = new File(Preferences.skinFolderLocation).list().length - 1; // Not sure why it provides one more than exists
+	private static final int nSounds = new File(Preferences.skinFolderLocation).list().length;
 	public static Sound instance = null;
 	
 	public static Sound getInstance() {
@@ -20,6 +20,7 @@ public class Sound {
 	}
 	
 	private Sound() {
+		System.out.println(nSounds + " files found in the skin folder");
 		try {
 			music = AudioSystem.getClip();
 	        AudioInputStream inputStream = AudioSystem.getAudioInputStream(new File(Preferences.ambianceFolderLocation + "/music.wav"));
