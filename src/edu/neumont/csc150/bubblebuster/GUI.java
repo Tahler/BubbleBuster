@@ -19,7 +19,7 @@ public class GUI extends JFrame {
 		WIDTH = Toolkit.getDefaultToolkit().getScreenSize().width;
 		HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().height;
 		initializeFrame();
-		switchTo(new MainMenuPanel(this));	
+		switchTo(new MainMenuPanel(this));
 		
 		if (Preferences.musicEnabled) Music.getInstance().start();
 	}
