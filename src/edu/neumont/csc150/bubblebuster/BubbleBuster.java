@@ -106,7 +106,6 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Mou
 		if (bubbleInterval == 0) {
 			bubbleInterval = new Random().nextInt(MAXIMUM_BUBBLE_INTERVAL - MINIMUM_BUBBLE_INTERVAL) + MINIMUM_BUBBLE_INTERVAL;
 			bubbles.add(new Bubble());
-			add(bubbles.get(bubbles.size() - 1));
 		}
 		else bubbleInterval--;	
 	}
