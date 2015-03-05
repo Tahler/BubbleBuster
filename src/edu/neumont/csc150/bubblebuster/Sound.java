@@ -11,7 +11,7 @@ import javax.sound.sampled.Clip;
 public class Sound {
 	protected Clip music;
 	protected Clip[] popEffects;
-	private static final int nSounds = new File(Preferences.skinFolderLocation).list().length;
+	private static final int nSounds = new File(Preferences.skinFolderLocation + "/sounds").list().length;
 	public static Sound instance = null;
 	
 	public static Sound getInstance() {
@@ -29,7 +29,7 @@ public class Sound {
 	        popEffects = new Clip[nSounds];
 	        for (int i = 0; i < popEffects.length; i++) {
 				popEffects[i] = AudioSystem.getClip();
-				popEffects[i].open(AudioSystem.getAudioInputStream(new File(Preferences.skinFolderLocation + "/pop" + (i+1) + ".wav")));
+				popEffects[i].open(AudioSystem.getAudioInputStream(new File(Preferences.skinFolderLocation + "/sounds/pop" + (i+1) + ".wav")));
 			}
 		}
 		catch (Exception e) {

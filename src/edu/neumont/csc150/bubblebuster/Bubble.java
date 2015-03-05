@@ -1,6 +1,7 @@
 package edu.neumont.csc150.bubblebuster;
 
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -16,7 +17,7 @@ public class Bubble extends JComponent implements MouseListener {
 	public static final int MINIMUM_SPEED = 3;
 	public static final int MAXIMUM_SPEED = 8;
 	public static final int POINTS = 10;
-	private ImageIcon img = new ImageIcon(Preferences.skinFolderLocation + "/bubble.png");
+	private ImageIcon img = new ImageIcon(Preferences.skinFolderLocation + "/images/bubble.png");
 	private int x, y;
 	private int diameter;
 	private int speed;
@@ -31,11 +32,14 @@ public class Bubble extends JComponent implements MouseListener {
 		setSpeed(rand.nextInt(MAXIMUM_SPEED - MINIMUM_SPEED) + MINIMUM_SPEED);
 		setX(rand.nextInt(GUI.WIDTH - diameter));
 		setY(GUI.HEIGHT);
+		
+		img.setImage(img.getImage().getScaledInstance(diameter, diameter, Image.SCALE_SMOOTH));
 	}
 	
 	@Override
 	protected void paintComponent(Graphics g) {
-		g.fillOval(x, y, diameter, diameter);
+		g.drawImage(img.getImage(), x, y, null);
+//		g.fillOval(x, y, diameter, diameter); // Just a white circle instead
 		move();
 	}
 	
@@ -90,25 +94,15 @@ public class Bubble extends JComponent implements MouseListener {
 	}
 
 	@Override
-	public void mouseClicked(MouseEvent arg0) {
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent arg0) {
-	}
-
-	@Override
-	public void mouseExited(MouseEvent arg0) {
-	}
-
-	@Override
 	public void mousePressed(MouseEvent e) {
-		if (isInside(e.getLocationOnScreen())) {
+		if (isInside(e.getLocationOnScreen()) && !isPopped()) {
+			System.out.println("popped");
 			pop();
 		}
 	}
-
-	@Override
-	public void mouseReleased(MouseEvent arg0) {
-	}
+	
+	public void mouseClicked(MouseEvent arg0) {}
+	public void mouseEntered(MouseEvent arg0) {}
+	public void mouseExited(MouseEvent arg0) {}
+	public void mouseReleased(MouseEvent arg0) {}
 }

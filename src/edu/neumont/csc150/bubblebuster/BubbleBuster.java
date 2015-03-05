@@ -18,7 +18,7 @@ import javax.swing.Timer;
 import org.apache.commons.lang3.time.StopWatch;
 
 @SuppressWarnings("serial")
-public abstract class BubbleBuster extends JPanel implements ActionListener, MouseListener, KeyListener {
+public abstract class BubbleBuster extends JPanel implements ActionListener, KeyListener {
 	public static final int MINIMUM_BUBBLE_INTERVAL = 50;
 	public static final int MAXIMUM_BUBBLE_INTERVAL = 100;
 	protected static final int STRING_PADDING = 30;
