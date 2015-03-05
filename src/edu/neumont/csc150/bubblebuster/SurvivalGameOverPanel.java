@@ -36,7 +36,7 @@ public class SurvivalGameOverPanel extends GameOverPanel {
 		pointsRecordLabel.setText(Statistics.survivalHighScore + "");
 		
 		timeLabel = new JLabel("Time Survived: ", JLabel.RIGHT);
-		timeSurvivedLabel = new JLabel(Time.toString(time), JLabel.CENTER);
+		timeSurvivedLabel = new JLabel(Time.format(time), JLabel.CENTER);
 		if (Statistics.survivalLongestTime != null) timeRecordLabel = new JLabel(Statistics.survivalLongestTime.toString(), JLabel.CENTER);
 		else timeRecordLabel = new JLabel("", JLabel.CENTER);
 		

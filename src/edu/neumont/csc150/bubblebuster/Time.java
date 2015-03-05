@@ -31,7 +31,7 @@ public class Time implements Comparable<Time>, Serializable {
 				+ "." + milliseconds % 10;
 	}
 	
-	public static String toString(long milliseconds) {
+	public static String format(long milliseconds) {
 		return (((milliseconds / 60000) % 60 < 10) ? "0" + ((milliseconds / 60000) % 60) : "" + (milliseconds / 60000) % 60)
 				+ ":" + (((milliseconds / 1000) % 60 < 10) ? "0" + ((milliseconds / 1000) % 60) : "" + ((milliseconds / 1000) % 60))
 				+ "." + milliseconds % 10;
