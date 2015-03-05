@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridLayout;
+import java.awt.Image;
 
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
@@ -17,10 +18,12 @@ public abstract class GameOverPanel extends JPanel {
 		coinsLabel, coinsEarnedLabel, coinsRecordLabel,
 		currentCoinsLabel, balanceLabel;
 	protected JButton playAgainButton, menuButton;
+	private Image background;
 	
 	// TODO: USE GRIDBAGLAYOUT
-	public GameOverPanel(GUI frame, int score, long time) {
+	public GameOverPanel(GUI frame, Image background, int score, long time) {
 		this.frame = frame;
+		this.background = background;
 		updateStatistics(score, time);
 		setBackground(new Color(0, 195, 217));
 		initializeComponents(score);
@@ -113,6 +116,7 @@ public abstract class GameOverPanel extends JPanel {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
+		g.drawImage(background, 0, 0, null);
 		g.setFont(new Font("Arial", Font.BOLD, 36));
 		g.drawString("Game Over", GUI.WIDTH / 2 - (int) g.getFontMetrics().getStringBounds("Game Over", g).getWidth() / 2, GUI.HEIGHT / 5);
 	}

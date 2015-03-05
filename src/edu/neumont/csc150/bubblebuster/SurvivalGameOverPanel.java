@@ -1,6 +1,7 @@
 package edu.neumont.csc150.bubblebuster;
 
 import java.awt.Font;
+import java.awt.Image;
 import java.io.IOException;
 
 import javax.swing.JLabel;
@@ -9,8 +10,8 @@ import javax.swing.JLabel;
 public class SurvivalGameOverPanel extends GameOverPanel {
 	private JLabel timeLabel, timeSurvivedLabel, timeRecordLabel;
 	
-	public SurvivalGameOverPanel(GUI frame, int score, long time) {
-		super(frame, score, time);
+	public SurvivalGameOverPanel(GUI frame, Image background, int score, long time) {
+		super(frame, background, score, time);
 		updateStatistics(score, time);
 		initializeComponents(time);
 		addComponents();
