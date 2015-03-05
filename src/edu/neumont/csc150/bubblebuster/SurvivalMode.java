@@ -1,6 +1,5 @@
 package edu.neumont.csc150.bubblebuster;
 
-import java.awt.Color;
 import java.awt.Graphics;
 
 @SuppressWarnings("serial")
@@ -14,7 +13,6 @@ public class SurvivalMode extends BubbleBuster {
 		super(frame);
 		difficultyTimer = DIFFICULTY_INCREASE_INTERVAL;
 		setLives(STARTING_LIVES);
-		setBackground(new Color(0, 195, 217));		
 	}
 	
 	@Override

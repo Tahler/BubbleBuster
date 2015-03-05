@@ -1,6 +1,5 @@
 package edu.neumont.csc150.bubblebuster;
 
-import java.awt.Color;
 import java.awt.Graphics;
 
 @SuppressWarnings("serial")
@@ -13,7 +12,6 @@ public class TimeTrialMode extends BubbleBuster {
 		super(frame);
 		
 		setLives(STARTING_LIVES);
-		setBackground(new Color(0, 195, 217));		
 	}
 	
 	@Override
