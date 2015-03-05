@@ -3,14 +3,17 @@ package edu.neumont.csc150.bubblebuster;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -23,12 +26,15 @@ public class PausePanel extends JPanel {
 	private final JLabel title = new JLabel("Paused");
 	private MusicButton musicButton;
 	private SoundButton	effectsButton;
+	private ImageIcon background = new ImageIcon(Preferences.ambianceFolderLocation + "/background.jpg");
 	
 	public PausePanel(GUI frame) {
 		this.frame = frame;
 		
 		initializeButtons();
 		addComponents();
+		
+		background.setImage(background.getImage().getScaledInstance(GUI.WIDTH, GUI.HEIGHT, Image.SCALE_SMOOTH));
 		
 		addMouseListener(new MouseListener() {
 			public void mouseReleased(MouseEvent e) {}
@@ -70,7 +76,8 @@ public class PausePanel extends JPanel {
 		setLayout(new BorderLayout());
 		
 		panel1 = new JPanel(new GridBagLayout());
-		panel1.setBackground(new Color(0, 195, 217));
+//		panel1.setBackground(new Color(0, 195, 217));
+		panel1.setOpaque(false);
 		
 		GridBagConstraints c = new GridBagConstraints();
 		
@@ -93,7 +100,8 @@ public class PausePanel extends JPanel {
 		panel1.add(menuButton, c);
 		
 		panel2 = new JPanel();
-		panel2.setBackground(new Color(0, 195, 217));
+//		panel2.setBackground(new Color(0, 195, 217));
+		panel2.setOpaque(false);
 		
 		panel2.add(musicButton);
 		panel2.add(effectsButton);
@@ -105,5 +113,11 @@ public class PausePanel extends JPanel {
 	public void resume() {
 		((BubbleBuster) frame.gamePanel).togglePause();
 		frame.switchTo(frame.gamePanel);
+	}
+	
+	@Override
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		g.drawImage(background.getImage(), 0, 0, null);
 	}
 }

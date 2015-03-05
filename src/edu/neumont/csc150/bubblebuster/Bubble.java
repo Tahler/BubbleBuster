@@ -96,7 +96,6 @@ public class Bubble extends JComponent implements MouseListener {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		if (isInside(e.getLocationOnScreen()) && !isPopped()) {
-			System.out.println("popped");
 			pop();
 		}
 	}

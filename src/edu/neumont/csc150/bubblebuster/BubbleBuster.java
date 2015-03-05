@@ -3,6 +3,7 @@ package edu.neumont.csc150.bubblebuster;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -12,6 +13,7 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -23,6 +25,7 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Key
 	public static final int MAXIMUM_BUBBLE_INTERVAL = 100;
 	protected static final int STRING_PADDING = 30;
 	protected GUI frame;
+	private ImageIcon background = new ImageIcon(Preferences.ambianceFolderLocation + "/background.jpg");
 	private int bubbleInterval;
 	private int score;
 	private Timer timer;
@@ -33,13 +36,15 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Key
 	
 	public BubbleBuster(GUI frame) {
 		this.frame = frame;
+		
+		background.setImage(background.getImage().getScaledInstance(GUI.WIDTH, GUI.HEIGHT, Image.SCALE_SMOOTH));
+		
 		score = 0;
 		coinsEarned = 0;
 		paused = false;
-		bubbles = new ArrayList<Bubble>();
 		
 		addKeyListener(this);
-		
+		bubbles = new ArrayList<Bubble>();
 		waitOrAddBubble();
 		
 		watch = new StopWatch();
@@ -51,7 +56,8 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Key
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-
+		g.drawImage(background.getImage(), 0, 0, null);
+		
 		g.setColor(Color.WHITE);
 		g.setFont(new Font("SansSerif", Font.BOLD, 24));
 		g.drawString(getScore() + "", GUI.WIDTH - (int) g.getFontMetrics().getStringBounds(getScore() + "", g).getWidth() - STRING_PADDING, STRING_PADDING);
