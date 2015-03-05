@@ -2,20 +2,23 @@ package edu.neumont.csc150.bubblebuster;
 
 import java.awt.Cursor;
 import java.awt.Frame;
-import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
-public class GUI extends JFrame {
+public class GUI extends JFrame implements MouseListener {
 	public static int WIDTH;
 	public static int HEIGHT;
 	
 	protected JPanel gamePanel;
 	private JPanel currentPanel;
+	
+	Cursor cursor, cursorPressed;
 	
 	public GUI() {
 		super("Bubble Buster");
@@ -23,6 +26,7 @@ public class GUI extends JFrame {
 		HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().height;
 		initializeFrame();
 		initializeCursor();
+		addMouseListener(this);
 		switchTo(new MainMenuPanel(this));
 		if (Preferences.musicEnabled) Sound.getInstance().startMusic();
 	}
@@ -33,8 +37,8 @@ public class GUI extends JFrame {
 	}
 	private void initializeCursor() {
 		Toolkit kit = Toolkit.getDefaultToolkit();
-		Image img = kit.getImage("resources/cursor.gif");
-		Cursor cursor = kit.createCustomCursor(img, new Point(0, 0), "Hand");
+		cursor = kit.createCustomCursor(kit.getImage("resources/cursor.gif"), new Point(4, 4), "Hand");
+		cursorPressed = kit.createCustomCursor(kit.getImage("resources/cursorPressed.gif"), new Point(4, 4), "Hand");
 		setCursor(cursor);
 	}
 	
@@ -44,4 +48,17 @@ public class GUI extends JFrame {
 		this.getContentPane().add(currentPanel);
 		setVisible(true);
 	}
+	@Override
+	public void mousePressed(MouseEvent e) {
+		System.out.println("click");
+		setCursor(cursorPressed);
+	}
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		setCursor(cursor);
+	}
+	
+	public void mouseClicked(MouseEvent e) {}
+	public void mouseEntered(MouseEvent e) {}
+	public void mouseExited(MouseEvent e) {}
 }
