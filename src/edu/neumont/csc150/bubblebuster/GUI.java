@@ -2,6 +2,8 @@ package edu.neumont.csc150.bubblebuster;
 
 import java.awt.Cursor;
 import java.awt.Frame;
+import java.awt.Image;
+import java.awt.Point;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
@@ -20,17 +22,20 @@ public class GUI extends JFrame {
 		WIDTH = Toolkit.getDefaultToolkit().getScreenSize().width;
 		HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().height;
 		initializeFrame();
+		initializeCursor();
 		switchTo(new MainMenuPanel(this));
-		
-		setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
-		
 		if (Preferences.musicEnabled) Sound.getInstance().startMusic();
 	}
-	
 	private void initializeFrame() {
 		setExtendedState(Frame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setUndecorated(true);
+	}
+	private void initializeCursor() {
+		Toolkit kit = Toolkit.getDefaultToolkit();
+		Image img = kit.getImage("resources/cursor.gif");
+		Cursor cursor = kit.createCustomCursor(img, new Point(0, 0), "Hand");
+		setCursor(cursor);
 	}
 	
 	public void switchTo(JPanel panel) {

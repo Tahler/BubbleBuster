@@ -117,5 +117,6 @@ public class PausePanel extends JPanel {
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.drawImage(background, 0, 0, null);
+		requestFocusInWindow();
 	}
 }

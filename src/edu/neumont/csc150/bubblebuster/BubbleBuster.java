@@ -77,7 +77,7 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Key
 			}
 			else bubbles.get(i).paintComponent(g);
 			
-			requestFocusInWindow(); // Kinda sucks
+			requestFocusInWindow(); // Ensures that the KeyListener is always active for this panel (Kinda sucks)
 		}
 	}
 

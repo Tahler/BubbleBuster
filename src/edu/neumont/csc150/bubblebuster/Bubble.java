@@ -43,7 +43,7 @@ public class Bubble extends JComponent implements MouseListener {
 		move();
 	}
 	
-	protected boolean isInside(Point point) {
+	protected boolean isInside(Point point) { // TODO: make so it is not just in the bounding box, but inside the image
 		return ((point.x > x && point.x < x + diameter) && (point.y > y && point.y < y + diameter));
 	}
 	
@@ -63,6 +63,13 @@ public class Bubble extends JComponent implements MouseListener {
 	@Override
 	public String toString() {
 		return "x:" + getX() + " y:" + getY() + " r:" + (getDiameter() / 2) + " spd:" + getSpeed();
+	}
+	
+	@Override
+	public void mousePressed(MouseEvent e) {
+		if (isInside(e.getLocationOnScreen()) && !isPopped()) {
+			pop();
+		}
 	}
 	
 	public boolean isPopped() {
@@ -93,13 +100,6 @@ public class Bubble extends JComponent implements MouseListener {
 		this.speed = speed;
 	}
 
-	@Override
-	public void mousePressed(MouseEvent e) {
-		if (isInside(e.getLocationOnScreen()) && !isPopped()) {
-			pop();
-		}
-	}
-	
 	public void mouseClicked(MouseEvent e) {}
 	public void mouseEntered(MouseEvent e) {}
 	public void mouseExited(MouseEvent e) {}

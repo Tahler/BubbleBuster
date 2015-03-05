@@ -10,6 +10,8 @@ public class MusicButton extends JButton {
 	
 	public MusicButton() {
 		super();
+		
+		setFocusable(false);
 
 		addActionListener(e -> {
 			if (getIcon().equals(musicButtonImage)) {

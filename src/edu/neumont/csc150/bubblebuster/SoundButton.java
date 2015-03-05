@@ -11,6 +11,8 @@ public class SoundButton extends JButton {
 	public SoundButton() {
 		super();
 		
+		setFocusable(false);
+		
 		addActionListener(e -> {
 			if (getIcon().equals(effectsButtonImage)) {
 				Preferences.soundFXEnabled = false;
