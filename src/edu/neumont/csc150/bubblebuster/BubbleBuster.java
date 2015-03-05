@@ -19,8 +19,8 @@ import org.apache.commons.lang3.time.StopWatch;
 
 @SuppressWarnings("serial")
 public abstract class BubbleBuster extends JPanel implements ActionListener, KeyListener {
-	public static final int MINIMUM_BUBBLE_INTERVAL = 50;
-	public static final int MAXIMUM_BUBBLE_INTERVAL = 100;
+	public int minBubbleInterval;
+	public int maxBubbleInterval;
 	protected static final int STRING_PADDING = 30;
 	protected GUI frame;
 	private ImageIcon background;
@@ -38,6 +38,8 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Key
 		score = 0;
 		coinsEarned = 0;
 		paused = false;
+		setMinBubbleInterval(50);
+		setMaxBubbleInterval(100);
 		
 		addKeyListener(this);
 		bubbles = new ArrayList<Bubble>();
@@ -98,7 +100,7 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Key
 	private void waitOrAddBubble() {
 		if (bubbleInterval == 0) {
 			// Add a bubble
-			bubbleInterval = new Random().nextInt(MAXIMUM_BUBBLE_INTERVAL - MINIMUM_BUBBLE_INTERVAL) + MINIMUM_BUBBLE_INTERVAL;
+			bubbleInterval = new Random().nextInt(maxBubbleInterval - minBubbleInterval) + minBubbleInterval;
 			Bubble bubble = new Bubble();
 			bubbles.add(bubble);
 			frame.addMouseListener(bubble); // Adding the MouseListener to this JPanel would overwrite the GUI's MouseListener (which manages the cursor)
@@ -126,6 +128,21 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Key
 		return score;
 	}
 
+	public int getMinBubbleInterval() {
+		return minBubbleInterval;
+	}
+	public void setMinBubbleInterval(int minBubbleInterval) {
+		if (minBubbleInterval < 0) return;
+		this.minBubbleInterval = minBubbleInterval;
+	}
+	public int getMaxBubbleInterval() {
+		return maxBubbleInterval;
+	}
+	public void setMaxBubbleInterval(int maxBubbleInterval) {
+		if (maxBubbleInterval < 20) return;
+		this.maxBubbleInterval = maxBubbleInterval;
+	}
+	
 	public void keyPressed(KeyEvent e) {}
 	public void keyTyped(KeyEvent e) {}
 }

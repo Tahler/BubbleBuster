@@ -12,11 +12,12 @@ import javax.swing.JComponent;
 
 @SuppressWarnings("serial")
 public class Bubble extends JComponent implements MouseListener {
-	public static final int MINIMUM_DIAMETER = 50;
-	public static final int MAXIMUM_DIAMETER = 400;
-	public static final int MINIMUM_SPEED = 3;
-	public static final int MAXIMUM_SPEED = 8;
 	public static final int POINTS = 10;
+	public static int minDiameter = 50;
+	public static int maxDiameter = 400;
+	public static int minSpeed = 3;
+	public static int maxSpeed = 8;
+	
 	private ImageIcon img = new ImageIcon(Preferences.skinFolderLocation + "/images/bubble.png");
 	private int x, y;
 	private int diameter;
@@ -26,10 +27,11 @@ public class Bubble extends JComponent implements MouseListener {
 	
 	public Bubble() {
 		popped = false;
-		Random rand = new Random();
 		setFocusable(false);
-		setDiameter(rand.nextInt(MAXIMUM_DIAMETER - MINIMUM_DIAMETER) + MINIMUM_DIAMETER);
-		setSpeed(rand.nextInt(MAXIMUM_SPEED - MINIMUM_SPEED) + MINIMUM_SPEED);
+
+		Random rand = new Random();
+		setDiameter(rand.nextInt(maxDiameter - minDiameter) + minDiameter);
+		setSpeed(rand.nextInt(maxSpeed - minSpeed) + minSpeed);
 		setX(rand.nextInt(GUI.WIDTH - diameter));
 		setY(GUI.HEIGHT);
 		

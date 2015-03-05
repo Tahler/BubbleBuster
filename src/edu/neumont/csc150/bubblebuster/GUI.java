@@ -48,9 +48,9 @@ public class GUI extends JFrame implements MouseListener {
 		this.getContentPane().add(currentPanel);
 		setVisible(true);
 	}
+	
 	@Override
 	public void mousePressed(MouseEvent e) {
-		System.out.println("click");
 		setCursor(cursorPressed);
 	}
 	@Override
