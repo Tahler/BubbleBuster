@@ -5,18 +5,14 @@ import java.awt.Graphics;
 
 @SuppressWarnings("serial")
 public class SurvivalMode extends BubbleBuster {
-	public static int difficultyLevel;
 	public static final int STARTING_LIVES = 1;
-	private static final int DIFFICULTY_INCREASE_INTERVAL = 20;
+	private static final int DIFFICULTY_INCREASE_INTERVAL = 100;
 	private int difficultyTimer;
 	private int lives;
 	
 	public SurvivalMode(GUI frame) {
 		super(frame);
-		
-		difficultyLevel = 1;
 		difficultyTimer = DIFFICULTY_INCREASE_INTERVAL;
-		
 		setLives(STARTING_LIVES);
 		setBackground(new Color(0, 195, 217));		
 	}
@@ -25,22 +21,25 @@ public class SurvivalMode extends BubbleBuster {
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
-		increaseDifficulty();
+		waitOrIncreaseDifficulty();
 		
 		String time = watch.toString().substring(2, watch.toString().length() - 2);
 		g.drawString(time, GUI.WIDTH - (int) g.getFontMetrics().getStringBounds(time, g).getWidth() - STRING_PADDING, STRING_PADDING * 2);
 //		g.drawString(getLives() + "", GUI.WIDTH - (int) g.getFontMetrics().getStringBounds(getLives() + "", g).getWidth() - STRING_PADDING, STRING_PADDING * 3);
 	}
 	
-	public void increaseDifficulty() {
+	public void waitOrIncreaseDifficulty() {
+		// Wait
 		if (difficultyTimer <= 0) {
-			difficultyLevel++;
-			setMinBubbleInterval(getMinBubbleInterval() - 1);
+			System.out.println("Increasing difficulty");
+			Bubble.increaseDifficulty();
+			setMinBubbleInterval(getMinBubbleInterval() - 5);
 			if (getMinBubbleInterval() == 0) {
-				setMaxBubbleInterval(getMaxBubbleInterval() - 1);
+				setMaxBubbleInterval(getMaxBubbleInterval() - 5);
 			}
 			difficultyTimer = DIFFICULTY_INCREASE_INTERVAL;
 		}
+		// Increase difficulty
 		else difficultyTimer--;
 	}
 	

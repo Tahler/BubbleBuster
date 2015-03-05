@@ -40,6 +40,7 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Key
 		paused = false;
 		setMinBubbleInterval(50);
 		setMaxBubbleInterval(100);
+		Bubble.resetDifficulty();
 		
 		addKeyListener(this);
 		bubbles = new ArrayList<Bubble>();
@@ -105,7 +106,7 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Key
 			bubbles.add(bubble);
 			frame.addMouseListener(bubble); // Adding the MouseListener to this JPanel would overwrite the GUI's MouseListener (which manages the cursor)
 		}
-		else bubbleInterval--;	
+		else bubbleInterval--;
 	}
 
 	public void togglePause() {

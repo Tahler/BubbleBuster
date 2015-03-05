@@ -13,10 +13,10 @@ import javax.swing.JComponent;
 @SuppressWarnings("serial")
 public class Bubble extends JComponent implements MouseListener {
 	public static final int POINTS = 10;
-	public static int minDiameter = 50;
-	public static int maxDiameter = 400;
-	public static int minSpeed = 3;
-	public static int maxSpeed = 8;
+	public static int minDiameter;
+	public static int maxDiameter;
+	public static int minSpeed;
+	public static int maxSpeed;
 	
 	private ImageIcon img = new ImageIcon(Preferences.skinFolderLocation + "/images/bubble.png");
 	private int x, y;
@@ -38,10 +38,23 @@ public class Bubble extends JComponent implements MouseListener {
 		img.setImage(img.getImage().getScaledInstance(diameter, diameter, Image.SCALE_SMOOTH));
 	}
 	
+	public static void resetDifficulty() {
+		minDiameter = 50;
+		maxDiameter = 400;
+		minSpeed = 3;
+		maxSpeed = 8;
+	}
+	public static void increaseDifficulty() {
+		if (minSpeed < maxSpeed - 1) minSpeed++;
+		else maxSpeed++;
+		
+		if (maxDiameter > minDiameter) maxDiameter--;
+		else minDiameter--;
+	}
+	
 	@Override
 	protected void paintComponent(Graphics g) {
 		g.drawImage(img.getImage(), x, y, null);
-//		g.fillOval(x, y, diameter, diameter); // Just a white circle instead
 		move();
 	}
 	
