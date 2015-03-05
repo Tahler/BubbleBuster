@@ -1,5 +1,6 @@
 package edu.neumont.csc150.bubblebuster;
 
+import java.awt.Cursor;
 import java.awt.Frame;
 import java.awt.Toolkit;
 
@@ -20,6 +21,8 @@ public class GUI extends JFrame {
 		HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().height;
 		initializeFrame();
 		switchTo(new MainMenuPanel(this));
+		
+		setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
 		
 		if (Preferences.musicEnabled) Sound.getInstance().startMusic();
 	}
