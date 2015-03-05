@@ -1,7 +1,6 @@
 package edu.neumont.csc150.bubblebuster;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
@@ -13,7 +12,6 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -26,15 +24,15 @@ public class PausePanel extends JPanel {
 	private final JLabel title = new JLabel("Paused");
 	private MusicButton musicButton;
 	private SoundButton	effectsButton;
-	private ImageIcon background = new ImageIcon(Preferences.ambianceFolderLocation + "/background.jpg");
+	private Image background;
 	
-	public PausePanel(GUI frame) {
+	public PausePanel(GUI frame, Image background) {
 		this.frame = frame;
 		
 		initializeButtons();
 		addComponents();
 		
-		background.setImage(background.getImage().getScaledInstance(GUI.WIDTH, GUI.HEIGHT, Image.SCALE_SMOOTH));
+		this.background = background;
 		
 		addMouseListener(new MouseListener() {
 			public void mouseReleased(MouseEvent e) {}
@@ -118,6 +116,6 @@ public class PausePanel extends JPanel {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.drawImage(background.getImage(), 0, 0, null);
+		g.drawImage(background, 0, 0, null);
 	}
 }

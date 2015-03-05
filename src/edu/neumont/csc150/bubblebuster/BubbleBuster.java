@@ -8,8 +8,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -25,7 +23,7 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Key
 	public static final int MAXIMUM_BUBBLE_INTERVAL = 100;
 	protected static final int STRING_PADDING = 30;
 	protected GUI frame;
-	private ImageIcon background = new ImageIcon(Preferences.ambianceFolderLocation + "/background.jpg");
+	private ImageIcon background;
 	private int bubbleInterval;
 	private int score;
 	private Timer timer;
@@ -36,8 +34,6 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Key
 	
 	public BubbleBuster(GUI frame) {
 		this.frame = frame;
-		
-		background.setImage(background.getImage().getScaledInstance(GUI.WIDTH, GUI.HEIGHT, Image.SCALE_SMOOTH));
 		
 		score = 0;
 		coinsEarned = 0;
@@ -51,6 +47,9 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Key
 		watch.start();
 		timer = new Timer(20, this);
 		timer.start();
+		
+		background = new ImageIcon(Preferences.ambianceFolderLocation + "/background.jpg");
+		background.setImage(background.getImage().getScaledInstance(GUI.WIDTH, GUI.HEIGHT, Image.SCALE_SMOOTH));
 	}
 	
 	@Override
@@ -92,7 +91,7 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Key
 	public void keyReleased(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
 			togglePause();
-			frame.switchTo(new PausePanel(frame));
+			frame.switchTo(new PausePanel(frame, background.getImage()));
 		}
 	}
 	
