@@ -37,9 +37,9 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Mou
 		coinsEarned = 0;
 		paused = false;
 		bubbles = new ArrayList<Bubble>();
-		System.out.println(isFocusable());
-		addMouseListener(this);
+		
 		addKeyListener(this);
+		
 		waitOrAddBubble();
 		
 		watch = new StopWatch();
@@ -51,7 +51,7 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Mou
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		
+
 		g.setColor(Color.WHITE);
 		g.setFont(new Font("SansSerif", Font.BOLD, 24));
 		g.drawString(getScore() + "", GUI.WIDTH - (int) g.getFontMetrics().getStringBounds(getScore() + "", g).getWidth() - STRING_PADDING, STRING_PADDING);
@@ -59,6 +59,7 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Mou
 		int tempSize = bubbles.size();
 		for (int i = 0; i < tempSize; i++) {
 			if (bubbles.get(i).isPopped()) {
+				addScore(Bubble.POINTS);
 				bubbles.remove(i);
 				tempSize--;
 			}
@@ -70,23 +71,11 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Mou
 				tempSize--;
 			}
 			else bubbles.get(i).paintComponent(g);
+			
+			requestFocusInWindow(); // Kinda sucks
 		}
 	}
-	
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		requestFocusInWindow(); // TODO: BUG ARISES HERE, CANNOT PAUSE UNTIL CLICKING
-		System.out.print("Click");
-		for (Bubble bubble : bubbles) {
-			if (bubble.isInside(e.getLocationOnScreen())) {
-				System.out.print(" Pop");
-				bubble.pop();
-				addScore(Bubble.POINTS);
-			}
-		}
-		System.out.println();
-	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		waitOrAddBubble();
@@ -104,7 +93,9 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Mou
 	private void waitOrAddBubble() {
 		if (bubbleInterval == 0) {
 			bubbleInterval = new Random().nextInt(MAXIMUM_BUBBLE_INTERVAL - MINIMUM_BUBBLE_INTERVAL) + MINIMUM_BUBBLE_INTERVAL;
-			bubbles.add(new Bubble());
+			Bubble bubble = new Bubble();
+			bubbles.add(bubble);
+			addMouseListener(bubble);
 		}
 		else bubbleInterval--;	
 	}
@@ -131,8 +122,4 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Mou
 
 	public void keyPressed(KeyEvent e) {}
 	public void keyTyped(KeyEvent e) {}
-	public void mouseEntered(MouseEvent e) {}
-	public void mouseExited(MouseEvent e) {}
-	public void mousePressed(MouseEvent e) {}
-	public void mouseReleased(MouseEvent e) {}
 }

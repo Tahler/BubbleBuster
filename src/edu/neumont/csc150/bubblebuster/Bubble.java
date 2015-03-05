@@ -2,17 +2,21 @@ package edu.neumont.csc150.bubblebuster;
 
 import java.awt.Graphics;
 import java.awt.Point;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Random;
 
+import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 
 @SuppressWarnings("serial")
-public class Bubble extends JComponent {
+public class Bubble extends JComponent implements MouseListener {
 	public static final int MINIMUM_DIAMETER = 50;
 	public static final int MAXIMUM_DIAMETER = 400;
 	public static final int MINIMUM_SPEED = 3;
 	public static final int MAXIMUM_SPEED = 8;
 	public static final int POINTS = 10;
+	private ImageIcon img = new ImageIcon(Preferences.skinFolderLocation + "/bubble.png");
 	private int x, y;
 	private int diameter;
 	private int speed;
@@ -22,6 +26,7 @@ public class Bubble extends JComponent {
 	public Bubble() {
 		popped = false;
 		Random rand = new Random();
+		setFocusable(false);
 		setDiameter(rand.nextInt(MAXIMUM_DIAMETER - MINIMUM_DIAMETER) + MINIMUM_DIAMETER);
 		setSpeed(rand.nextInt(MAXIMUM_SPEED - MINIMUM_SPEED) + MINIMUM_SPEED);
 		setX(rand.nextInt(GUI.WIDTH - diameter));
@@ -44,10 +49,6 @@ public class Bubble extends JComponent {
 	}
 	
 	public void move() {
-//		if (y + diameter < 0) {
-//			popped = true;
-////			remove a life;
-//		}
 		y -= speed;
 	}
 	
@@ -86,5 +87,28 @@ public class Bubble extends JComponent {
 	}
 	public void setSpeed(int speed) {
 		this.speed = speed;
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent arg0) {
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		if (isInside(e.getLocationOnScreen())) {
+			pop();
+		}
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
 	}
 }
