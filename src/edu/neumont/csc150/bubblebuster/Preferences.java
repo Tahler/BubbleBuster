@@ -13,14 +13,13 @@ public abstract class Preferences implements Serializable {
 	
 	private static final Properties properties = new Properties(); // TODO: consider setting up a default properties file
 	public static boolean musicEnabled, soundFXEnabled;
-	public static String skinFolderLocation, ambianceFolderLocation, cursorImageFile;
+	public static String skinFolderLocation, ambianceFolderLocation;
 	
 	public static void save() {
 		properties.setProperty("MusicEnabled", musicEnabled + "");
 		properties.setProperty("SoundFXEnabled", soundFXEnabled + "");
 		properties.setProperty("SkinFolderLocation", skinFolderLocation + "");
 		properties.setProperty("AmbianceFolderLocation", ambianceFolderLocation + "");
-		properties.setProperty("CursorImageLocation", cursorImageFile + "");
 		
 		try {
 			properties.store(new FileWriter(new File("bubblebuster.properties")), "");
@@ -41,14 +40,12 @@ public abstract class Preferences implements Serializable {
 			soundFXEnabled = Boolean.parseBoolean(properties.getProperty("SoundFXEnabled"));
 			skinFolderLocation = properties.getProperty("SkinFolderLocation");
 			ambianceFolderLocation = properties.getProperty("AmbianceFolderLocation");
-			cursorImageFile = properties.getProperty("CursorImageLocation");
 		}
 		catch (IOException e) {
 			Preferences.musicEnabled = true;
 			Preferences.soundFXEnabled = true;
 			Preferences.skinFolderLocation = "resources/skins/default";
 			Preferences.ambianceFolderLocation = "resources/ambiance/default";
-			Preferences.cursorImageFile = "";
 			Preferences.save();
 		}
 	}
@@ -58,6 +55,5 @@ public abstract class Preferences implements Serializable {
 		System.out.println(musicEnabled);
 		System.out.println(skinFolderLocation);
 		System.out.println(ambianceFolderLocation);
-		System.out.println(cursorImageFile);
 	}
 }
