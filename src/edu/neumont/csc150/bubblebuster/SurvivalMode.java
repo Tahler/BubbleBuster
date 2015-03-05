@@ -21,7 +21,7 @@ public class SurvivalMode extends BubbleBuster {
 		
 		waitOrIncreaseDifficulty();
 		
-		String time = watch.toString().substring(2, watch.toString().length() - 2);
+		String time = Time.format(watch.getTime());
 		g.drawString(time, GUI.WIDTH - (int) g.getFontMetrics().getStringBounds(time, g).getWidth() - STRING_PADDING, STRING_PADDING * 2);
 //		g.drawString(getLives() + "", GUI.WIDTH - (int) g.getFontMetrics().getStringBounds(getLives() + "", g).getWidth() - STRING_PADDING, STRING_PADDING * 3);
 	}
