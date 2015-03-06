@@ -18,14 +18,14 @@ public class PausePanel extends JPanel {
 	private GUI frame;
 	private BubbleButton resumeButton, menuButton;
 	private JPanel panel1, panel2;
-	private final JLabel title = new JLabel("Paused");
+	private final JLabel title;
 	private MusicButton musicButton;
 	private SoundButton	effectsButton;
 	private Image background;
 	
 	public PausePanel(GUI frame, Image background) {
 		this.frame = frame;
-		
+		title = new JLabel("Paused"); // TODO: make an image
 		initializeButtons();
 		addComponents();
 		
@@ -60,15 +60,13 @@ public class PausePanel extends JPanel {
 		setLayout(new BorderLayout());
 		
 		panel1 = new JPanel(new GridBagLayout());
-//		panel1.setBackground(new Color(0, 195, 217));
 		panel1.setOpaque(false);
 		
 		GridBagConstraints c = new GridBagConstraints();
 		
 		c.anchor = GridBagConstraints.CENTER;
 		
-		title.setFont(new Font("SansSerif", Font.BOLD, 30));
-		c.fill = GridBagConstraints.HORIZONTAL;
+		title.setFont(new Font("SansSerif", Font.BOLD, 64));
 		c.gridx = 0;
 		c.gridy = 0;
 		panel1.add(title, c);
@@ -84,7 +82,6 @@ public class PausePanel extends JPanel {
 		panel1.add(menuButton, c);
 		
 		panel2 = new JPanel();
-//		panel2.setBackground(new Color(0, 195, 217));
 		panel2.setOpaque(false);
 		
 		panel2.add(musicButton);
