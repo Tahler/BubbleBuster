@@ -15,21 +15,21 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class MainMenuPanel extends JPanel {
 	private GUI frame;
-	private final JLabel title = new JLabel("Bubble Buster!", JLabel.CENTER);
+	private JLabel title;
 	private JPanel buttonPanel, soundPanel;
-	
 	private BubbleButton survivalButton, timeTrialButton, shopButton, statisticsButton, tutorialButton, quitButton;
 	private MusicButton musicButton;
 	private SoundButton	effectsButton;
 	
 	public MainMenuPanel(GUI frame) {
 		this.frame = frame;
-		title.setForeground(Color.WHITE);
 		initializeComponents();
 		addComponents();
 		addListeners();
 	}
 	private void initializeComponents() {
+		title = new JLabel(new ImageIcon("images\\title.png"), JLabel.CENTER);
+		
 		survivalButton = new BubbleButton("Survival Mode");
 		timeTrialButton = new BubbleButton("Time Trial Mode");
 		shopButton = new BubbleButton("Shop");
@@ -49,11 +49,6 @@ public class MainMenuPanel extends JPanel {
 		
 		c.anchor = GridBagConstraints.CENTER;
 		
-		title.setFont(new Font("SansSerif", Font.BOLD, 30));
-		title.setAlignmentX(CENTER_ALIGNMENT);
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.weightx = 0;
-		c.weighty = 0;
 		c.gridx = 0;
 		c.gridy = 0;
 		buttonPanel.add(title, c);
@@ -68,22 +63,18 @@ public class MainMenuPanel extends JPanel {
 		c.gridy = 3;
 		buttonPanel.add(timeTrialButton, c);
 		
-//		c.insets = new Insets(10, 0, 0, 0);
 		c.gridx = 0;
 		c.gridy = 4;
 		buttonPanel.add(shopButton, c);
 
-//		c.insets = new Insets(10, 0, 0, 0);
 		c.gridx = 0;
 		c.gridy = 5;
 		buttonPanel.add(statisticsButton, c);
 		
-//		c.insets = new Insets(10, 0, 0, 0);
 		c.gridx = 0;
 		c.gridy = 6;
 		buttonPanel.add(tutorialButton, c);
-		
-//		c.insets = new Insets(10, 0, 0, 0);
+
 		c.gridx = 0;
 		c.gridy = 7;
 		buttonPanel.add(quitButton, c);
