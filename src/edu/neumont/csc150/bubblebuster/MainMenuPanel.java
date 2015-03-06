@@ -25,11 +25,11 @@ public class MainMenuPanel extends JPanel {
 	public MainMenuPanel(GUI frame) {
 		this.frame = frame;
 		title.setForeground(Color.WHITE);
-		initializeButtons();
+		initializeComponents();
 		addComponents();
 		addListeners();
 	}
-	private void initializeButtons() {
+	private void initializeComponents() {
 		survivalButton = new BubbleButton("Survival Mode");
 		timeTrialButton = new BubbleButton("Time Trial Mode");
 		shopButton = new BubbleButton("Shop");

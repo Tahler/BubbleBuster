@@ -17,7 +17,7 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class PausePanel extends JPanel {
 	private GUI frame;
-	private JButton resumeButton, menuButton;
+	private BubbleButton resumeButton, menuButton;
 	private JPanel panel1, panel2;
 	private final JLabel title = new JLabel("Paused");
 	private MusicButton musicButton;

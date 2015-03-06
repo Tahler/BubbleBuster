@@ -6,7 +6,6 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -21,7 +20,7 @@ public class StatisticsPanel extends JPanel {
 	private JLabel totalPointsAllTime, totalCoinsAllTime, totalPlaytime,
 		survivalHighScore, survivalGamesPlayed, survivalLongestTime,
 		timeTrialHighScore, timeTrialGamesPlayed, timeTrialMostBubbles;
-	private JButton menuButton;
+	private BubbleButton menuButton;
 
 	public StatisticsPanel(GUI frame) {
 		this.frame = frame;

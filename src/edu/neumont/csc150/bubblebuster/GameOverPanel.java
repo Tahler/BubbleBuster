@@ -16,7 +16,7 @@ public abstract class GameOverPanel extends JPanel {
 	protected JLabel titleLabel, col1Label, col2Label, pointsLabel, pointsEarnedLabel, pointsRecordLabel,
 		coinsLabel, coinsEarnedLabel, coinsRecordLabel,
 		currentCoinsLabel, balanceLabel;
-	protected JButton playAgainButton, menuButton;
+	protected BubbleButton playAgainButton, menuButton;
 	private Image background;
 	
 	// TODO: USE GRIDBAGLAYOUT

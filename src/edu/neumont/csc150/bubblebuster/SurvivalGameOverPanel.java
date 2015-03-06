@@ -62,9 +62,9 @@ public class SurvivalGameOverPanel extends GameOverPanel {
 	}
 	protected void addActionListeners() {
 		super.addActionListeners();
-		playAgainButton.addActionListener(e -> {
-			frame.gamePanel = new SurvivalMode(frame);
-			frame.switchTo(frame.gamePanel);
-		});
+//		playAgainButton.addActionListener(e -> {
+//			frame.gamePanel = new SurvivalMode(frame);
+//			frame.switchTo(frame.gamePanel);
+//		});
 	}
 }
