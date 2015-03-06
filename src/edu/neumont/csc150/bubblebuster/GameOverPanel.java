@@ -40,7 +40,7 @@ public abstract class GameOverPanel extends JPanel {
 	}
 	private void initializeComponents(int score) {
 		titleLabel = new JLabel("Game Over", JLabel.CENTER);
-		titleLabel.setFont(new Font("Arial", Font.BOLD, 36));
+		titleLabel.setFont(new Font("Arial", Font.BOLD, 64));
 		
 		col1Label = new JLabel("This Run", JLabel.CENTER);
 		col2Label = new JLabel("Record", JLabel.CENTER);

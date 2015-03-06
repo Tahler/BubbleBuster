@@ -32,7 +32,7 @@ public class MainMenuPanel extends JPanel {
 		timeTrialButton = new BubbleButton("Time Trial Mode");
 		shopButton = new BubbleButton("Shop");
 		statisticsButton = new BubbleButton("Statistics");
-		tutorialButton = new BubbleButton("Tutorial");
+//		tutorialButton = new BubbleButton("Tutorial");
 		quitButton = new BubbleButton("Quit");
 		
 		musicButton = new MusicButton();
@@ -69,9 +69,9 @@ public class MainMenuPanel extends JPanel {
 		c.gridy = 5;
 		buttonPanel.add(statisticsButton, c);
 		
-		c.gridx = 0;
-		c.gridy = 6;
-		buttonPanel.add(tutorialButton, c);
+//		c.gridx = 0;
+//		c.gridy = 6;
+//		buttonPanel.add(tutorialButton, c);
 
 		c.gridx = 0;
 		c.gridy = 7;
