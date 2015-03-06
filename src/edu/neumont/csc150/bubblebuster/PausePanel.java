@@ -9,8 +9,6 @@ import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -46,7 +44,6 @@ public class PausePanel extends JPanel {
 		
 		setVisible(true);
 	}
-	
 	private void initializeButtons() {
 		resumeButton = new BubbleButton("Resume");
 		menuButton = new BubbleButton("Main Menu");

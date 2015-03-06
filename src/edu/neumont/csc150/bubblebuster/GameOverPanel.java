@@ -1,6 +1,5 @@
 package edu.neumont.csc150.bubblebuster;
 
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridLayout;
@@ -25,9 +24,10 @@ public abstract class GameOverPanel extends JPanel {
 		this.frame = frame;
 		this.background = background;
 		updateStatistics(score, time);
-		setBackground(new Color(0, 195, 217));
+		
 		initializeComponents(score);
 		addActionListeners();
+		
 		GridLayout grid = new GridLayout(10, 4);
 		setLayout(grid);
 	}
