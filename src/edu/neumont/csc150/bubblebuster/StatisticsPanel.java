@@ -104,91 +104,113 @@ public class StatisticsPanel extends JPanel {
 		c.insets = new Insets(20, 0, 20, 0);
 		add(general, c);
 		
+		c.anchor = GridBagConstraints.LINE_START;
 		c.gridx = 0;
 		c.gridy = 2;
 		c.gridwidth = 1;
-		c.insets = new Insets(0, 0, 10, 10);
+		c.insets = new Insets(0, 0, 10, 0);
 		add(totalPointsAllTimeLabel, c);
-
+		
+		c.anchor = GridBagConstraints.LINE_END;
 		c.gridx = 1;
 		add(totalPointsAllTime, c);
-
+		
+		c.anchor = GridBagConstraints.LINE_START;
 		c.gridx = 0;
 		c.gridy = 3;
 		add(totalCoinsAllTimeLabel, c);
-
+		
+		c.anchor = GridBagConstraints.LINE_END;
 		c.gridx = 1;
 		add(totalCoinsAllTime, c);
-
+		
+		c.anchor = GridBagConstraints.LINE_START;
 		c.gridx = 0;
 		c.gridy = 4;
 		add(totalPlaytimeLabel, c);
-
+		
+		c.anchor = GridBagConstraints.LINE_END;
 		c.gridx = 1;
 		add(totalPlaytime, c);
-
+		
+		c.anchor = GridBagConstraints.CENTER;
 		c.gridx = 0;
 		c.gridy = 5;
 		c.gridwidth = 2;
 		c.insets = new Insets(20, 0, 20, 0);
 		add(survival, c);
 
+		c.anchor = GridBagConstraints.LINE_START;
 		c.gridx = 0;
 		c.gridy = 6;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 0, 10, 10);
 		add(survivalHighScoreLabel, c);
 
+		c.anchor = GridBagConstraints.LINE_END;
 		c.gridx = 1;
 		add(survivalHighScore, c);
 
+		c.anchor = GridBagConstraints.LINE_START;
 		c.gridx = 0;
 		c.gridy = 7;
 		add(survivalGamesPlayedLabel, c);
 
+		c.anchor = GridBagConstraints.LINE_END;
 		c.gridx = 1;
 		add(survivalGamesPlayed, c);
 
+		c.anchor = GridBagConstraints.LINE_START;
 		c.gridx = 0;
 		c.gridy = 8;
 		add(survivalLongestTimeLabel, c);
 
+		c.anchor = GridBagConstraints.LINE_END;
 		c.gridx = 1;
 		add(survivalLongestTime, c);
 
+		c.anchor = GridBagConstraints.CENTER;
 		c.gridx = 0;
 		c.gridy = 9;
 		c.gridwidth = 2;
 		c.insets = new Insets(20, 0, 20, 0);
 		add(timeTrial, c);
 
+		c.anchor = GridBagConstraints.LINE_START;
 		c.gridx = 0;
 		c.gridy = 10;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 0, 10, 10);
 		add(timeTrialHighScoreLabel, c);
 
+		c.anchor = GridBagConstraints.LINE_END;
 		c.gridx = 1;
 		c.gridy = 10;
 		add(timeTrialHighScore, c);
 
+		c.anchor = GridBagConstraints.LINE_START;
 		c.gridx = 0;
 		c.gridy = 11;
 		add(timeTrialGamesPlayedLabel, c);
 
+		c.anchor = GridBagConstraints.LINE_END;
 		c.gridx = 1;
 		add(timeTrialGamesPlayed, c);
 
+		c.anchor = GridBagConstraints.LINE_START;
 		c.gridx = 0;
 		c.gridy = 12;
 		add(timeTrialMostBubblesLabel, c);
 
+		c.anchor = GridBagConstraints.LINE_END;
 		c.gridx = 1;
 		add(timeTrialMostBubbles, c);
 
+		c.anchor = GridBagConstraints.CENTER;
 		c.gridx = 0;
 		c.gridy = 13;
 		c.gridwidth = 2;
+		c.insets = new Insets(40, 0, 0, 0);
 		add(menuButton, c);
 	}
 }

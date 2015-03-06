@@ -50,7 +50,6 @@ public abstract class GameOverPanel extends JPanel {
 		coinsLabel = new JLabel("Coins: ", JLabel.RIGHT);
 		coinsEarnedLabel = new JLabel((score / 10) + "", JLabel.CENTER);
 		coinsRecordLabel = new JLabel("", JLabel.CENTER);
-//		coinsRecordLabel = new JLabel(Statistics.)
 		currentCoinsLabel = new JLabel("Your coins: ", JLabel.RIGHT);
 		balanceLabel = new JLabel(Statistics.walletCoins + "", JLabel.CENTER);
 		
@@ -66,10 +65,6 @@ public abstract class GameOverPanel extends JPanel {
 		coinsEarnedLabel.setFont(contentFont);
 		balanceLabel.setFont(contentFont);
 		
-//		playAgainButton = new JButton(new ImageIcon(Toolkit.getDefaultToolkit().getImage("images\\button.png")));
-//		playAgainButton.setBackground(null);
-//		playAgainButton.setBorder(null);
-//		playAgainButton.setText("Play Again");
 		playAgainButton = new BubbleButton("Play Again");
 		menuButton = new BubbleButton("Back to Menu");
 	}

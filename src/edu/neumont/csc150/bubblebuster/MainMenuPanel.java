@@ -43,8 +43,8 @@ public class MainMenuPanel extends JPanel {
 		
 		buttonPanel = new JPanel(new GridBagLayout());
 		buttonPanel.setOpaque(false);
-		GridBagConstraints c = new GridBagConstraints();
 		
+		GridBagConstraints c = new GridBagConstraints();
 		c.anchor = GridBagConstraints.CENTER;
 		
 		c.gridx = 0;
