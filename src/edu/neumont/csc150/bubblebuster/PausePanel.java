@@ -34,16 +34,6 @@ public class PausePanel extends JPanel {
 		
 		this.background = background;
 		
-		addMouseListener(new MouseListener() {
-			public void mouseReleased(MouseEvent e) {}
-			public void mousePressed(MouseEvent e) {}
-			public void mouseExited(MouseEvent e) {}
-			public void mouseEntered(MouseEvent e) {}
-			public void mouseClicked(MouseEvent e) {
-				requestFocusInWindow();
-			}
-		});
-		
 		addKeyListener(new KeyListener() {
 			public void keyReleased(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
