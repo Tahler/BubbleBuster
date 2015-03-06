@@ -15,9 +15,9 @@ import javax.swing.JComponent;
 
 @SuppressWarnings("serial")
 public class BubbleButton extends JComponent implements MouseListener, ActionListener {
-	public static final ImageIcon IMG = new ImageIcon("images\\buttonShadow.png");
-	public static final ImageIcon HOVER = new ImageIcon("images\\buttonGlow.png");
-	public static final ImageIcon PRESSED = new ImageIcon("images\\buttonPressed.png");
+	public static final ImageIcon IMG = new ImageIcon("resources/buttonShadow.png");
+	public static final ImageIcon HOVER = new ImageIcon("resources/buttonGlow.png");
+	public static final ImageIcon PRESSED = new ImageIcon("resources/buttonPressed.png");
 	private Image currentImage;
 	private ActionListener actionListener = null;
 	private String text;

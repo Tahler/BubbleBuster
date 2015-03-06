@@ -27,7 +27,7 @@ public class StatisticsPanel extends JPanel {
 
 	public StatisticsPanel(GUI frame) {
 		this.frame = frame;
-		background = new ImageIcon("images/blue.jpg");
+		background = new ImageIcon("resources/blue.jpg");
 		setOpaque(false);
 		initializeComponents();
 		addComponents();

@@ -23,13 +23,13 @@ public class MainMenuPanel extends JPanel {
 	
 	public MainMenuPanel(GUI frame) {
 		this.frame = frame;
-		background = new ImageIcon("images/blue.jpg");
+		background = new ImageIcon("resources/blue.jpg");
 		initializeComponents();
 		addComponents();
 		addListeners();
 	}
 	private void initializeComponents() {
-		title = new JLabel(new ImageIcon("images\\title.png"), JLabel.CENTER);
+		title = new JLabel(new ImageIcon("resources/title.png"), JLabel.CENTER);
 		
 		survivalButton = new BubbleButton("Survival Mode");
 		timeTrialButton = new BubbleButton("Time Trial Mode");

@@ -5,8 +5,8 @@ import javax.swing.JButton;
 
 @SuppressWarnings("serial")
 public class SoundButton extends JButton {
-	private final ImageIcon effectsButtonImage = new ImageIcon("images/soundFX.png");
-	private final ImageIcon effectsButtonImageX = new ImageIcon("images/soundFXx.png");
+	private final ImageIcon effectsButtonImage = new ImageIcon("resources/soundFX.png");
+	private final ImageIcon effectsButtonImageX = new ImageIcon("resources/soundFXx.png");
 	
 	public SoundButton() {
 		super();

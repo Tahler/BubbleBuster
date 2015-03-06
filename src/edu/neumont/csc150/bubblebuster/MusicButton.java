@@ -5,8 +5,8 @@ import javax.swing.JButton;
 
 @SuppressWarnings("serial")
 public class MusicButton extends JButton {
-	private final ImageIcon musicButtonImage = new ImageIcon("images/music.png");
-	private final ImageIcon musicButtonImageX = new ImageIcon("images/musicx.png");
+	private final ImageIcon musicButtonImage = new ImageIcon("resources/music.png");
+	private final ImageIcon musicButtonImageX = new ImageIcon("resources/musicx.png");
 	
 	public MusicButton() {
 		super();

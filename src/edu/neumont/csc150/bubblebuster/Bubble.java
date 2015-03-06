@@ -18,7 +18,7 @@ public class Bubble extends JComponent implements MouseListener {
 	public static int minSpeed;
 	public static int maxSpeed;
 	
-	private ImageIcon img = new ImageIcon(Preferences.skinFolderLocation + "/images/bubble.png");
+	private ImageIcon img = new ImageIcon(Preferences.skinFolderLocation + "/bubble.png");
 	private int x, y;
 	private int diameter;
 	private int speed;
