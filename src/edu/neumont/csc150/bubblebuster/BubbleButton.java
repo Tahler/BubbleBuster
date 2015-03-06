@@ -1,5 +1,6 @@
 package edu.neumont.csc150.bubblebuster;
 
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -14,8 +15,9 @@ import javax.swing.JComponent;
 
 @SuppressWarnings("serial")
 public class BubbleButton extends JComponent implements MouseListener, ActionListener {
-	public static final ImageIcon IMG = new ImageIcon("images\\button.png");
+	public static final ImageIcon IMG = new ImageIcon("images\\buttonShadow.png");
 	public static final ImageIcon HOVER = new ImageIcon("images\\buttonGlow.png");
+	public static final ImageIcon PRESSED = new ImageIcon("images\\buttonPressed.png");
 	private Image currentImage;
 	private ActionListener actionListener = null;
 	private String text;
@@ -25,6 +27,7 @@ public class BubbleButton extends JComponent implements MouseListener, ActionLis
 	}
 	public BubbleButton(String text) {
 		setText(text);
+		setPreferredSize(new Dimension(IMG.getIconWidth(), IMG.getIconHeight()));
 		setImage(IMG.getImage());
 		addMouseListener(this);
 	}
@@ -65,23 +68,29 @@ public class BubbleButton extends JComponent implements MouseListener, ActionLis
 	}
 	
 	@Override
-	public void mouseClicked(MouseEvent e) {
-		actionPerformed(new ActionEvent(e, 123, "BubbleButton Click"));
-	}
-	@Override
 	public void mouseEntered(MouseEvent e) {
 		setImage(HOVER.getImage());
 		repaint();
+	}
+	public void mousePressed(MouseEvent e) {
+		setImage(PRESSED.getImage());
+		repaint();
+	}
+	public void mouseReleased(MouseEvent e) {
+		repaint();
+		if ((e.getLocationOnScreen().getX() > this.getX() && e.getLocationOnScreen().getX() < this.getX() + this.getWidth()) && 
+			(e.getLocationOnScreen().getY() > this.getY() && e.getLocationOnScreen().getY() < this.getY() + this.getHeight())) {
+			actionPerformed(new ActionEvent(e, 123, "BubbleButton Click"));
+			setImage(HOVER.getImage());
+		}
+		else {
+			setImage(IMG.getImage());
+		}
 	}
 	@Override
 	public void mouseExited(MouseEvent e) {
 		setImage(IMG.getImage());
 		repaint();
 	}
-	@Override
-	public void mousePressed(MouseEvent e) {
-	}
-	@Override
-	public void mouseReleased(MouseEvent e) {
-	}
+	public void mouseClicked(MouseEvent e) {}
 }

@@ -6,7 +6,6 @@ import java.awt.GridLayout;
 import java.awt.Image;
 
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 

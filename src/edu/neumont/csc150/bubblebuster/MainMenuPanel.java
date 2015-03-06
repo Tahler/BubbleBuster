@@ -58,42 +58,35 @@ public class MainMenuPanel extends JPanel {
 		c.gridy = 0;
 		buttonPanel.add(title, c);
 		
-		System.out.println(BubbleButton.IMG.getIconWidth());
-		c.ipadx = BubbleButton.IMG.getIconWidth();
-		System.out.println(c.ipadx);
-		
-		c.ipady = BubbleButton.IMG.getIconHeight();
 		c.insets = new Insets(40, 0, 0, 0);
 		c.gridx = 0;
 		c.gridy = 2;
 		buttonPanel.add(survivalButton, c);
 		
-		c.insets = new Insets(10, 0, 0, 0);
+		c.insets = new Insets(0, 0, 0, 0);
 		c.gridx = 0;
 		c.gridy = 3;
 		buttonPanel.add(timeTrialButton, c);
 		
-		c.insets = new Insets(10, 0, 0, 0);
+//		c.insets = new Insets(10, 0, 0, 0);
 		c.gridx = 0;
 		c.gridy = 4;
 		buttonPanel.add(shopButton, c);
 
-		c.insets = new Insets(10, 0, 0, 0);
+//		c.insets = new Insets(10, 0, 0, 0);
 		c.gridx = 0;
 		c.gridy = 5;
 		buttonPanel.add(statisticsButton, c);
 		
-		c.insets = new Insets(10, 0, 0, 0);
+//		c.insets = new Insets(10, 0, 0, 0);
 		c.gridx = 0;
 		c.gridy = 6;
 		buttonPanel.add(tutorialButton, c);
 		
-		c.insets = new Insets(10, 0, 0, 0);
+//		c.insets = new Insets(10, 0, 0, 0);
 		c.gridx = 0;
 		c.gridy = 7;
 		buttonPanel.add(quitButton, c);
-		
-		System.out.println(c.ipadx);
 		
 		soundPanel = new JPanel();
 		soundPanel.setOpaque(false);
