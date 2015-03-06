@@ -2,10 +2,12 @@ package edu.neumont.csc150.bubblebuster;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -21,17 +23,17 @@ public class StatisticsPanel extends JPanel {
 		survivalHighScore, survivalGamesPlayed, survivalLongestTime,
 		timeTrialHighScore, timeTrialGamesPlayed, timeTrialMostBubbles;
 	private BubbleButton menuButton;
+	private ImageIcon background;
 
 	public StatisticsPanel(GUI frame) {
 		this.frame = frame;
-		setBackground(new Color(0, 195, 217));
+		background = new ImageIcon("images/blue.jpg");
+		setOpaque(false);
 		initializeComponents();
 		addComponents();
 	}
-
 	private void initializeComponents() {
 		title = new JLabel("Statistics", JLabel.CENTER);
-		title.setFont(new Font("Arial", Font.BOLD, 36));
 		
 		general = new JLabel("General", JLabel.CENTER);
 		totalPointsAllTimeLabel = new JLabel("Total Points Earned", JLabel.LEFT);
@@ -65,27 +67,50 @@ public class StatisticsPanel extends JPanel {
 		Font headerFont = new Font("Arial", Font.BOLD, 24);
 		Font contentFont = new Font("Arial", Font.PLAIN, 18);
 		
+		title.setFont(new Font("Arial", Font.BOLD, 36));
+		title.setForeground(Color.WHITE);
 		general.setFont(headerFont);
+		general.setForeground(Color.WHITE);
 		totalPointsAllTimeLabel.setFont(contentFont);
+		totalPointsAllTimeLabel.setForeground(Color.WHITE);
 		totalPointsAllTime.setFont(contentFont);
+		totalPointsAllTime.setForeground(Color.WHITE);
 		totalCoinsAllTimeLabel.setFont(contentFont);
+		totalCoinsAllTimeLabel.setForeground(Color.WHITE);
 		totalCoinsAllTime.setFont(contentFont);
+		totalCoinsAllTime.setForeground(Color.WHITE);
 		totalPlaytimeLabel.setFont(contentFont);
+		totalPlaytimeLabel.setForeground(Color.WHITE);
 		totalPlaytime.setFont(contentFont);
+		totalPlaytime.setForeground(Color.WHITE);
 		survival.setFont(headerFont);
+		survival.setForeground(Color.WHITE);
 		survivalHighScoreLabel.setFont(contentFont);
+		survivalHighScoreLabel.setForeground(Color.WHITE);
 		survivalHighScore.setFont(contentFont);
+		survivalHighScore.setForeground(Color.WHITE);
 		survivalGamesPlayedLabel.setFont(contentFont);
+		survivalGamesPlayedLabel.setForeground(Color.WHITE);
 		survivalGamesPlayed.setFont(contentFont);
+		survivalGamesPlayed.setForeground(Color.WHITE);
 		survivalLongestTimeLabel.setFont(contentFont);
+		survivalLongestTimeLabel.setForeground(Color.WHITE);
 		survivalLongestTime.setFont(contentFont);
+		survivalLongestTime.setForeground(Color.WHITE);
 		timeTrial.setFont(headerFont);
+		timeTrial.setForeground(Color.WHITE);
 		timeTrialHighScoreLabel.setFont(contentFont);
+		timeTrialHighScoreLabel.setForeground(Color.WHITE);
 		timeTrialHighScore.setFont(contentFont);
+		timeTrialHighScore.setForeground(Color.WHITE);
 		timeTrialGamesPlayedLabel.setFont(contentFont);
+		timeTrialGamesPlayedLabel.setForeground(Color.WHITE);
 		timeTrialGamesPlayed.setFont(contentFont);
+		timeTrialGamesPlayed.setForeground(Color.WHITE);
 		timeTrialMostBubblesLabel.setFont(contentFont);
+		timeTrialMostBubblesLabel.setForeground(Color.WHITE);
 		timeTrialMostBubbles.setFont(contentFont);
+		timeTrialMostBubbles.setForeground(Color.WHITE);
 	}
 	private void addComponents() {
 		setLayout(new GridBagLayout());
@@ -212,5 +237,12 @@ public class StatisticsPanel extends JPanel {
 		c.gridwidth = 2;
 		c.insets = new Insets(40, 0, 0, 0);
 		add(menuButton, c);
+	}
+	
+	@Override
+	protected void paintComponent(Graphics g) {
+		g.setColor(Color.WHITE);
+		super.paintComponent(g);
+		g.drawImage(background.getImage(), 0, 0, null);
 	}
 }

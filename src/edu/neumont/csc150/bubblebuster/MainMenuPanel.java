@@ -15,12 +15,15 @@ public class MainMenuPanel extends JPanel {
 	private GUI frame;
 	private JLabel title;
 	private JPanel buttonPanel, soundPanel;
-	private BubbleButton survivalButton, timeTrialButton, shopButton, statisticsButton, tutorialButton, quitButton;
+	private BubbleButton survivalButton, timeTrialButton, shopButton, statisticsButton, quitButton;
+//	private BubbleButton survivalButton, timeTrialButton, shopButton, statisticsButton, tutorialButton, quitButton;
 	private MusicButton musicButton;
 	private SoundButton	effectsButton;
+	private ImageIcon background;
 	
 	public MainMenuPanel(GUI frame) {
 		this.frame = frame;
+		background = new ImageIcon("images/blue.jpg");
 		initializeComponents();
 		addComponents();
 		addListeners();
@@ -106,6 +109,6 @@ public class MainMenuPanel extends JPanel {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.drawImage(new ImageIcon("images/blue.jpg").getImage(), 0, 0, null);
+		g.drawImage(background.getImage(), 0, 0, null);
 	}
 }
