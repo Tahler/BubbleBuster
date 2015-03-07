@@ -20,7 +20,6 @@ public class Sound {
 	}
 	
 	private Sound() {
-		System.out.println(nSounds + " files found in the skin folder");
 		try {
 			music = AudioSystem.getClip();
 	        AudioInputStream inputStream = AudioSystem.getAudioInputStream(new File(Preferences.ambianceFolderLocation + "/music.wav"));
