@@ -1,22 +1,28 @@
 package edu.neumont.csc150.bubblebuster;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
+import java.awt.Insets;
 
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import com.sun.javafx.tk.Toolkit;
 
 @SuppressWarnings("serial")
 public abstract class GameOverPanel extends JPanel {
 	protected GUI frame;
 	protected JLabel titleLabel, colThisRunLabel, colRecordLabel, 
 		pointsLabel, pointsEarnedLabel, pointsRecordLabel,
-		coinsLabel, coinsEarnedLabel, coinsRecordLabel,
-		currentCoinsLabel, balanceLabel;
+		coinsEarnedLabel, coinsThisRunLabel, coinsRecordLabel,
+		yourCoinsLabel, balanceLabel;
 	protected BubbleButton playAgainButton, menuButton;
 	private Image background;
 	
@@ -43,10 +49,9 @@ public abstract class GameOverPanel extends JPanel {
 		pointsLabel = new JLabel("Points: ", JLabel.RIGHT);
 		pointsEarnedLabel = new JLabel(score + "", JLabel.CENTER);
 		pointsRecordLabel = new JLabel("", JLabel.CENTER); // will be updated in the subclass
-		coinsLabel = new JLabel("Coins: ", JLabel.RIGHT);
-		coinsEarnedLabel = new JLabel((score / 10) + "", JLabel.CENTER);
-		coinsRecordLabel = new JLabel("", JLabel.CENTER);
-		currentCoinsLabel = new JLabel("Your coins: ", JLabel.RIGHT);
+		coinsEarnedLabel = new JLabel("Coins Earned: ", JLabel.RIGHT);
+		coinsThisRunLabel = new JLabel((score / 10) + "", JLabel.CENTER);
+		yourCoinsLabel = new JLabel("Your coins: ", JLabel.RIGHT);
 		balanceLabel = new JLabel(Statistics.walletCoins + "", JLabel.CENTER);
 		
 		titleLabel.setFont(new Font("Arial", Font.BOLD, 64));
@@ -55,11 +60,11 @@ public abstract class GameOverPanel extends JPanel {
 		colThisRunLabel.setFont(headerFont);
 		colRecordLabel.setFont(headerFont);
 		pointsLabel.setFont(headerFont);
-		coinsLabel.setFont(headerFont);
-		currentCoinsLabel.setFont(headerFont);
+		coinsEarnedLabel.setFont(headerFont);
+		yourCoinsLabel.setFont(headerFont);
 		pointsEarnedLabel.setFont(contentFont);
 		pointsRecordLabel.setFont(contentFont);
-		coinsEarnedLabel.setFont(contentFont);
+		coinsThisRunLabel.setFont(contentFont);
 		balanceLabel.setFont(contentFont);
 		
 		playAgainButton = new BubbleButton("Play Again");
@@ -74,7 +79,9 @@ public abstract class GameOverPanel extends JPanel {
 		setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		c.anchor = GridBagConstraints.CENTER;
+//		c.ipadx = BubbleButton.IMG.getIconWidth();
 		
+		c.insets = new Insets(40, 0, 0, 0);
 		c.gridwidth = 3;
 		c.gridx = 0;
 		c.gridy = 0;
@@ -88,9 +95,10 @@ public abstract class GameOverPanel extends JPanel {
 		c.gridx = 2;
 		add(colRecordLabel, c);
 		
+		c.insets = new Insets(20, 0, 0, 0);
 		c.gridx = 0;
 		c.gridy = 3; // Skipping gridy = 2, that will be filled in by the subclasses
-		add(pointsLabel,c );
+		add(pointsLabel, c);
 		
 		c.gridx = 1;
 		add(pointsEarnedLabel, c);
@@ -98,25 +106,34 @@ public abstract class GameOverPanel extends JPanel {
 		c.gridx = 2;
 		add(pointsRecordLabel, c);
 		
+		c.anchor = GridBagConstraints.ABOVE_BASELINE;
+		c.gridwidth = 3;
 		c.gridx = 0;
-		c.gridy = 3;
-		add(coinsLabel, c);
+		c.gridy = 4;
+		c.ipadx = BubbleButton.IMG.getIconWidth() * 2 + colThisRunLabel.getWidth();
+		JLabel border = new JLabel();
+		border.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		add(border, c);
 		
-		c.gridx = 1;
+		c.ipadx = 0;
+		c.gridwidth = 1;
+		c.gridx = 0;
+		c.gridy = 5;
 		add(coinsEarnedLabel, c);
 		
-		c.gridx = 2;
-		add(coinsRecordLabel, c);
+		c.gridx = 1;
+		add(coinsThisRunLabel, c);
 		
-//		add(currentCoinsLabel);
-//		add(balanceLabel);
-//		add(new JLabel());
-//		add(new JLabel());
-//		
-//		add(new JLabel());
-//		add(playAgainButton, Alignment.CENTER);
-//		add(menuButton, Alignment.CENTER);
-//		add(new JLabel());
+		c.gridx = 2;
+		add(balanceLabel, c);
+		
+		c.insets = new Insets(40, 0, 0, 0);
+		c.gridx = 0;
+		c.gridy = 6;
+		add(playAgainButton, c);
+
+		c.gridx = 2;
+		add(menuButton, c);
 	}
 	
 	@Override
@@ -128,5 +145,20 @@ public abstract class GameOverPanel extends JPanel {
 	// TODO: animate the coins transferring
 	public void animateTransfer() {
 		
+	}
+	
+	public static void main(String[] args) {
+		// Load or make statistics
+		Statistics.load();
+		
+		// Load or make preferences
+		Preferences.load();
+		
+		// Initialize the Sounds according to the preferences
+		Sound.getInstance();
+		
+		// Run the program
+		GUI gui = new GUI();
+		gui.switchTo(new SurvivalGameOverPanel(gui, new ImageIcon(Preferences.ambianceFolderLocation + "/background.jpg").getImage(), 100, 456789));
 	}
 }
