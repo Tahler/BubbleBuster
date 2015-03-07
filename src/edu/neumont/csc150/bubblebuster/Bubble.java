@@ -5,6 +5,7 @@ import java.awt.Image;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.geom.Ellipse2D;
 import java.util.Random;
 
 import javax.swing.ImageIcon;
@@ -58,8 +59,8 @@ public class Bubble extends JComponent implements MouseListener {
 		move();
 	}
 	
-	protected boolean isInside(Point point) { // TODO: make so it is not just in the bounding box, but inside the image
-		return ((point.x > x && point.x < x + diameter) && (point.y > y && point.y < y + diameter));
+	protected boolean isInside(Point point) {
+		return new Ellipse2D.Double(x, y, diameter, diameter).contains(point);
 	}
 	
 	public void pop() {
