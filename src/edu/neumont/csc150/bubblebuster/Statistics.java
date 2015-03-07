@@ -24,8 +24,10 @@ public abstract class Statistics implements Serializable {
 		out.writeObject(totalPointsAllTime);
 		out.writeObject(totalCoinsAllTime);
 		out.writeObject(totalPlaytime);
+		if (totalPlaytime == null) totalPlaytime = new Time(0);
 		out.writeObject(survivalHighScore);
 		out.writeObject(survivalGamesPlayed);
+		if (survivalLongestTime == null) survivalLongestTime = new Time(0);
 		out.writeObject(survivalLongestTime);
 		out.writeObject(timeTrialHighScore);
 		out.writeObject(timeTrialGamesPlayed);
