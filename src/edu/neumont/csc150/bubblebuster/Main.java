@@ -13,8 +13,7 @@ public class Main {
 		Sound.getInstance();
 		
 		// Run the program
-		@SuppressWarnings("unused")
-		GUI gui = new GUI();
+		new GUI();
 	}
 	
 }

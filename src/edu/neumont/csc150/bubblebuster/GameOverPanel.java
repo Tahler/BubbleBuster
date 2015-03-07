@@ -7,14 +7,14 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.GroupLayout.Alignment;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-import com.sun.javafx.tk.Toolkit;
+import javax.swing.Timer;
 
 @SuppressWarnings("serial")
 public abstract class GameOverPanel extends JPanel {
@@ -25,10 +25,14 @@ public abstract class GameOverPanel extends JPanel {
 		yourCoinsLabel, balanceLabel;
 	protected BubbleButton playAgainButton, menuButton;
 	private Image background;
+	private int coinsBefore, coinsThisRun;
 	
 	public GameOverPanel(GUI frame, Image background, int score, long time) {
 		this.frame = frame;
 		this.background = background;
+		coinsBefore = Statistics.walletCoins;
+		coinsThisRun = score / 10;
+		
 		updateStatistics(score, time);
 		
 		initializeComponents(score);
@@ -50,9 +54,9 @@ public abstract class GameOverPanel extends JPanel {
 		pointsEarnedLabel = new JLabel(score + "", JLabel.CENTER);
 		pointsRecordLabel = new JLabel("", JLabel.CENTER); // will be updated in the subclass
 		coinsEarnedLabel = new JLabel("Coins Earned: ", JLabel.RIGHT);
-		coinsThisRunLabel = new JLabel((score / 10) + "", JLabel.CENTER);
+		coinsThisRunLabel = new JLabel(coinsThisRun + "", JLabel.CENTER);
 		yourCoinsLabel = new JLabel("Your coins: ", JLabel.RIGHT);
-		balanceLabel = new JLabel(Statistics.walletCoins + "", JLabel.CENTER);
+		balanceLabel = new JLabel(coinsBefore + "", JLabel.CENTER);
 		
 		titleLabel.setFont(new Font("Arial", Font.BOLD, 64));
 		Font headerFont = new Font("Arial", Font.BOLD, 24);
@@ -73,13 +77,10 @@ public abstract class GameOverPanel extends JPanel {
 			frame.switchTo(new MainMenuPanel(frame));
 		});
 	}
-	
-	// Not called by the constructor, must be called from child classes
-	protected void addComponents() {
+	private void addComponents() {
 		setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		c.anchor = GridBagConstraints.CENTER;
-//		c.ipadx = BubbleButton.IMG.getIconWidth();
 		
 		c.insets = new Insets(40, 0, 0, 0);
 		c.gridwidth = 3;
@@ -142,23 +143,22 @@ public abstract class GameOverPanel extends JPanel {
 		g.drawImage(background, 0, 0, null);
 	}
 	
-	// TODO: animate the coins transferring
+	private int waitTime = 1000;
 	public void animateTransfer() {
-		
-	}
-	
-	public static void main(String[] args) {
-		// Load or make statistics
-		Statistics.load();
-		
-		// Load or make preferences
-		Preferences.load();
-		
-		// Initialize the Sounds according to the preferences
-		Sound.getInstance();
-		
-		// Run the program
-		GUI gui = new GUI();
-		gui.switchTo(new SurvivalGameOverPanel(gui, new ImageIcon(Preferences.ambianceFolderLocation + "/background.jpg").getImage(), 100, 456789));
+		Timer timer = new Timer(50, null);
+		waitTime /= timer.getDelay();
+		timer.addActionListener(e -> {
+			if (waitTime <= 0) {
+				if (coinsThisRun > 0) {
+					coinsThisRun--;
+					coinsBefore++;
+					coinsThisRunLabel.setText(coinsThisRun + "");
+					balanceLabel.setText(coinsBefore + "");
+				}
+				else timer.stop();
+			}
+			else waitTime--;
+		});
+		timer.start();
 	}
 }
