@@ -71,7 +71,7 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Key
 			if (bubbles.get(i).isPopped()) {
 				addScore(Bubble.POINTS);
 				bubbles.remove(i);
-				popped ++;
+				popped++;
 				tempSize--;
 			}
 			else if (bubbles.get(i).isOffScreen()) {
