@@ -47,7 +47,7 @@ public abstract class GameOverPanel extends JPanel {
 		else Statistics.totalPlaytime = new Time(time);
 	}
 	private void initializeComponents(int score) {
-		titleLabel = new JLabel("Game Over", JLabel.CENTER);
+		titleLabel = new JLabel(new ImageIcon("resources/gameover.png"), JLabel.CENTER);
 		colThisRunLabel = new JLabel("This Run", JLabel.CENTER);
 		colRecordLabel = new JLabel("Record", JLabel.CENTER);
 		pointsLabel = new JLabel("Points: ", JLabel.RIGHT);
@@ -76,6 +76,22 @@ public abstract class GameOverPanel extends JPanel {
 		menuButton.addActionListener(e -> {
 			frame.switchTo(new MainMenuPanel(frame));
 		});
+		
+		
+		Font gameOverHeaderFont = new Font("Arial", Font.BOLD, 24);
+		Font gameOverContentFont = new Font("Arial", Font.PLAIN, 18);
+		
+		titleLabel.setFont(new Font("Arial", Font.BOLD, 36));
+		titleLabel.setForeground(Color.WHITE);
+		colThisRunLabel.setForeground(Color.WHITE);
+		colRecordLabel.setForeground(Color.WHITE);
+		pointsLabel.setForeground(Color.WHITE);
+		pointsEarnedLabel.setForeground(Color.WHITE);
+		pointsRecordLabel.setForeground(Color.WHITE);
+		coinsEarnedLabel.setForeground(Color.WHITE);
+		coinsThisRunLabel.setForeground(Color.WHITE);
+		yourCoinsLabel.setForeground(Color.WHITE);
+		balanceLabel.setForeground(Color.WHITE);
 	}
 	private void addComponents() {
 		setLayout(new GridBagLayout());

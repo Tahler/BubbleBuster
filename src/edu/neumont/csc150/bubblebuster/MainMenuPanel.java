@@ -29,7 +29,7 @@ public class MainMenuPanel extends JPanel {
 		addListeners();
 	}
 	private void initializeComponents() {
-		title = new JLabel(new ImageIcon("resources/bubblebuster1.png"), JLabel.CENTER);
+		title = new JLabel(new ImageIcon("resources/title.png"), JLabel.CENTER);
 		
 		survivalButton = new BubbleButton("Survival Mode");
 		timeTrialButton = new BubbleButton("Time Trial Mode");
