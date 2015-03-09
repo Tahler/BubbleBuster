@@ -51,7 +51,7 @@ public class MainMenuPanel extends JPanel {
 		
 		title.setFont(new Font("SansSerif", Font.BOLD, 30));
 		title.setAlignmentX(CENTER_ALIGNMENT);
-		c.fill = GridBagConstraints.HORIZONTAL;
+//		c.fill = GridBagConstraints.HORIZONTAL;
 		c.weightx = 0;
 		c.weighty = 0;
 		c.gridx = 0;
