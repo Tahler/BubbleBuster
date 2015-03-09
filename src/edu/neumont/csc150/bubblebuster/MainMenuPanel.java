@@ -49,7 +49,7 @@ public class MainMenuPanel extends JPanel {
 		
 		GridBagConstraints c = new GridBagConstraints();
 		c.anchor = GridBagConstraints.CENTER;
-		
+
 		c.gridx = 0;
 		c.gridy = 0;
 		buttonPanel.add(title, c);

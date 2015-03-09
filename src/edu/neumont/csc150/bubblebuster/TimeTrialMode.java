@@ -4,42 +4,42 @@ import java.awt.Graphics;
 
 @SuppressWarnings("serial")
 public class TimeTrialMode extends BubbleBuster {
-	public static final int STARTING_LIVES = 1; // TODO: INCREASE TO FIVE, BUT MAKE THIS MODE GET HARDER AS TIME GOES ON
-	
-	private int lives;
+	public static final int STARTING_TIME = 100; // TODO: INCREASE TO FIVE, BUT MAKE THIS MODE GET HARDER AS TIME GOES ON
+	private int count;
+	private int time;
 	
 	public TimeTrialMode(GUI frame) {
 		super(frame);
 		
-		setLives(STARTING_LIVES);
+		setTime(STARTING_TIME);
+	
 	}
 	
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
-		String time = watch.toString().substring(2, watch.toString().length() - 2);
+		
+		String time = Time.format(9000 - watch.getTime());
 		
 		g.drawString(time, GUI.WIDTH - (int) g.getFontMetrics().getStringBounds(time, g).getWidth() - STRING_PADDING, STRING_PADDING * 2);
-		g.drawString(getLives() + "", GUI.WIDTH - (int) g.getFontMetrics().getStringBounds(getLives() + "", g).getWidth() - STRING_PADDING, STRING_PADDING * 3);
+		timesUp();	
 	}
 	
-//	public void loseLife() {
-//		this.lives--;
-//		if (lives <= 0) {
-// 			frame.switchTo(new SurvivalGameOverPanel(frame, getScore(), watch.getTime()));
-//			frame.survivalPanel = null;
-//		}
-//	}
 	public void timesUp() {
-		if (watch.getNanoTime() >= 90000) {
-			watch.stop();		
+		if (watch.getTime() >= 9000) {
+			
+			watch.stop();	
+			frame.switchTo(new TimeTrialGameOverPanel(frame, background.getImage(), getScore(), getPopped()));
+			frame.gamePanel = null;
 			}
 	}
-	public int getLives() {
-		return lives;
+	public int getTime() {
+		return time;
 	}
-	public void setLives(int lives) {
-		this.lives = lives;
+	public void setTime(int lives) {
+		this.time = time;
 	}
+	
+	
 }
