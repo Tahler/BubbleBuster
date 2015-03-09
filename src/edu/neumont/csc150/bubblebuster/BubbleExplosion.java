@@ -4,9 +4,9 @@ import java.awt.AlphaComposite;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.Random;
 
-import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 
 @SuppressWarnings("serial")
@@ -14,7 +14,7 @@ public class BubbleExplosion extends JComponent {
 	private Bubble caller;
 	private SmallBubble[] bubbles;
 	
-	public BubbleExplosion(Image image, int x, int y, int diameter, Bubble caller) {
+	public BubbleExplosion(int x, int y, int diameter, Bubble caller) {
 		this.caller = caller;
 		
 		// TODO: automate this in a for loop
@@ -42,7 +42,8 @@ public class BubbleExplosion extends JComponent {
 		
 		public SmallBubble(int x, int y, int diameter, int direction) {
 //			super();
-			this.img = new ImageIcon(Preferences.skinFolderLocation + "/bubble.png").getImage().getScaledInstance(diameter, diameter, Image.SCALE_DEFAULT);
+			this.img = Toolkit.getDefaultToolkit().getImage(Preferences.skinFolderLocation + "/bubble.png").getScaledInstance(diameter, diameter, Image.SCALE_DEFAULT);
+			
 			alpha = 1.0f;
 			this.x = x;
 			this.y = y;
@@ -63,11 +64,8 @@ public class BubbleExplosion extends JComponent {
 			else caller.doneAnimating();
 			
 			((Graphics2D) g).setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha));
-			
-//			g.setColor(new Color(255, 255, 255, alpha));
-//			g.setColor(Color.WHITE);
 			g.drawImage(img, x, y, null);
-//			g2d.fillOval(x, y, diameter, diameter);
+			
 			((Graphics2D) g).setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f)); // reset for other things
 		}
 	}

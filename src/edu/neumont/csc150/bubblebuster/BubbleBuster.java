@@ -69,15 +69,12 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Key
 		int tempSize = bubbles.size();
 		for (int i = 0; i < tempSize; i++) {
 			Bubble bubble = bubbles.get(i);
-			if (bubble.isPopped()) { // TODO: this is going to loop really fast...
+			if (bubble.isPopped() && bubble.isDoneAnimating()) { // TODO: this is going to loop really fast...
 				addScore(Bubble.POINTS);
 				popped++;
-				if (bubble.isDoneAnimating()) {
-					System.out.println("removing bubble");
-					bubbles.remove(i);
-					tempSize--;
-				}
-				else bubble.paintComponent(g);
+				
+				bubbles.remove(i);
+				tempSize--;
 			}
 			else if (bubble.isOffScreen()) {
 				if (this instanceof SurvivalMode) {
