@@ -8,6 +8,8 @@ public class TimeTrialMode extends BubbleBuster {
 	
 	public TimeTrialMode(GUI frame) {
 		super(frame);
+		setMinBubbleInterval(10);
+		setMaxBubbleInterval(20);
 	}
 	
 	@Override
@@ -17,7 +19,7 @@ public class TimeTrialMode extends BubbleBuster {
 		String time = Time.format(TIME - watch.getTime());
 		
 		g.drawString(time, GUI.WIDTH - (int) g.getFontMetrics().getStringBounds(time, g).getWidth() - STRING_PADDING, STRING_PADDING * 2);
-		timesUp();	
+		timesUp();
 	}
 	
 	public void timesUp() {
