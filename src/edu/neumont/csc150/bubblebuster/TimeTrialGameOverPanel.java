@@ -1,5 +1,6 @@
 package edu.neumont.csc150.bubblebuster;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.Image;
@@ -51,8 +52,11 @@ public class TimeTrialGameOverPanel extends GameOverPanel {
 		Font headerFont = new Font("Arial", Font.BOLD, 24);
 		Font contentFont = new Font("Arial", Font.PLAIN, 18);
 		poppedLabel.setFont(headerFont);
+		poppedLabel.setForeground(Color.white);
 		poppedBubblesThisGameLabel.setFont(contentFont);
+		poppedBubblesThisGameLabel.setForeground(Color.white);
 		poppedRecordLabel.setFont(contentFont);
+		poppedRecordLabel.setForeground(Color.white);
 	}
 	protected void addComponents() {
 		GridBagConstraints c = new GridBagConstraints();

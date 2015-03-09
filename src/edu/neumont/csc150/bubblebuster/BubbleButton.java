@@ -40,7 +40,7 @@ public class BubbleButton extends JComponent implements MouseListener, ActionLis
 		g.setFont(new Font("SansSerif", Font.BOLD, 36));
 		
 		Rectangle2D metrics = g.getFontMetrics().getStringBounds(getText(), g);
-		g.drawString(getText(), (int) (IMG.getIconWidth() / 2 - metrics.getWidth() / 2), (int) (IMG.getIconHeight() / 2 + metrics.getHeight() / 2));
+		g.drawString(getText(), (int) (IMG.getIconWidth() / 2 - metrics.getWidth() / 2), (int) (IMG.getIconHeight() / 2 + metrics.getHeight() / 2) - 5);
 	}
 	
 	public String getText() {

@@ -33,7 +33,7 @@ public class StatisticsPanel extends JPanel {
 		addComponents();
 	}
 	private void initializeComponents() {
-		title = new JLabel("Statistics", JLabel.CENTER);
+		title = new JLabel(new ImageIcon("resources/stats.png"), JLabel.CENTER);
 		
 		general = new JLabel("General", JLabel.CENTER);
 		totalPointsAllTimeLabel = new JLabel("Total Points Earned", JLabel.LEFT);
