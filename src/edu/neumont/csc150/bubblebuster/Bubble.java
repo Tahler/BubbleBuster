@@ -9,7 +9,6 @@ import java.awt.event.MouseListener;
 import java.awt.geom.Ellipse2D;
 import java.util.Random;
 
-import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 
 @SuppressWarnings("serial")
@@ -20,18 +19,20 @@ public class Bubble extends JComponent implements MouseListener {
 	public static int minSpeed;
 	public static int maxSpeed;
 	
-	protected Image img = Toolkit.getDefaultToolkit().getImage(Preferences.skinFolderLocation + "/bubble.png");
+	private Image img = Toolkit.getDefaultToolkit().getImage(Preferences.skinFolderLocation + "/bubble.png");
 	private int x, y;
 	private int diameter;
 	private int speed;
 //	private int points; // maybe needed later if points are worth more as the bubble gets smaller and faster
 	private boolean popped;
+	protected boolean pointsAdded;
 	private boolean doneAnimating;
 	private BubbleExplosion explosion;
 	
 	public Bubble() {
+		explosion = null;		
 		popped = false;
-		explosion = null;
+		pointsAdded = false;
 		doneAnimating = false;
 		setFocusable(false);
 

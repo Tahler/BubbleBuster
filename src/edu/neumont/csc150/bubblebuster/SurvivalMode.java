@@ -1,9 +1,6 @@
 package edu.neumont.csc150.bubblebuster;
 
-import java.awt.AlphaComposite;
-import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 
 @SuppressWarnings("serial")
 public class SurvivalMode extends BubbleBuster {

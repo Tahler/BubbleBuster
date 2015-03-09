@@ -28,7 +28,7 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Key
 	private int score;
 	private int popped;
 	private Timer timer;
-	private int coinsEarned; // TODO: MAY BE USED LATER IF 10 POINTS != 1 COIN
+//	private int coinsEarned; // TODO: MAY BE USED LATER IF 10 POINTS != 1 COIN
 	private boolean paused;
 	private ArrayList<Bubble> bubbles;
 	protected StopWatch watch;
@@ -38,7 +38,7 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Key
 		
 		score = 0;
 		popped = 0;
-		coinsEarned = 0;
+//		coinsEarned = 0;
 		paused = false;
 		setMinBubbleInterval(50);
 		setMaxBubbleInterval(100);
@@ -69,12 +69,17 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Key
 		int tempSize = bubbles.size();
 		for (int i = 0; i < tempSize; i++) {
 			Bubble bubble = bubbles.get(i);
-			if (bubble.isPopped() && bubble.isDoneAnimating()) { // TODO: this is going to loop really fast...
-				addScore(Bubble.POINTS);
-				popped++;
-				
-				bubbles.remove(i);
-				tempSize--;
+			if (bubble.isPopped()) {
+				if (!bubble.pointsAdded) {
+					addScore(Bubble.POINTS);
+					popped++;
+					bubble.pointsAdded = true;
+				}
+				if (bubble.isDoneAnimating()) {
+					bubbles.remove(i);
+					tempSize--;
+				}
+				else bubble.paintComponent(g);
 			}
 			else if (bubble.isOffScreen()) {
 				if (this instanceof SurvivalMode) {

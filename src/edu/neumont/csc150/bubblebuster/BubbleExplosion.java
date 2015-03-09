@@ -36,7 +36,6 @@ public class BubbleExplosion extends JComponent {
 	private class SmallBubble extends JComponent {
 		private Image img;
 		private int x, y;
-		private int diameter;
 		private int direction;
 		private float alpha;
 		
@@ -47,13 +46,12 @@ public class BubbleExplosion extends JComponent {
 			alpha = 1.0f;
 			this.x = x;
 			this.y = y;
-			this.diameter = diameter;
 			this.direction = direction;
 		}
 		
 		public void move() {
-			x += Math.cos(Math.toRadians(direction)) * diameter / 3;
-			y += Math.sin(Math.toRadians(direction)) * diameter / 3;
+			x += Math.cos(Math.toRadians(direction)) * 10;
+			y += Math.sin(Math.toRadians(direction)) * 10;
 		}
 		
 		@Override
