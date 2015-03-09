@@ -38,11 +38,11 @@ public class Time implements Comparable<Time>, Serializable {
 	public static String format(long milliseconds) {
 		long minutes = (milliseconds / 60000) % 60;
 		long seconds = (milliseconds / 1000) % 60;
-		long tenths = milliseconds % 10;
+//		long tenths = milliseconds % 10;
 		
 		return ((minutes < 10) ? "0" : "") + minutes
-				+ ":" + ((seconds < 10) ? "0" : "") + seconds
-				+ "." + tenths;
+				+ ":" + ((seconds < 10) ? "0" : "") + seconds;
+//				+ "." + tenths;
 	}
 	
 	@Override
