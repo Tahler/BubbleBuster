@@ -1,7 +1,9 @@
 package edu.neumont.csc150.bubblebuster;
 
 import java.awt.Font;
+import java.awt.GridBagConstraints;
 import java.awt.Image;
+import java.awt.Insets;
 import java.io.IOException;
 
 import javax.swing.JLabel;
@@ -13,8 +15,16 @@ public class SurvivalGameOverPanel extends GameOverPanel {
 	public SurvivalGameOverPanel(GUI frame, Image background, int score, long time) {
 		super(frame, background, score, time);
 		updateStatistics(score, time);
-		initializeComponents(time);
+		this.initializeComponents(time);
+		pointsRecordLabel.setText(Statistics.survivalHighScore + "");
+		
 		addComponents();
+		playAgainButton.addActionListener(e -> {
+			frame.gamePanel = new SurvivalMode(frame);
+			frame.switchTo(frame.gamePanel);
+		});
+		
+		animateTransfer();
 	}
 	private void updateStatistics(int score, long time) {
 		if (Statistics.survivalLongestTime != null) {
@@ -48,23 +58,18 @@ public class SurvivalGameOverPanel extends GameOverPanel {
 		timeRecordLabel.setFont(contentFont);
 	}
 	protected void addComponents() {
-		addEmptyRow();
-		addEmptyRow();
-		add(new JLabel());
-		add(col1Label);
-		add(col2Label);
-		add(new JLabel());
-		add(timeLabel);
-		add(timeSurvivedLabel);
-		add(timeRecordLabel);
-		add(new JLabel());
-		super.addComponents();
-	}
-	protected void addActionListeners() {
-		super.addActionListeners();
-		playAgainButton.addActionListener(e -> {
-			frame.gamePanel = new SurvivalMode(frame);
-			frame.switchTo(frame.gamePanel);
-		});
+		GridBagConstraints c = new GridBagConstraints();
+		c.anchor = GridBagConstraints.CENTER;
+
+		c.insets = new Insets(20, 0, 0, 0);
+		c.gridx = 0;
+		c.gridy = 2;
+		add(timeLabel, c);
+		
+		c.gridx = 1;
+		add(timeSurvivedLabel, c);
+		
+		c.gridx = 2;
+		add(timeRecordLabel, c);
 	}
 }

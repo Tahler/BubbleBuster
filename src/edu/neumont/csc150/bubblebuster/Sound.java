@@ -11,7 +11,7 @@ import javax.sound.sampled.Clip;
 public class Sound {
 	protected Clip music;
 	protected Clip[] popEffects;
-	private static final int nSounds = new File(Preferences.skinFolderLocation + "/sounds").list().length;
+	private static final int nSounds = new File(Preferences.skinFolderLocation).list().length - 1; // Subtract one for the bubble's image file
 	public static Sound instance = null;
 	
 	public static Sound getInstance() {
@@ -20,7 +20,6 @@ public class Sound {
 	}
 	
 	private Sound() {
-		System.out.println(nSounds + " files found in the skin folder");
 		try {
 			music = AudioSystem.getClip();
 	        AudioInputStream inputStream = AudioSystem.getAudioInputStream(new File(Preferences.ambianceFolderLocation + "/music.wav"));
@@ -29,7 +28,7 @@ public class Sound {
 	        popEffects = new Clip[nSounds];
 	        for (int i = 0; i < popEffects.length; i++) {
 				popEffects[i] = AudioSystem.getClip();
-				popEffects[i].open(AudioSystem.getAudioInputStream(new File(Preferences.skinFolderLocation + "/sounds/pop" + (i+1) + ".wav")));
+				popEffects[i].open(AudioSystem.getAudioInputStream(new File(Preferences.skinFolderLocation + "/pop" + (i+1) + ".wav")));
 			}
 		}
 		catch (Exception e) {

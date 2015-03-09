@@ -18,7 +18,7 @@ public class GUI extends JFrame implements MouseListener {
 	protected JPanel gamePanel;
 	private JPanel currentPanel;
 	
-	Cursor cursor, cursorPressed;
+	private Cursor cursor, cursorPressed;
 	
 	public GUI() {
 		super("Bubble Buster");
