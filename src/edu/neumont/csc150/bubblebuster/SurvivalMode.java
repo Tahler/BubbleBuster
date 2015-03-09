@@ -1,7 +1,9 @@
 package edu.neumont.csc150.bubblebuster;
 
+import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 @SuppressWarnings("serial")
 public class SurvivalMode extends BubbleBuster {
@@ -19,10 +21,10 @@ public class SurvivalMode extends BubbleBuster {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		
 		waitOrIncreaseDifficulty();
-		g.setColor(Color.WHITE);
-		String time = Time.format(watch.getTime());
+//		g.setColor(Color.WHITE);
+//		String time = Time.format(watch.getTime());
+		String time = watch.toString().substring(2, watch.toString().length() - 2);
 		g.drawString(time, GUI.WIDTH - (int) g.getFontMetrics().getStringBounds(time, g).getWidth() - STRING_PADDING, STRING_PADDING * 2);
 //		g.drawString(getLives() + "", GUI.WIDTH - (int) g.getFontMetrics().getStringBounds(getLives() + "", g).getWidth() - STRING_PADDING, STRING_PADDING * 3);
 	}

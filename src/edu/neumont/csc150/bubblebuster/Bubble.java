@@ -66,9 +66,6 @@ public class Bubble extends JComponent implements MouseListener {
 		if (explosion != null) {
 			explosion.paintComponent(g);
 		}
-//		else {
-//			g.drawImage(img.getImage().getScaledInstance(diameter, diameter, Image.SCALE_DEFAULT), x, y, null);
-//		}
 	}
 	
 	protected boolean isInside(Point point) {
@@ -92,12 +89,12 @@ public class Bubble extends JComponent implements MouseListener {
 	public void mousePressed(MouseEvent e) {
 		if (isInside(e.getLocationOnScreen()) && !isPopped()) {
 			pop();
+			explosion = new BubbleExplosion(img.getImage(), (int) e.getLocationOnScreen().getX(), (int) e.getLocationOnScreen().getY(), getDiameter(), this);
 		}
 	}
 	
 	public void pop() {
 		if (Preferences.soundFXEnabled) Sound.getInstance().playPop();
-		explosion = new BubbleExplosion(getX(), getY(), getDiameter(), this);
 		popped = true;
 	}
 	public boolean isPopped() {

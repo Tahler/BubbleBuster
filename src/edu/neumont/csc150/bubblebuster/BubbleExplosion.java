@@ -1,11 +1,12 @@
 package edu.neumont.csc150.bubblebuster;
 
 import java.awt.AlphaComposite;
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.util.Random;
 
+import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 
 @SuppressWarnings("serial")
@@ -13,13 +14,14 @@ public class BubbleExplosion extends JComponent {
 	private Bubble caller;
 	private SmallBubble[] bubbles;
 	
-	public BubbleExplosion(int x, int y, int diameter, Bubble caller) {
+	public BubbleExplosion(Image image, int x, int y, int diameter, Bubble caller) {
 		this.caller = caller;
 		
-		bubbles = new SmallBubble[5];
-		int slice = 360 / bubbles.length;
+		// TODO: automate this in a for loop
+		Random rand = new Random();
+		bubbles = new SmallBubble[rand.nextInt(3) + 3]; // Between 3 and 5 bubbles
 		for (int i = 0; i < bubbles.length; i++) {
-			bubbles[i] = new SmallBubble(x, y, diameter / 10, slice * i);
+			bubbles[i] = new SmallBubble(x, y, diameter / 5, rand.nextInt(120) + 210);
 		}
 	}
 	
@@ -32,6 +34,7 @@ public class BubbleExplosion extends JComponent {
 	}
 	
 	private class SmallBubble extends JComponent {
+		private Image img;
 		private int x, y;
 		private int diameter;
 		private int direction;
@@ -39,6 +42,7 @@ public class BubbleExplosion extends JComponent {
 		
 		public SmallBubble(int x, int y, int diameter, int direction) {
 //			super();
+			this.img = new ImageIcon(Preferences.skinFolderLocation + "/bubble.png").getImage().getScaledInstance(diameter, diameter, Image.SCALE_DEFAULT);
 			alpha = 1.0f;
 			this.x = x;
 			this.y = y;
@@ -47,8 +51,8 @@ public class BubbleExplosion extends JComponent {
 		}
 		
 		public void move() {
-			x += Math.cos(Math.toRadians(direction)) * diameter;
-			y += Math.sin(Math.toRadians(direction)) * diameter;
+			x += Math.cos(Math.toRadians(direction)) * diameter / 3;
+			y += Math.sin(Math.toRadians(direction)) * diameter / 3;
 		}
 		
 		@Override
@@ -58,13 +62,13 @@ public class BubbleExplosion extends JComponent {
 			if (alpha > 0.1f) alpha -= 0.1f; 
 			else caller.doneAnimating();
 			
-			Graphics2D g2d = (Graphics2D) g;
-			g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha));
+			((Graphics2D) g).setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha));
 			
 //			g.setColor(new Color(255, 255, 255, alpha));
 //			g.setColor(Color.WHITE);
-			g2d.drawImage(caller.img.getImage(), x, y, null);
-//			g.fillOval(x, y, diameter, diameter);
+			g.drawImage(img, x, y, null);
+//			g2d.fillOval(x, y, diameter, diameter);
+			((Graphics2D) g).setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f)); // reset for other things
 		}
 	}
 }
