@@ -25,9 +25,11 @@ public class Bubble extends JComponent implements MouseListener {
 	private int speed;
 //	private int points; // maybe needed later if points are worth more as the bubble gets smaller and faster
 	private boolean popped;
+	private boolean doneAnimating;
 	
 	public Bubble() {
 		popped = false;
+		doneAnimating = false;
 		setFocusable(false);
 
 		Random rand = new Random();
@@ -55,17 +57,17 @@ public class Bubble extends JComponent implements MouseListener {
 	
 	@Override
 	protected void paintComponent(Graphics g) {
-		g.drawImage(img.getImage(), x, y, null);
-		move();
+		if (!popped) {
+			g.drawImage(img.getImage(), x, y, null);
+			move();
+		}
+		else {
+			g.drawImage(img.getImage().getScaledInstance(diameter, diameter, Image.SCALE_DEFAULT), x, y, null);
+		}
 	}
 	
 	protected boolean isInside(Point point) {
 		return new Ellipse2D.Double(x, y, diameter, diameter).contains(point);
-	}
-	
-	public void pop() {
-		if (Preferences.soundFXEnabled) Sound.getInstance().playPop();
-		popped = true;
 	}
 	
 	public void move() {
@@ -88,8 +90,15 @@ public class Bubble extends JComponent implements MouseListener {
 		}
 	}
 	
+	public void pop() {
+		if (Preferences.soundFXEnabled) Sound.getInstance().playPop();
+		popped = true;
+	}
 	public boolean isPopped() {
 		return popped;
+	}
+	public boolean isDoneAnimating() {
+		return doneAnimating;
 	}
 	public int getX() {
 		return x;
