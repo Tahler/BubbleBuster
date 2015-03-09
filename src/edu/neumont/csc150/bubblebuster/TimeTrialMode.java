@@ -4,15 +4,10 @@ import java.awt.Graphics;
 
 @SuppressWarnings("serial")
 public class TimeTrialMode extends BubbleBuster {
-	public static final int STARTING_TIME = 100; // TODO: INCREASE TO FIVE, BUT MAKE THIS MODE GET HARDER AS TIME GOES ON
-	private int count;
 	private int time;
 	
 	public TimeTrialMode(GUI frame) {
 		super(frame);
-		
-		setTime(STARTING_TIME);
-	
 	}
 	
 	@Override
@@ -31,14 +26,6 @@ public class TimeTrialMode extends BubbleBuster {
 			watch.stop();	
 			frame.switchTo(new TimeTrialGameOverPanel(frame, background.getImage(), getScore(), getPopped()));
 			frame.gamePanel = null;
-			}
+		}
 	}
-	public int getTime() {
-		return time;
-	}
-	public void setTime(int lives) {
-		this.time = time;
-	}
-	
-	
 }

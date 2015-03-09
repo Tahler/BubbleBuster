@@ -69,21 +69,24 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Key
 		int tempSize = bubbles.size();
 		for (int i = 0; i < tempSize; i++) {
 			Bubble bubble = bubbles.get(i);
-			if (bubble.isPopped()) {
-				add(new BubbleExplosion(bubble.getX(), bubble.getY(), bubble.getDiameter()));
+			if (bubble.isPopped()) { // TODO: this is going to loop really fast...
 				addScore(Bubble.POINTS);
-				bubbles.remove(i);
 				popped++;
-				tempSize--;
+				if (bubble.isDoneAnimating()) {
+					System.out.println("removing bubble");
+					bubbles.remove(i);
+					tempSize--;
+				}
+				else bubble.paintComponent(g);
 			}
-			else if (bubbles.get(i).isOffScreen()) {
+			else if (bubble.isOffScreen()) {
 				if (this instanceof SurvivalMode) {
 					((SurvivalMode) this).loseLife();
 				}
 				bubbles.remove(i);
 				tempSize--;
 			}
-			else bubbles.get(i).paintComponent(g);
+			else bubble.paintComponent(g);
 			
 			requestFocusInWindow(); // Ensures that the KeyListener is always active for this panel (Kinda sucks)
 		}

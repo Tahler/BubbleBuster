@@ -19,16 +19,18 @@ public class Bubble extends JComponent implements MouseListener {
 	public static int minSpeed;
 	public static int maxSpeed;
 	
-	private ImageIcon img = new ImageIcon(Preferences.skinFolderLocation + "/bubble.png");
+	protected ImageIcon img = new ImageIcon(Preferences.skinFolderLocation + "/bubble.png");
 	private int x, y;
 	private int diameter;
 	private int speed;
 //	private int points; // maybe needed later if points are worth more as the bubble gets smaller and faster
 	private boolean popped;
+	private BubbleExplosion explosion;
 	private boolean doneAnimating;
 	
 	public Bubble() {
 		popped = false;
+		explosion = null;
 		doneAnimating = false;
 		setFocusable(false);
 
@@ -61,9 +63,12 @@ public class Bubble extends JComponent implements MouseListener {
 			g.drawImage(img.getImage(), x, y, null);
 			move();
 		}
-		else {
-			g.drawImage(img.getImage().getScaledInstance(diameter, diameter, Image.SCALE_DEFAULT), x, y, null);
+		if (explosion != null) {
+			explosion.paintComponent(g);
 		}
+//		else {
+//			g.drawImage(img.getImage().getScaledInstance(diameter, diameter, Image.SCALE_DEFAULT), x, y, null);
+//		}
 	}
 	
 	protected boolean isInside(Point point) {
@@ -92,6 +97,7 @@ public class Bubble extends JComponent implements MouseListener {
 	
 	public void pop() {
 		if (Preferences.soundFXEnabled) Sound.getInstance().playPop();
+		explosion = new BubbleExplosion(getX(), getY(), getDiameter(), this);
 		popped = true;
 	}
 	public boolean isPopped() {
@@ -99,6 +105,9 @@ public class Bubble extends JComponent implements MouseListener {
 	}
 	public boolean isDoneAnimating() {
 		return doneAnimating;
+	}
+	public void doneAnimating() {
+		doneAnimating = true;
 	}
 	public int getX() {
 		return x;
