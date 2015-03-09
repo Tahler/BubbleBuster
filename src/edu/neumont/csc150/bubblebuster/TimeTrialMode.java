@@ -19,7 +19,6 @@ public class TimeTrialMode extends BubbleBuster {
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
-		
 		String time = Time.format(9000 - watch.getTime());
 		
 		g.drawString(time, GUI.WIDTH - (int) g.getFontMetrics().getStringBounds(time, g).getWidth() - STRING_PADDING, STRING_PADDING * 2);
