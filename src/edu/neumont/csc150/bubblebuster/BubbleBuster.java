@@ -26,7 +26,7 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Key
 	protected ImageIcon background;
 	private int bubbleInterval;
 	private int score;
-//	priavte int popped;
+	private int popped;
 	private Timer timer;
 	private int coinsEarned; // TODO: MAY BE USED LATER IF 10 POINTS != 1 COIN
 	private boolean paused;
@@ -37,7 +37,7 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Key
 		this.frame = frame;
 		
 		score = 0;
-//		popped = 0;
+		popped = 0;
 		coinsEarned = 0;
 		paused = false;
 		setMinBubbleInterval(50);
@@ -71,6 +71,7 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Key
 			if (bubbles.get(i).isPopped()) {
 				addScore(Bubble.POINTS);
 				bubbles.remove(i);
+				popped ++;
 				tempSize--;
 			}
 			else if (bubbles.get(i).isOffScreen()) {
@@ -130,6 +131,9 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Key
 	
 	public int getScore() {
 		return score;
+	}
+	public int getPopped() {
+		return popped;
 	}
 
 	public int getMinBubbleInterval() {

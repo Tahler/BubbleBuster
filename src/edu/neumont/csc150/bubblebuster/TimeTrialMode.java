@@ -30,7 +30,7 @@ public class TimeTrialMode extends BubbleBuster {
 		if (watch.getTime() >= 9000) {
 			
 			watch.stop();	
-			frame.switchTo(new TimeTrialGameOverPanel(frame, getScore(), getPopped()));
+			frame.switchTo(new TimeTrialGameOverPanel(frame, background.getImage(), getScore(), getPopped()));
 			frame.gamePanel = null;
 			}
 	}
