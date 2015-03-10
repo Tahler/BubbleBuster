@@ -33,7 +33,10 @@ public class ShopItem extends JPanel implements MouseListener {
 		setOpaque(false);
 		addComponents();
 		addMouseListener(this);
-		if (!Purchases.isPurchased(title)) drawGray();
+		if (!Purchases.isPurchased(title)) {
+			drawGray();
+			imageLabel.setBorder(BorderFactory.createLineBorder(Color.GRAY, 5, true));
+		}
 	}
 	private void addComponents() {
 		Font contentFont = new Font("Arial", Font.PLAIN, 24);
@@ -99,7 +102,6 @@ public class ShopItem extends JPanel implements MouseListener {
 	}
 	public void unequip() {
 		if (Purchases.isPurchased(title)) imageLabel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5, true));
-		else imageLabel.setBorder(BorderFactory.createLineBorder(Color.GRAY, 5, true));
 		repaint();
 	}
 	

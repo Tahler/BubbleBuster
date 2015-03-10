@@ -6,13 +6,15 @@ import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
-public class ShopPanel extends JPanel {
+public class ShopPanel extends JPanel implements Observer {
 	private BubbleButton menu;
 	private JLabel title, header1, header2;
 	private ImageIcon background;
@@ -129,5 +131,10 @@ public class ShopPanel extends JPanel {
 		g.setColor(Color.WHITE);
 		super.paintComponent(g);
 		g.drawImage(background.getImage(), 0, 0, null);
+	}
+	
+	@Override
+	public void update(Observable o, Object arg) {
+		repaint();
 	}
 }
