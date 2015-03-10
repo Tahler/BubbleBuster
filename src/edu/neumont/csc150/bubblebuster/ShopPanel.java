@@ -51,8 +51,8 @@ public class ShopPanel extends JPanel implements Observer {
 		
 		defaultAmbiance = new AmbianceItem("Default Pack", "resources/ambiance/default", 0);
 		wubble  = new AmbianceItem("Wubble Pack", "resources/ambiance/wubble", 10);
-//		atlantis = new ShopItem("Atlantis Pack", "resources/ambiance/alien", 0);
-//		space = new ShopItem("Space Pack", "resources/ambiance/alien", 0);
+		atlantis = new AmbianceItem("Atlantis Pack", "resources/ambiance/atlantis", 10);
+//		space = new AmbianceItem("Space Pack", "resources/ambiance/space", 0);
 	}
 	
 	private void addComponents() {
@@ -108,11 +108,11 @@ public class ShopPanel extends JPanel implements Observer {
 //		c.insets = new Insets(20, 0, 20, 0);
 		add(wubble, c);
 		
-//		c.gridx = 2;
-//		c.gridy = 4;
-//		c.gridwidth = 1;
+		c.gridx = 2;
+		c.gridy = 4;
+		c.gridwidth = 1;
 //		c.insets = new Insets(20, 0, 20, 0);
-//		add(atlantis, c);
+		add(atlantis, c);
 		
 //		c.gridx = 3;
 //		c.gridy = 4;

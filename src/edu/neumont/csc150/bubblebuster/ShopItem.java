@@ -48,20 +48,15 @@ public class ShopItem extends JPanel implements MouseListener {
 		JLabel title = new JLabel(this.title);
 		title.setFont(contentFont);
 		title.setForeground(Color.WHITE);
-		c.insets = new Insets(0, 0, 0, 0);
+		c.insets = new Insets(0, 0, 5, 0);
 		c.gridx = 0;
 		c.gridy = 0;
 		add(title, c);
 		
 		imageLabel = new JLabel(image);
-		c.insets = new Insets(0, 0, 0, 0);
 		c.gridx = 0;
 		c.gridy = 1;
 		add(imageLabel, c);
-		
-//		c.insets = new Insets(0, 0, 0, 0);
-//		c.gridx = 0;
-//		c.gridy = 2;
 	}
 	private void drawGray() {
 		// Create a grayscale image of the preview
@@ -108,6 +103,7 @@ public class ShopItem extends JPanel implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		purchase();
+		GUI.getInstance().switchTo(new ShopPanel()); // I hate this.
 	}
 	@Override
 	public void mouseEntered(MouseEvent arg0) {}
