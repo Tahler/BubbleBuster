@@ -8,7 +8,6 @@ public class ShopPanel extends JPanel {
 	private GUI frame;
 	private JLabel title;
 	
-	
 	public ShopPanel() {
 		
 	}
