@@ -13,16 +13,15 @@ import javax.swing.JLabel;
 public class TimeTrialGameOverPanel extends GameOverPanel {
 	private JLabel poppedLabel, poppedBubblesThisGameLabel, poppedRecordLabel;
 	
-	public TimeTrialGameOverPanel(GUI frame, Image background, int score, int popped) {
-		super(frame, background, score, 90000L);
+	public TimeTrialGameOverPanel(Image background, int score, int popped) {
+		super(background, score, 90000L);
 		updateStatistics(score, popped);
 		initializeComponents(popped);
 		addComponents();
 		
 		playAgainButton.addActionListener(e -> {
-			frame.gamePanel = new TimeTrialMode(frame);
-			frame.switchTo(frame.gamePanel);
-			
+			GUI.getInstance().gamePanel = new TimeTrialMode();
+			GUI.getInstance().switchTo(GUI.getInstance().gamePanel);
 		});
 		animateTransfer();
 	}

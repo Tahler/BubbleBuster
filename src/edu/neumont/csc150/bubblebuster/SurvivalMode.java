@@ -9,8 +9,8 @@ public class SurvivalMode extends BubbleBuster {
 	private int difficultyTimer;
 	private int lives;
 	
-	public SurvivalMode(GUI frame) {
-		super(frame);
+	public SurvivalMode() {
+		super();
 		difficultyTimer = DIFFICULTY_INCREASE_INTERVAL;
 		setLives(STARTING_LIVES);
 	}
@@ -53,8 +53,8 @@ public class SurvivalMode extends BubbleBuster {
 	public void loseLife() {
 		this.lives--;
 		if (lives <= 0) {
- 			frame.switchTo(new SurvivalGameOverPanel(frame, background.getImage(), getScore(), watch.getTime()));
-			frame.gamePanel = null;
+			GUI.getInstance().switchTo(new SurvivalGameOverPanel(background.getImage(), getScore(), watch.getTime()));
+			GUI.getInstance().gamePanel = null;
 		}
 	}
 	public int getLives() {

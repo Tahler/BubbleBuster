@@ -13,7 +13,6 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class StatisticsPanel extends JPanel {
-	private GUI frame;
 	private JLabel title;
 	private JLabel general, survival, timeTrial;
 	private JLabel totalPointsAllTimeLabel, totalCoinsAllTimeLabel, totalPlaytimeLabel,
@@ -25,8 +24,7 @@ public class StatisticsPanel extends JPanel {
 	private BubbleButton menuButton;
 	private ImageIcon background;
 
-	public StatisticsPanel(GUI frame) {
-		this.frame = frame;
+	public StatisticsPanel() {
 		background = new ImageIcon("resources/blue.jpg");
 		setOpaque(false);
 		initializeComponents();
@@ -61,7 +59,7 @@ public class StatisticsPanel extends JPanel {
 		
 		menuButton = new BubbleButton("Back to Menu");
 		menuButton.addActionListener(e -> {
-			frame.switchTo(new MainMenuPanel(frame));
+			GUI.getInstance().switchTo(new MainMenuPanel());
 		});
 		
 		Font headerFont = new Font("Arial", Font.BOLD, 24);

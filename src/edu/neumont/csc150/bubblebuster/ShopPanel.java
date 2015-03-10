@@ -13,15 +13,13 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class ShopPanel extends JPanel {
-	private GUI frame;
 	private BubbleButton menu;
 	private JLabel title, header1, header2;
 	private ImageIcon background;
 	private ShopItem defaultSkin, alien, pig, robot,
 			defaultAmbiance, wubble, atlantis, space;
 	
-	public ShopPanel(GUI frame) {
-		this.frame = frame;
+	public ShopPanel() {
 		background = new ImageIcon("resources/blue.jpg");
 		setOpaque(false);
 		initializeComponents();
@@ -35,7 +33,7 @@ public class ShopPanel extends JPanel {
 		
 		menu = new BubbleButton("Back to Menu");
 		menu.addActionListener(e -> {
-			frame.switchTo(new MainMenuPanel(frame));
+			GUI.getInstance().switchTo(new MainMenuPanel());
 		});
 		
 		Font headerFont = new Font("Arial", Font.BOLD, 36);

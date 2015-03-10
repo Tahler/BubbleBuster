@@ -20,14 +20,23 @@ public class GUI extends JFrame implements MouseListener {
 	
 	private Cursor cursor, cursorPressed;
 	
-	public GUI() {
+	private static GUI instance = null;
+	public static GUI getInstance() {
+		if (instance == null) {
+			System.out.println("null");
+			instance = new GUI();
+		}
+		return instance;
+	}
+	
+	private GUI() {
 		super("Bubble Buster");
 		WIDTH = Toolkit.getDefaultToolkit().getScreenSize().width;
 		HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().height;
 		initializeFrame();
 		initializeCursor();
 		addMouseListener(this);
-		switchTo(new MainMenuPanel(this));
+		switchTo(new MainMenuPanel());
 		if (Preferences.musicEnabled) Sound.getInstance().startMusic();
 	}
 	private void initializeFrame() {

@@ -12,7 +12,6 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class MainMenuPanel extends JPanel {
-	private GUI frame;
 	private JLabel title;
 	private JPanel buttonPanel, soundPanel;
 	private BubbleButton survivalButton, timeTrialButton, shopButton, statisticsButton, quitButton;
@@ -21,8 +20,7 @@ public class MainMenuPanel extends JPanel {
 	private SoundButton	effectsButton;
 	private ImageIcon background;
 	
-	public MainMenuPanel(GUI frame) {
-		this.frame = frame;
+	public MainMenuPanel() {
 		background = new ImageIcon("resources/blue.jpg");
 		initializeComponents();
 		addComponents();
@@ -90,21 +88,21 @@ public class MainMenuPanel extends JPanel {
 	}
 	private void addListeners() {
 		survivalButton.addActionListener(e -> {
-			frame.gamePanel = new SurvivalMode(frame);
-			frame.switchTo(frame.gamePanel);
+			GUI.getInstance().gamePanel = new SurvivalMode();
+			GUI.getInstance().switchTo(GUI.getInstance().gamePanel);
 		});
 		timeTrialButton.addActionListener(e -> {
-			frame.gamePanel = new TimeTrialMode(frame);
-			frame.switchTo(frame.gamePanel);
+			GUI.getInstance().gamePanel = new TimeTrialMode();
+			GUI.getInstance().switchTo(GUI.getInstance().gamePanel);
 		});
 		statisticsButton.addActionListener(e -> {
-			frame.switchTo(new StatisticsPanel(frame));
+			GUI.getInstance().switchTo(new StatisticsPanel());
 		});
 		shopButton.addActionListener(e -> {
-			frame.switchTo(new ShopPanel(frame));
+			GUI.getInstance().switchTo(new ShopPanel());
 		});
 		quitButton.addActionListener(e -> {
-			frame.dispose();
+			GUI.getInstance().dispose();
 			System.exit(0);
 		});
 	}

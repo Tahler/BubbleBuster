@@ -13,16 +13,16 @@ import javax.swing.JLabel;
 public class SurvivalGameOverPanel extends GameOverPanel {
 	private JLabel timeLabel, timeSurvivedLabel, timeRecordLabel;
 	
-	public SurvivalGameOverPanel(GUI frame, Image background, int score, long time) {
-		super(frame, background, score, time);
+	public SurvivalGameOverPanel(Image background, int score, long time) {
+		super(background, score, time);
 		updateStatistics(score, time);
 		this.initializeComponents(time);
 		pointsRecordLabel.setText(Statistics.survivalHighScore + "");
 		
 		addComponents();
 		playAgainButton.addActionListener(e -> {
-			frame.gamePanel = new SurvivalMode(frame);
-			frame.switchTo(frame.gamePanel);
+			GUI.getInstance().gamePanel = new SurvivalMode();
+			GUI.getInstance().switchTo(GUI.getInstance().gamePanel);
 		});
 		
 		animateTransfer();

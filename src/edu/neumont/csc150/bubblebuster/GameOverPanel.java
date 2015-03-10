@@ -16,7 +16,6 @@ import javax.swing.Timer;
 
 @SuppressWarnings("serial")
 public abstract class GameOverPanel extends JPanel {
-	protected GUI frame;
 	protected JLabel titleLabel, colThisRunLabel, colRecordLabel, 
 		pointsLabel, pointsEarnedLabel, pointsRecordLabel,
 		coinsEarnedLabel, coinsThisRunLabel, coinsRecordLabel,
@@ -25,8 +24,7 @@ public abstract class GameOverPanel extends JPanel {
 	private Image background;
 	private int coinsBefore, coinsThisRun;
 	
-	public GameOverPanel(GUI frame, Image background, int score, long time) {
-		this.frame = frame;
+	public GameOverPanel(Image background, int score, long time) {
 		this.background = background;
 		coinsBefore = Statistics.walletCoins;
 		coinsThisRun = score / 10;
@@ -72,7 +70,7 @@ public abstract class GameOverPanel extends JPanel {
 		playAgainButton = new BubbleButton("Play Again");
 		menuButton = new BubbleButton("Back to Menu");
 		menuButton.addActionListener(e -> {
-			frame.switchTo(new MainMenuPanel(frame));
+			GUI.getInstance().switchTo(new MainMenuPanel());
 		});
 		
 		

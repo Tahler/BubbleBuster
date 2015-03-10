@@ -16,7 +16,6 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class PausePanel extends JPanel {
-	private GUI frame;
 	private BubbleButton resumeButton, menuButton;
 	private JPanel panel1, panel2;
 	private final JLabel title;
@@ -24,8 +23,7 @@ public class PausePanel extends JPanel {
 	private SoundButton	effectsButton;
 	private Image background;
 	
-	public PausePanel(GUI frame, Image background) {
-		this.frame = frame;
+	public PausePanel(Image background) {
 		title = new JLabel(new ImageIcon("resources/pause.png"), JLabel.CENTER);
 		initializeButtons();
 		addComponents();
@@ -54,7 +52,7 @@ public class PausePanel extends JPanel {
 			resume();
 		});
 		menuButton.addActionListener(e -> {
-			frame.switchTo(new MainMenuPanel(frame));
+			GUI.getInstance().switchTo(new MainMenuPanel());
 		});
 	}
 	private void addComponents() {
@@ -93,8 +91,8 @@ public class PausePanel extends JPanel {
 	}
 	
 	public void resume() {
-		((BubbleBuster) frame.gamePanel).togglePause();
-		frame.switchTo(frame.gamePanel);
+		((BubbleBuster) GUI.getInstance().gamePanel).togglePause();
+		GUI.getInstance().switchTo(GUI.getInstance().gamePanel);
 	}
 	
 	@Override

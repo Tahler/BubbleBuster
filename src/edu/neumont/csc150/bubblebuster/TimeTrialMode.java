@@ -6,8 +6,8 @@ import java.awt.Graphics;
 public class TimeTrialMode extends BubbleBuster {
 	private static final int TIME = 90000;
 	
-	public TimeTrialMode(GUI frame) {
-		super(frame);
+	public TimeTrialMode() {
+		super();
 		setMinBubbleInterval(10);
 		setMaxBubbleInterval(20);
 	}
@@ -25,8 +25,8 @@ public class TimeTrialMode extends BubbleBuster {
 		if (watch.getTime() >= TIME) {
 			
 			watch.stop();	
-			frame.switchTo(new TimeTrialGameOverPanel(frame, background.getImage(), getScore(), getPopped()));
-			frame.gamePanel = null;
+			GUI.getInstance().switchTo(new TimeTrialGameOverPanel(background.getImage(), getScore(), getPopped()));
+			GUI.getInstance().gamePanel = null;
 		}
 	}
 }

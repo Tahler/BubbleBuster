@@ -16,7 +16,7 @@ public class Main {
 		Sound.getInstance();
 		
 		// Run the program
-		new GUI();
+		GUI.getInstance();
 	}
 	
 }

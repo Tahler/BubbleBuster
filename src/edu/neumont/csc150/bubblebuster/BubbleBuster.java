@@ -22,7 +22,6 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Key
 	public int minBubbleInterval;
 	public int maxBubbleInterval;
 	protected static final int STRING_PADDING = 30;
-	protected GUI frame;
 	protected ImageIcon background;
 	private int bubbleInterval;
 	private int score;
@@ -33,9 +32,7 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Key
 	private ArrayList<Bubble> bubbles;
 	protected StopWatch watch;
 	
-	public BubbleBuster(GUI frame) {
-		this.frame = frame;
-		
+	public BubbleBuster() {
 		score = 0;
 		popped = 0;
 //		coinsEarned = 0;
@@ -104,7 +101,7 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Key
 	public void keyReleased(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
 			togglePause();
-			frame.switchTo(new PausePanel(frame, background.getImage()));
+			GUI.getInstance().switchTo(new PausePanel(background.getImage()));
 		}
 	}
 	
@@ -114,7 +111,7 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Key
 			bubbleInterval = new Random().nextInt(maxBubbleInterval - minBubbleInterval) + minBubbleInterval;
 			Bubble bubble = new Bubble();
 			bubbles.add(bubble);
-			frame.addMouseListener(bubble); // Adding the MouseListener to this JPanel would overwrite the GUI's MouseListener (which manages the cursor)
+			GUI.getInstance().addMouseListener(bubble); // Adding the MouseListener to this JPanel would overwrite the GUI's MouseListener (which manages the cursor)
 		}
 		// Wait
 		else bubbleInterval--;
