@@ -11,8 +11,8 @@ import java.io.Serializable;
 public abstract class Purchases implements Serializable {
 	private static final long serialVersionUID = 2059369102932063253L;
 
-	public static boolean defaultSkin, alien, pig, robot;
-	public static boolean defaultAmbiance, wubble, atlantis, space;
+	public static boolean defaultSkin, robot, pig, alien;
+	public static boolean defaultAmbiance, wubble, farm, space;
 	
 	public static boolean isPurchased(String item) {
 		switch (item) {
@@ -28,46 +28,38 @@ public abstract class Purchases implements Serializable {
 				return defaultAmbiance;
 			case "Wubble Pack":
 				return wubble;
-			case "Atlantis Pack":
-				return atlantis;
+			case "Farm Pack":
+				return farm;
 			case "Space Pack":
 				return space;
 			default:
 				return false;
 		}
 	}
-	public static void purchaseAndUse(String item) {
+	public static void purchase(String item) {
 		switch (item) {
 			case "Default Skin":
-				Preferences.skinFolderLocation = "resources/skins/default";
 				defaultAmbiance = true;
 				break;
 			case "Alien Skin":
-				Preferences.skinFolderLocation = "resources/skins/alien";
 				alien = true;
 				break;
 			case "Pig Skin":
-				Preferences.skinFolderLocation = "resources/skins/pig";
 				pig = true;
 				break;
 			case "Robot Skin":
-				Preferences.skinFolderLocation = "resources/skins/robot";
 				robot = true;
 				break;
 			case "Default Pack":
-				Preferences.ambianceFolderLocation = "resources/ambiance/default";
 				defaultAmbiance = true;
 				break;
 			case "Wubble Pack":
-				Preferences.ambianceFolderLocation = "resources/ambiance/wubble";
 				wubble = true;
 				break;
-			case "Atlantis Pack":
-				Preferences.ambianceFolderLocation = "resources/ambiance/atlantis";
-				atlantis = true;
+			case "Farm Pack":
+				farm = true;
 				break;
 			case "Space Pack":
-				Preferences.ambianceFolderLocation = "resources/ambiance/space";
 				space = true;
 				break;
 		}
@@ -77,7 +69,7 @@ public abstract class Purchases implements Serializable {
 	
 	public static void save() {
 		try {
-			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(new File("statistics")));
+			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(new File("purchases")));
 			
 			out.writeBoolean(defaultSkin);
 			out.writeBoolean(alien);
@@ -86,7 +78,7 @@ public abstract class Purchases implements Serializable {
 			
 			out.writeBoolean(defaultAmbiance);
 			out.writeBoolean(wubble);
-			out.writeBoolean(atlantis);
+			out.writeBoolean(farm);
 			out.writeBoolean(space);
 			
 			out.close();
@@ -100,7 +92,7 @@ public abstract class Purchases implements Serializable {
 	 */
 	public static void load() {
 		try {
-			ObjectInputStream in = new ObjectInputStream(new FileInputStream(new File("statistics")));
+			ObjectInputStream in = new ObjectInputStream(new FileInputStream(new File("purchases")));
 			
 			defaultSkin = in.readBoolean();
 			alien = in.readBoolean();
@@ -109,7 +101,7 @@ public abstract class Purchases implements Serializable {
 			
 			defaultAmbiance = in.readBoolean();
 			wubble = in.readBoolean();
-			atlantis = in.readBoolean();
+			farm = in.readBoolean();
 			space = in.readBoolean();
 			
 			in.close();
@@ -122,7 +114,7 @@ public abstract class Purchases implements Serializable {
 			
 			defaultAmbiance = true;
 			wubble = false;
-			atlantis = false;
+			farm = false;
 			space = false;
 			
 			Purchases.save();

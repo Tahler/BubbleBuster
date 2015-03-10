@@ -6,18 +6,20 @@ import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
-public class ShopPanel extends JPanel {
+public class ShopPanel extends JPanel implements Observer {
 	private BubbleButton menu;
 	private JLabel title, header1, header2;
 	private ImageIcon background;
 	private ShopItem defaultSkin, alien, pig, robot,
-			defaultAmbiance, wubble, atlantis, space;
+			defaultAmbiance, wubble, farm, space;
 	
 	public ShopPanel() {
 		background = new ImageIcon("resources/blue.jpg");
@@ -47,10 +49,10 @@ public class ShopPanel extends JPanel {
 //		pig  = new ShopItem("Pig Skin", "resources/skins/pig", 10);
 //		alien = new ShopItem("Alien Skin", "resources/skins/alien", 0);
 		
-		defaultAmbiance = new ShopItem("Default Pack", "resources/ambiance/default", 0);
-		wubble  = new ShopItem("Wubble Pack", "resources/ambiance/wubble", 10);
-//		atlantis = new ShopItem("Atlantis Pack", "resources/ambiance/alien", 0);
-//		space = new ShopItem("Space Pack", "resources/ambiance/alien", 0);
+		defaultAmbiance = new AmbianceItem("Default Pack", "resources/ambiance/default", 0);
+		wubble  = new AmbianceItem("Wubble Pack", "resources/ambiance/wubble", 10);
+		farm = new AmbianceItem("Farm Pack", "resources/ambiance/farm", 20);
+		space = new AmbianceItem("Space Pack", "resources/ambiance/space", 30);
 	}
 	
 	private void addComponents() {
@@ -61,7 +63,7 @@ public class ShopPanel extends JPanel {
 		c.gridx = 0;
 		c.gridy = 0;
 		c.gridwidth = 4;
-//		c.insets = new Insets(0, 0, 20, 0);
+		c.insets = new Insets(10, 10, 10, 10);
 		add(title, c);
 		
 		c.gridx = 0;
@@ -91,32 +93,27 @@ public class ShopPanel extends JPanel {
 		c.gridx = 0;
 		c.gridy = 3;
 		c.gridwidth = 4;
-//		c.insets = new Insets(20, 0, 20, 0);
 		add(header2, c);
 		
 		c.gridx = 0;
 		c.gridy = 4;
 		c.gridwidth = 1;
-//		c.insets = new Insets(20, 0, 20, 0);
 		add(defaultAmbiance, c);
 		
 		c.gridx = 1;
 		c.gridy = 4;
 		c.gridwidth = 1;
-//		c.insets = new Insets(20, 0, 20, 0);
 		add(wubble, c);
 		
-//		c.gridx = 2;
-//		c.gridy = 4;
-//		c.gridwidth = 1;
-//		c.insets = new Insets(20, 0, 20, 0);
-//		add(atlantis, c);
+		c.gridx = 2;
+		c.gridy = 4;
+		c.gridwidth = 1;
+		add(farm, c);
 		
-//		c.gridx = 3;
-//		c.gridy = 4;
-//		c.gridwidth = 1;
-//		c.insets = new Insets(20, 0, 20, 0);
-//		add(space, c);
+		c.gridx = 3;
+		c.gridy = 4;
+		c.gridwidth = 1;
+		add(space, c);
 		
 		c.gridx = 0;
 		c.gridy = 5;
@@ -129,5 +126,10 @@ public class ShopPanel extends JPanel {
 		g.setColor(Color.WHITE);
 		super.paintComponent(g);
 		g.drawImage(background.getImage(), 0, 0, null);
+	}
+	
+	@Override
+	public void update(Observable o, Object arg) {
+		repaint();
 	}
 }

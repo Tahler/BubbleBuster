@@ -12,12 +12,6 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class GUI extends JFrame implements MouseListener {
-	private static GUI instance = null;
-	public static GUI getInstance() {
-		if (instance == null) instance = new GUI();
-		return instance;
-	}
-	
 	public static int WIDTH;
 	public static int HEIGHT;
 	
@@ -25,6 +19,12 @@ public class GUI extends JFrame implements MouseListener {
 	private JPanel currentPanel;
 	
 	private Cursor cursor, cursorPressed;
+	
+	private static GUI instance = null;
+	public static GUI getInstance() {
+		if (instance == null) instance = new GUI();
+		return instance;
+	}
 	
 	private GUI() {
 		super("Bubble Buster");
