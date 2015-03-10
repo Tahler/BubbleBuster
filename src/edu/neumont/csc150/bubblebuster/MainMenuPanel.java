@@ -100,6 +100,9 @@ public class MainMenuPanel extends JPanel {
 		statisticsButton.addActionListener(e -> {
 			frame.switchTo(new StatisticsPanel(frame));
 		});
+		shopButton.addActionListener(e -> {
+			frame.switchTo(new ShopPanel(frame));
+		});
 		quitButton.addActionListener(e -> {
 			frame.dispose();
 			System.exit(0);
