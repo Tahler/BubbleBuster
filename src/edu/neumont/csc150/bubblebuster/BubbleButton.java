@@ -30,6 +30,7 @@ public class BubbleButton extends JComponent implements MouseListener, ActionLis
 		setPreferredSize(new Dimension(IMG.getIconWidth(), IMG.getIconHeight()));
 		setImage(IMG.getImage());
 		addMouseListener(this);
+//		GUI.getInstance().addMouseListener(this);
 	}
 	
 	@Override

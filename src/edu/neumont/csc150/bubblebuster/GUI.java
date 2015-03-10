@@ -12,6 +12,12 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class GUI extends JFrame implements MouseListener {
+	private static GUI instance = null;
+	public static GUI getInstance() {
+		if (instance == null) instance = new GUI();
+		return instance;
+	}
+	
 	public static int WIDTH;
 	public static int HEIGHT;
 	
@@ -20,15 +26,6 @@ public class GUI extends JFrame implements MouseListener {
 	
 	private Cursor cursor, cursorPressed;
 	
-	private static GUI instance = null;
-	public static GUI getInstance() {
-		if (instance == null) {
-			System.out.println("null");
-			instance = new GUI();
-		}
-		return instance;
-	}
-	
 	private GUI() {
 		super("Bubble Buster");
 		WIDTH = Toolkit.getDefaultToolkit().getScreenSize().width;
@@ -36,7 +33,7 @@ public class GUI extends JFrame implements MouseListener {
 		initializeFrame();
 		initializeCursor();
 		addMouseListener(this);
-		switchTo(new MainMenuPanel());
+//		switchTo(new MainMenuPanel());
 		if (Preferences.musicEnabled) Sound.getInstance().startMusic();
 	}
 	private void initializeFrame() {

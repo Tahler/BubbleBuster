@@ -16,7 +16,7 @@ public class Main {
 		Sound.getInstance();
 		
 		// Run the program
-		GUI.getInstance();
+		GUI.getInstance().switchTo(new MainMenuPanel());
 	}
 	
 }

@@ -43,6 +43,8 @@ public class Bubble extends JComponent implements MouseListener {
 		setY(GUI.HEIGHT);
 		
 		img = img.getScaledInstance(diameter, diameter, Image.SCALE_SMOOTH);
+		
+		GUI.getInstance().addMouseListener(this); // Adding the MouseListener to this JComponent would overwrite the GUI's MouseListener (which manages the cursor)
 	}
 	
 	public static void resetDifficulty() {

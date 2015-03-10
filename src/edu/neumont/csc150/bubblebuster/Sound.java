@@ -12,10 +12,10 @@ public class Sound {
 	protected Clip music;
 	protected Clip[] popEffects;
 	private static final int nSounds = new File(Preferences.skinFolderLocation).list().length - 1; // Subtract one for the bubble's image file
-	public static Sound instance = null;
 	
+	private static Sound instance = null;
 	public static Sound getInstance() {
-		if(instance == null) instance = new Sound();
+		if (instance == null) instance = new Sound();
 		return instance;
 	}
 	

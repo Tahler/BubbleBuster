@@ -111,7 +111,7 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Key
 			bubbleInterval = new Random().nextInt(maxBubbleInterval - minBubbleInterval) + minBubbleInterval;
 			Bubble bubble = new Bubble();
 			bubbles.add(bubble);
-			GUI.getInstance().addMouseListener(bubble); // Adding the MouseListener to this JPanel would overwrite the GUI's MouseListener (which manages the cursor)
+			
 		}
 		// Wait
 		else bubbleInterval--;
