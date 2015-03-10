@@ -22,10 +22,7 @@ public class GUI extends JFrame implements MouseListener {
 	
 	private static GUI instance = null;
 	public static GUI getInstance() {
-		if (instance == null) {
-			System.out.println("null");
-			instance = new GUI();
-		}
+		if (instance == null) instance = new GUI();
 		return instance;
 	}
 	

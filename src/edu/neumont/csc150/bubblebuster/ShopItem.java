@@ -5,13 +5,13 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Image;
 import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -19,16 +19,20 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class ShopItem extends JPanel implements MouseListener {
 	private String title;
+	protected String folderPath;
+	private JLabel imageLabel;
 	private ImageIcon image;
 	private int cost;
 	
 	public ShopItem(String title, String folderPath, int cost) {
 		this.title = title;
+		this.folderPath = folderPath;
 		this.image = new ImageIcon(folderPath + "/preview.png"); // Scaled to 480x300 //.getScaledInstance(480, 300, Image.SCALE_DEFAULT)
 		this.cost = cost;
 		
 		setOpaque(false);
 		addComponents();
+		addMouseListener(this);
 		if (!Purchases.isPurchased(title)) drawGray();
 	}
 	private void addComponents() {
@@ -38,19 +42,19 @@ public class ShopItem extends JPanel implements MouseListener {
 		GridBagConstraints c = new GridBagConstraints();
 		c.anchor = GridBagConstraints.CENTER;
 		
-		JLabel x = new JLabel(title);
-		x.setFont(contentFont);
-		x.setForeground(Color.WHITE);
+		JLabel title = new JLabel(this.title);
+		title.setFont(contentFont);
+		title.setForeground(Color.WHITE);
 		c.insets = new Insets(0, 0, 0, 0);
 		c.gridx = 0;
 		c.gridy = 0;
-		add(x, c);
+		add(title, c);
 		
-		x = new JLabel(image);
+		imageLabel = new JLabel(image);
 		c.insets = new Insets(0, 0, 0, 0);
 		c.gridx = 0;
 		c.gridy = 1;
-		add(x, c);
+		add(imageLabel, c);
 		
 //		c.insets = new Insets(0, 0, 0, 0);
 //		c.gridx = 0;
@@ -78,15 +82,30 @@ public class ShopItem extends JPanel implements MouseListener {
 	}
 	
 	public void purchase() {
-		if (Statistics.walletCoins >= cost) {
-			Purchases.purchaseAndUse(title);
-			
-			Statistics.walletCoins -= cost;
+		if (!Purchases.isPurchased(title)) {
+			if (Statistics.walletCoins >= cost) {
+				Purchases.purchase(title);
+				Statistics.walletCoins -= cost;
+				equip();
+			}
 		}
+		else equip();
+	}
+	
+	public void equip() {
+		image.setImage(Toolkit.getDefaultToolkit().getImage(folderPath + "/preview.png"));
+		imageLabel.setBorder(BorderFactory.createLineBorder(Color.GREEN, 5, true));
+		repaint();
+	}
+	public void unequip() {
+		imageLabel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+		repaint();
 	}
 	
 	@Override
-	public void mouseClicked(MouseEvent arg0) {}
+	public void mouseClicked(MouseEvent arg0) {
+		purchase();
+	}
 	@Override
 	public void mouseEntered(MouseEvent arg0) {}
 	@Override

@@ -36,38 +36,30 @@ public abstract class Purchases implements Serializable {
 				return false;
 		}
 	}
-	public static void purchaseAndUse(String item) {
+	public static void purchase(String item) {
 		switch (item) {
 			case "Default Skin":
-				Preferences.skinFolderLocation = "resources/skins/default";
 				defaultAmbiance = true;
 				break;
 			case "Alien Skin":
-				Preferences.skinFolderLocation = "resources/skins/alien";
 				alien = true;
 				break;
 			case "Pig Skin":
-				Preferences.skinFolderLocation = "resources/skins/pig";
 				pig = true;
 				break;
 			case "Robot Skin":
-				Preferences.skinFolderLocation = "resources/skins/robot";
 				robot = true;
 				break;
 			case "Default Pack":
-				Preferences.ambianceFolderLocation = "resources/ambiance/default";
 				defaultAmbiance = true;
 				break;
 			case "Wubble Pack":
-				Preferences.ambianceFolderLocation = "resources/ambiance/wubble";
 				wubble = true;
 				break;
 			case "Atlantis Pack":
-				Preferences.ambianceFolderLocation = "resources/ambiance/atlantis";
 				atlantis = true;
 				break;
 			case "Space Pack":
-				Preferences.ambianceFolderLocation = "resources/ambiance/space";
 				space = true;
 				break;
 		}
@@ -77,7 +69,7 @@ public abstract class Purchases implements Serializable {
 	
 	public static void save() {
 		try {
-			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(new File("statistics")));
+			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(new File("purchases")));
 			
 			out.writeBoolean(defaultSkin);
 			out.writeBoolean(alien);
@@ -100,7 +92,7 @@ public abstract class Purchases implements Serializable {
 	 */
 	public static void load() {
 		try {
-			ObjectInputStream in = new ObjectInputStream(new FileInputStream(new File("statistics")));
+			ObjectInputStream in = new ObjectInputStream(new FileInputStream(new File("purchases")));
 			
 			defaultSkin = in.readBoolean();
 			alien = in.readBoolean();

@@ -47,8 +47,8 @@ public class ShopPanel extends JPanel {
 //		pig  = new ShopItem("Pig Skin", "resources/skins/pig", 10);
 //		alien = new ShopItem("Alien Skin", "resources/skins/alien", 0);
 		
-		defaultAmbiance = new ShopItem("Default Pack", "resources/ambiance/default", 0);
-		wubble  = new ShopItem("Wubble Pack", "resources/ambiance/wubble", 10);
+		defaultAmbiance = new AmbianceItem("Default Pack", "resources/ambiance/default", 0);
+		wubble  = new AmbianceItem("Wubble Pack", "resources/ambiance/wubble", 10);
 //		atlantis = new ShopItem("Atlantis Pack", "resources/ambiance/alien", 0);
 //		space = new ShopItem("Space Pack", "resources/ambiance/alien", 0);
 	}
@@ -61,7 +61,7 @@ public class ShopPanel extends JPanel {
 		c.gridx = 0;
 		c.gridy = 0;
 		c.gridwidth = 4;
-//		c.insets = new Insets(0, 0, 20, 0);
+		c.insets = new Insets(10, 10, 10, 10);
 		add(title, c);
 		
 		c.gridx = 0;
