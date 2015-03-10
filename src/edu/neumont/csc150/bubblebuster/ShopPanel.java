@@ -19,7 +19,7 @@ public class ShopPanel extends JPanel implements Observer {
 	private JLabel title, header1, header2;
 	private ImageIcon background;
 	private ShopItem defaultSkin, alien, pig, robot,
-			defaultAmbiance, wubble, atlantis, space;
+			defaultAmbiance, wubble, farm, space;
 	
 	public ShopPanel() {
 		background = new ImageIcon("resources/blue.jpg");
@@ -51,8 +51,8 @@ public class ShopPanel extends JPanel implements Observer {
 		
 		defaultAmbiance = new AmbianceItem("Default Pack", "resources/ambiance/default", 0);
 		wubble  = new AmbianceItem("Wubble Pack", "resources/ambiance/wubble", 10);
-		atlantis = new AmbianceItem("Atlantis Pack", "resources/ambiance/atlantis", 10);
-//		space = new AmbianceItem("Space Pack", "resources/ambiance/space", 0);
+		farm = new AmbianceItem("Farm Pack", "resources/ambiance/farm", 20);
+		space = new AmbianceItem("Space Pack", "resources/ambiance/space", 30);
 	}
 	
 	private void addComponents() {
@@ -93,32 +93,27 @@ public class ShopPanel extends JPanel implements Observer {
 		c.gridx = 0;
 		c.gridy = 3;
 		c.gridwidth = 4;
-//		c.insets = new Insets(20, 0, 20, 0);
 		add(header2, c);
 		
 		c.gridx = 0;
 		c.gridy = 4;
 		c.gridwidth = 1;
-//		c.insets = new Insets(20, 0, 20, 0);
 		add(defaultAmbiance, c);
 		
 		c.gridx = 1;
 		c.gridy = 4;
 		c.gridwidth = 1;
-//		c.insets = new Insets(20, 0, 20, 0);
 		add(wubble, c);
 		
 		c.gridx = 2;
 		c.gridy = 4;
 		c.gridwidth = 1;
-//		c.insets = new Insets(20, 0, 20, 0);
-		add(atlantis, c);
+		add(farm, c);
 		
-//		c.gridx = 3;
-//		c.gridy = 4;
-//		c.gridwidth = 1;
-//		c.insets = new Insets(20, 0, 20, 0);
-//		add(space, c);
+		c.gridx = 3;
+		c.gridy = 4;
+		c.gridwidth = 1;
+		add(space, c);
 		
 		c.gridx = 0;
 		c.gridy = 5;

@@ -11,8 +11,8 @@ import java.io.Serializable;
 public abstract class Purchases implements Serializable {
 	private static final long serialVersionUID = 2059369102932063253L;
 
-	public static boolean defaultSkin, alien, pig, robot;
-	public static boolean defaultAmbiance, wubble, atlantis, space;
+	public static boolean defaultSkin, robot, pig, alien;
+	public static boolean defaultAmbiance, wubble, farm, space;
 	
 	public static boolean isPurchased(String item) {
 		switch (item) {
@@ -28,8 +28,8 @@ public abstract class Purchases implements Serializable {
 				return defaultAmbiance;
 			case "Wubble Pack":
 				return wubble;
-			case "Atlantis Pack":
-				return atlantis;
+			case "Farm Pack":
+				return farm;
 			case "Space Pack":
 				return space;
 			default:
@@ -56,8 +56,8 @@ public abstract class Purchases implements Serializable {
 			case "Wubble Pack":
 				wubble = true;
 				break;
-			case "Atlantis Pack":
-				atlantis = true;
+			case "Farm Pack":
+				farm = true;
 				break;
 			case "Space Pack":
 				space = true;
@@ -78,7 +78,7 @@ public abstract class Purchases implements Serializable {
 			
 			out.writeBoolean(defaultAmbiance);
 			out.writeBoolean(wubble);
-			out.writeBoolean(atlantis);
+			out.writeBoolean(farm);
 			out.writeBoolean(space);
 			
 			out.close();
@@ -101,7 +101,7 @@ public abstract class Purchases implements Serializable {
 			
 			defaultAmbiance = in.readBoolean();
 			wubble = in.readBoolean();
-			atlantis = in.readBoolean();
+			farm = in.readBoolean();
 			space = in.readBoolean();
 			
 			in.close();
@@ -114,7 +114,7 @@ public abstract class Purchases implements Serializable {
 			
 			defaultAmbiance = true;
 			wubble = false;
-			atlantis = false;
+			farm = false;
 			space = false;
 			
 			Purchases.save();
