@@ -38,22 +38,19 @@ public class ShopPanel extends JPanel {
 			frame.switchTo(new MainMenuPanel(frame));
 		});
 		
-		Font headerFont = new Font("Arial", Font.BOLD, 24);
-		Font contentFont = new Font("Arial", Font.PLAIN, 18);
+		Font headerFont = new Font("Arial", Font.BOLD, 36);
 		
-		title.setFont(new Font("Arial", Font.BOLD, 36));
-		title.setForeground(Color.WHITE);
 		header1.setFont(headerFont);
 		header1.setForeground(Color.WHITE);
 		header2.setFont(headerFont);
 		header2.setForeground(Color.WHITE);
 		
-		defaultSkin = new ShopItem("Default Skin", "resources/skins/default", 0);
-		pig  = new ShopItem("Pig Skin", "resources/skins/pig", 10);
-		alien = new ShopItem("Alien Skin", "resources/skins/alien", 0);
+//		defaultSkin = new ShopItem("Default Skin", "resources/skins/default", 0);
+//		pig  = new ShopItem("Pig Skin", "resources/skins/pig", 10);
+//		alien = new ShopItem("Alien Skin", "resources/skins/alien", 0);
 		
 		defaultAmbiance = new ShopItem("Default Pack", "resources/ambiance/default", 0);
-		wubble  = new ShopItem("Wubble Pack", "resources/ambiance/dubstep", 10);
+		wubble  = new ShopItem("Wubble Pack", "resources/ambiance/wubble", 10);
 //		atlantis = new ShopItem("Atlantis Pack", "resources/ambiance/alien", 0);
 //		space = new ShopItem("Space Pack", "resources/ambiance/alien", 0);
 	}
@@ -75,23 +72,23 @@ public class ShopPanel extends JPanel {
 //		c.insets = new Insets(20, 0, 20, 0);
 		add(header1, c);
 		
-		c.gridx = 0;
-		c.gridy = 2;
-		c.gridwidth = 1;
-//		c.insets = new Insets(20, 0, 20, 0);
-		add(defaultSkin, c);
-		
-		c.gridx = 1;
-		c.gridy = 2;
-		c.gridwidth = 1;
-//		c.insets = new Insets(20, 0, 20, 0);
-		add(pig, c);
-		
-		c.gridx = 2;
-		c.gridy = 2;
-		c.gridwidth = 1;
-//		c.insets = new Insets(20, 0, 20, 0);
-		add(alien, c);
+//		c.gridx = 0;
+//		c.gridy = 2;
+//		c.gridwidth = 1;
+////		c.insets = new Insets(20, 0, 20, 0);
+//		add(defaultSkin, c);
+//		
+//		c.gridx = 1;
+//		c.gridy = 2;
+//		c.gridwidth = 1;
+////		c.insets = new Insets(20, 0, 20, 0);
+//		add(pig, c);
+//		
+//		c.gridx = 2;
+//		c.gridy = 2;
+//		c.gridwidth = 1;
+////		c.insets = new Insets(20, 0, 20, 0);
+//		add(alien, c);
 		
 		c.gridx = 0;
 		c.gridy = 3;
@@ -99,17 +96,17 @@ public class ShopPanel extends JPanel {
 //		c.insets = new Insets(20, 0, 20, 0);
 		add(header2, c);
 		
-//		c.gridx = 0;
-//		c.gridy = 4;
-//		c.gridwidth = 1;
-////		c.insets = new Insets(20, 0, 20, 0);
-//		add(defaultAmbiance, c);
+		c.gridx = 0;
+		c.gridy = 4;
+		c.gridwidth = 1;
+//		c.insets = new Insets(20, 0, 20, 0);
+		add(defaultAmbiance, c);
 		
-//		c.gridx = 1;
-//		c.gridy = 4;
-//		c.gridwidth = 1;
-////		c.insets = new Insets(20, 0, 20, 0);
-//		add(wubble, c);
+		c.gridx = 1;
+		c.gridy = 4;
+		c.gridwidth = 1;
+//		c.insets = new Insets(20, 0, 20, 0);
+		add(wubble, c);
 		
 //		c.gridx = 2;
 //		c.gridy = 4;

@@ -18,19 +18,19 @@ public abstract class Purchases implements Serializable {
 		switch (item) {
 			case "Default Skin":
 				return defaultAmbiance;
-			case "Alien":
+			case "Alien Skin":
 				return alien;
-			case "Pig":
+			case "Pig Skin":
 				return pig;
-			case "Robot":
+			case "Robot Skin":
 				return robot;
-			case "Default Ambiance":
+			case "Default Pack":
 				return defaultAmbiance;
-			case "Wubble":
+			case "Wubble Pack":
 				return wubble;
-			case "Atlantis":
+			case "Atlantis Pack":
 				return atlantis;
-			case "Space":
+			case "Space Pack":
 				return space;
 			default:
 				return false;
@@ -42,31 +42,31 @@ public abstract class Purchases implements Serializable {
 				Preferences.skinFolderLocation = "resources/skins/default";
 				defaultAmbiance = true;
 				break;
-			case "Alien":
+			case "Alien Skin":
 				Preferences.skinFolderLocation = "resources/skins/alien";
 				alien = true;
 				break;
-			case "Pig":
+			case "Pig Skin":
 				Preferences.skinFolderLocation = "resources/skins/pig";
 				pig = true;
 				break;
-			case "Robot":
+			case "Robot Skin":
 				Preferences.skinFolderLocation = "resources/skins/robot";
 				robot = true;
 				break;
-			case "Default Ambiance":
+			case "Default Pack":
 				Preferences.ambianceFolderLocation = "resources/ambiance/default";
 				defaultAmbiance = true;
 				break;
-			case "Wubble":
+			case "Wubble Pack":
 				Preferences.ambianceFolderLocation = "resources/ambiance/wubble";
 				wubble = true;
 				break;
-			case "Atlantis":
+			case "Atlantis Pack":
 				Preferences.ambianceFolderLocation = "resources/ambiance/atlantis";
 				atlantis = true;
 				break;
-			case "Space":
+			case "Space Pack":
 				Preferences.ambianceFolderLocation = "resources/ambiance/space";
 				space = true;
 				break;
