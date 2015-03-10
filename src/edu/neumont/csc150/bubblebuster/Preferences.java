@@ -1,7 +1,6 @@
 package edu.neumont.csc150.bubblebuster;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -30,8 +29,6 @@ public abstract class Preferences implements Serializable {
 	}
 	/**
 	 * Tries to load a currently existing preferences file.  If no such file exists, the file will be created with defaults.
-	 * @throws FileNotFoundException
-	 * @throws IOException
 	 */
 	public static void load() {
 		try {

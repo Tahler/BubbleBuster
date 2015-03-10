@@ -2,7 +2,6 @@ package edu.neumont.csc150.bubblebuster;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -36,9 +35,6 @@ public abstract class Statistics implements Serializable {
 	}
 	/**
 	 * Tries to load a currently existing statistics file.  If no such file exists, the file will be created with defaults.
-	 * @throws FileNotFoundException
-	 * @throws IOException
-	 * @throws ClassNotFoundException
 	 */
 	public static void load() {
 		try {
