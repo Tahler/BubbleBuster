@@ -26,9 +26,7 @@ public class TimeTrialGameOverPanel extends GameOverPanel {
 		animateTransfer();
 	}
 	private void updateStatistics(int score, int popped) {
-
-			if (popped > Statistics.timeTrialMostBubbles) Statistics.timeTrialMostBubbles = popped;
-		
+		if (popped > Statistics.timeTrialMostBubbles) Statistics.timeTrialMostBubbles = popped;
 		if (score > Statistics.timeTrialHighScore) Statistics.timeTrialHighScore = score;
 		
 		Statistics.timeTrialGamesPlayed++;
@@ -47,7 +45,6 @@ public class TimeTrialGameOverPanel extends GameOverPanel {
 		poppedBubblesThisGameLabel = new JLabel("" + popped, JLabel.CENTER);
 		poppedRecordLabel = new JLabel("" + Statistics.timeTrialMostBubbles, JLabel.CENTER);
 
-		
 		Font headerFont = new Font("Arial", Font.BOLD, 24);
 		Font contentFont = new Font("Arial", Font.PLAIN, 18);
 		poppedLabel.setFont(headerFont);
