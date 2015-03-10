@@ -98,7 +98,8 @@ public class ShopItem extends JPanel implements MouseListener {
 		repaint();
 	}
 	public void unequip() {
-		imageLabel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+		if (Purchases.isPurchased(title)) imageLabel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5, true));
+		else imageLabel.setBorder(BorderFactory.createLineBorder(Color.GRAY, 5, true));
 		repaint();
 	}
 	
