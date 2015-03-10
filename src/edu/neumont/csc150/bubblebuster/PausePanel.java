@@ -10,6 +10,7 @@ import java.awt.Insets;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -25,7 +26,7 @@ public class PausePanel extends JPanel {
 	
 	public PausePanel(GUI frame, Image background) {
 		this.frame = frame;
-		title = new JLabel("Paused"); // TODO: make an image
+		title = new JLabel(new ImageIcon("resources/pause.png"), JLabel.CENTER);
 		initializeButtons();
 		addComponents();
 		
