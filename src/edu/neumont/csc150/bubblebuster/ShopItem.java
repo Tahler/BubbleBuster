@@ -101,16 +101,13 @@ public class ShopItem extends JPanel implements MouseListener {
 	}
 	
 	@Override
-	public void mouseClicked(MouseEvent arg0) {
+	public void mousePressed(MouseEvent arg0) {
 		purchase();
 		GUI.getInstance().switchTo(new ShopPanel()); // I hate this.
 	}
-	@Override
+	
+	public void mouseClicked(MouseEvent arg0) {}
 	public void mouseEntered(MouseEvent arg0) {}
-	@Override
 	public void mouseExited(MouseEvent arg0) {}
-	@Override
-	public void mousePressed(MouseEvent arg0) {}
-	@Override
 	public void mouseReleased(MouseEvent arg0) {}
 }

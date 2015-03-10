@@ -9,7 +9,7 @@ import javax.sound.sampled.Clip;
 
 // Singleton class design
 public class Sound {
-	protected Clip music;
+	protected Clip gameMusic;
 	protected Clip[] popEffects;
 	private static final int nSounds = new File(Preferences.skinFolderLocation).list().length - 1; // Subtract one for the bubble's image file
 	
@@ -21,9 +21,9 @@ public class Sound {
 	
 	private Sound() {
 		try {
-			music = AudioSystem.getClip();
+			gameMusic = AudioSystem.getClip();
 	        AudioInputStream inputStream = AudioSystem.getAudioInputStream(new File(Preferences.ambianceFolderLocation + "/music.wav"));
-	        music.open(inputStream);
+	        gameMusic.open(inputStream);
 	        
 	        popEffects = new Clip[nSounds];
 	        for (int i = 0; i < popEffects.length; i++) {
@@ -37,10 +37,10 @@ public class Sound {
 	}
 	
 	public void startMusic() {
-		music.loop(Clip.LOOP_CONTINUOUSLY);
+		gameMusic.loop(Clip.LOOP_CONTINUOUSLY);
 	}
 	public void stopMusic() {
-		music.stop();
+		gameMusic.stop();
 	}
 	
 	public void playPop() {
