@@ -7,8 +7,6 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -77,9 +75,6 @@ public abstract class GameOverPanel extends JPanel {
 			frame.switchTo(new MainMenuPanel(frame));
 		});
 		
-		
-		Font gameOverHeaderFont = new Font("Arial", Font.BOLD, 24);
-		Font gameOverContentFont = new Font("Arial", Font.PLAIN, 18);
 		
 		titleLabel.setFont(new Font("Arial", Font.BOLD, 36));
 		titleLabel.setForeground(Color.WHITE);
@@ -159,7 +154,7 @@ public abstract class GameOverPanel extends JPanel {
 		g.drawImage(background, 0, 0, null);
 	}
 	
-	private int waitTime = 1000;
+	private int waitTime = 1000; // Waits one second before running the code
 	public void animateTransfer() {
 		Timer timer = new Timer(50, null);
 		waitTime /= timer.getDelay();

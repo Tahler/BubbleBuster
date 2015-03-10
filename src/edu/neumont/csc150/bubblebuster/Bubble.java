@@ -3,12 +3,12 @@ package edu.neumont.csc150.bubblebuster;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Point;
+import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.Ellipse2D;
 import java.util.Random;
 
-import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 
 @SuppressWarnings("serial")
@@ -19,15 +19,21 @@ public class Bubble extends JComponent implements MouseListener {
 	public static int minSpeed;
 	public static int maxSpeed;
 	
-	private ImageIcon img = new ImageIcon(Preferences.skinFolderLocation + "/bubble.png");
+	private Image img = Toolkit.getDefaultToolkit().getImage(Preferences.skinFolderLocation + "/bubble.png");
 	private int x, y;
 	private int diameter;
 	private int speed;
 //	private int points; // maybe needed later if points are worth more as the bubble gets smaller and faster
 	private boolean popped;
+	protected boolean pointsAdded;
+	private boolean doneAnimating;
+	private BubbleExplosion explosion;
 	
 	public Bubble() {
+		explosion = null;		
 		popped = false;
+		pointsAdded = false;
+		doneAnimating = false;
 		setFocusable(false);
 
 		Random rand = new Random();
@@ -36,7 +42,7 @@ public class Bubble extends JComponent implements MouseListener {
 		setX(rand.nextInt(GUI.WIDTH - diameter));
 		setY(GUI.HEIGHT);
 		
-		img.setImage(img.getImage().getScaledInstance(diameter, diameter, Image.SCALE_SMOOTH));
+		img = img.getScaledInstance(diameter, diameter, Image.SCALE_SMOOTH);
 	}
 	
 	public static void resetDifficulty() {
@@ -55,17 +61,17 @@ public class Bubble extends JComponent implements MouseListener {
 	
 	@Override
 	protected void paintComponent(Graphics g) {
-		g.drawImage(img.getImage(), x, y, null);
-		move();
+		if (!popped) {
+			g.drawImage(img, x, y, null);
+			move();
+		}
+		if (explosion != null) {
+			explosion.paintComponent(g);
+		}
 	}
 	
 	protected boolean isInside(Point point) {
 		return new Ellipse2D.Double(x, y, diameter, diameter).contains(point);
-	}
-	
-	public void pop() {
-		if (Preferences.soundFXEnabled) Sound.getInstance().playPop();
-		popped = true;
 	}
 	
 	public void move() {
@@ -85,11 +91,22 @@ public class Bubble extends JComponent implements MouseListener {
 	public void mousePressed(MouseEvent e) {
 		if (isInside(e.getLocationOnScreen()) && !isPopped()) {
 			pop();
+			explosion = new BubbleExplosion((int) e.getLocationOnScreen().getX(), (int) e.getLocationOnScreen().getY(), getDiameter(), this);
 		}
 	}
 	
+	public void pop() {
+		if (Preferences.soundFXEnabled) Sound.getInstance().playPop();
+		popped = true;
+	}
 	public boolean isPopped() {
 		return popped;
+	}
+	public boolean isDoneAnimating() {
+		return doneAnimating;
+	}
+	public void doneAnimating() {
+		doneAnimating = true;
 	}
 	public int getX() {
 		return x;

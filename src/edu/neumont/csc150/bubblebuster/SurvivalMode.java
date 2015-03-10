@@ -18,11 +18,20 @@ public class SurvivalMode extends BubbleBuster {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		
 		waitOrIncreaseDifficulty();
 		
+		// Alternative fix to the possible glitching of the timer's display
+//		long milliseconds = watch.getTime();
+//		long minutes = (milliseconds / 60000) % 60;
+//		long seconds = (milliseconds / 1000) % 60;
+//		long tenths = milliseconds % 10;
+//		
+//		String time = ((minutes < 10) ? "0" : "") + minutes
+//				+ ":" + ((seconds < 10) ? "0" : "") + seconds
+//				+ "." + tenths;
 		String time = Time.format(watch.getTime());
 		g.drawString(time, GUI.WIDTH - (int) g.getFontMetrics().getStringBounds(time, g).getWidth() - STRING_PADDING, STRING_PADDING * 2);
+		// If lives is ever greater than 1, uncomment this
 //		g.drawString(getLives() + "", GUI.WIDTH - (int) g.getFontMetrics().getStringBounds(getLives() + "", g).getWidth() - STRING_PADDING, STRING_PADDING * 3);
 	}
 	
