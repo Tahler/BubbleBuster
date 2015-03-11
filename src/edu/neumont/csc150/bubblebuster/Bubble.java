@@ -72,8 +72,8 @@ public class Bubble extends JComponent implements MouseListener {
 		}
 	}
 	
-	protected boolean isInside(Point point) {
-		return new Ellipse2D.Double(x, y, diameter, diameter).contains(point);
+	protected boolean isInside(Point point) { // TODO: MAKE THIS HALF THE SIZE THAT IT IS RIGHT NOW. IMAGES MUST BE 800x800
+		return new Ellipse2D.Double(x + diameter / 4, y + diameter / 4, diameter / 2, diameter / 2).contains(point);
 	}
 	
 	public void move() {
