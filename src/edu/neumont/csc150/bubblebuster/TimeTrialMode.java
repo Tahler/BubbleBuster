@@ -23,7 +23,6 @@ public class TimeTrialMode extends BubbleBuster {
 	
 	public void timesUp() {
 		if (watch.getTime() >= TIME) {
-			
 			watch.stop();	
 			GUI.getInstance().switchTo(new TimeTrialGameOverPanel(background.getImage(), getScore(), getPopped()));
 			GUI.getInstance().gamePanel = null;

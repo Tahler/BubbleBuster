@@ -72,7 +72,7 @@ public class Bubble extends JComponent implements MouseListener {
 		}
 	}
 	
-	protected boolean isInside(Point point) { // TODO: MAKE THIS HALF THE SIZE THAT IT IS RIGHT NOW. IMAGES MUST BE 800x800
+	protected boolean isInside(Point point) {
 		return new Ellipse2D.Double(x + diameter / 4, y + diameter / 4, diameter / 2, diameter / 2).contains(point);
 	}
 	
@@ -91,6 +91,7 @@ public class Bubble extends JComponent implements MouseListener {
 	
 	@Override
 	public void mousePressed(MouseEvent e) {
+		System.out.println("click");
 		if (isInside(e.getLocationOnScreen()) && !isPopped()) {
 			pop();
 			explosion = new BubbleExplosion((int) e.getLocationOnScreen().getX(), (int) e.getLocationOnScreen().getY(), getDiameter(), this);
@@ -136,7 +137,7 @@ public class Bubble extends JComponent implements MouseListener {
 	}
 
 	public void mouseClicked(MouseEvent e) {}
-	public void mouseEntered(MouseEvent e) {}
-	public void mouseExited(MouseEvent e) {}
 	public void mouseReleased(MouseEvent e) {}
+	public void mouseEntered(MouseEvent arg0) {}
+	public void mouseExited(MouseEvent e) {}
 }

@@ -73,10 +73,12 @@ public class BubbleButton extends JComponent implements MouseListener, ActionLis
 		setImage(HOVER.getImage());
 		repaint();
 	}
+	@Override
 	public void mousePressed(MouseEvent e) {
 		setImage(PRESSED.getImage());
 		repaint();
 	}
+	@Override
 	public void mouseReleased(MouseEvent e) {
 		repaint();
 		if ((e.getLocationOnScreen().getX() > this.getX() && e.getLocationOnScreen().getX() < this.getX() + this.getWidth()) && 

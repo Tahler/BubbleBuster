@@ -62,13 +62,6 @@ public abstract class Statistics implements Serializable {
 		}
 	}
 	
-	public static String staticToString() {
-		return  walletCoins + "\n" + 
-				totalPointsAllTime + "\n" + totalCoinsAllTime + "\n" + totalPlaytime + "\n" + 
-				survivalHighScore + "\n" + survivalGamesPlayed + "\n" + survivalLongestTime + "\n" + 
-				timeTrialHighScore + "\n" + timeTrialGamesPlayed + "\n" + timeTrialMostBubbles;
-	}
-	
 	public static void printAllFields() {
 		System.out.println(walletCoins);
 		System.out.println(totalPointsAllTime);

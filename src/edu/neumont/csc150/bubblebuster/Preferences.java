@@ -10,7 +10,7 @@ import java.util.Properties;
 public abstract class Preferences implements Serializable {
 	private static final long serialVersionUID = -7086584903501314806L;
 	
-	private static final Properties properties = new Properties(); // TODO: consider setting up a default properties file
+	private static final Properties properties = new Properties();
 	public static boolean musicEnabled, soundFXEnabled;
 	public static String skinFolderLocation, ambianceFolderLocation;
 	

@@ -19,8 +19,8 @@ import org.apache.commons.lang3.time.StopWatch;
 
 @SuppressWarnings("serial")
 public abstract class BubbleBuster extends JPanel implements ActionListener, KeyListener {
-	public int minBubbleInterval;
-	public int maxBubbleInterval;
+	private int minBubbleInterval;
+	private int maxBubbleInterval;
 	protected static final int STRING_PADDING = 30;
 	protected ImageIcon background;
 	private int bubbleInterval;

@@ -4,7 +4,7 @@ import java.awt.Graphics;
 
 @SuppressWarnings("serial")
 public class SurvivalMode extends BubbleBuster {
-	public static final int STARTING_LIVES = 1;
+	private static final int STARTING_LIVES = 1;
 	private static final int DIFFICULTY_INCREASE_INTERVAL = 100;
 	private int difficultyTimer;
 	private int lives;
