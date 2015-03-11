@@ -59,33 +59,35 @@ public class Sound {
 	}
 	
 	public void startGameMusic() {
-		try {
-			stopMenuMusic();
-			stopGameMusic();
-			
-			gameMusic = AudioSystem.getClip();
-	        AudioInputStream inputStream = AudioSystem.getAudioInputStream(new File(Preferences.ambianceFolderLocation + "/music.wav"));
-	        gameMusic.open(inputStream);
-	        
-	        muteControl = (BooleanControl) gameMusic.getControl(BooleanControl.Type.MUTE);
-		    if (Preferences.musicEnabled) muteControl.setValue(false);
-		    else muteControl.setValue(true);
-	        
-	        // Also reset the pop sounds
-	        nSounds = 0;
-	        for (String file : new File(Preferences.skinFolderLocation).list()) {
-	        	if (file.contains(".wav")) nSounds++;
+		if (!gameMusic.isRunning()) {
+			try {
+				stopMenuMusic();
+				stopGameMusic();
+				
+				gameMusic = AudioSystem.getClip();
+		        AudioInputStream inputStream = AudioSystem.getAudioInputStream(new File(Preferences.ambianceFolderLocation + "/music.wav"));
+		        gameMusic.open(inputStream);
+		        
+		        muteControl = (BooleanControl) gameMusic.getControl(BooleanControl.Type.MUTE);
+			    if (Preferences.musicEnabled) muteControl.setValue(false);
+			    else muteControl.setValue(true);
+		        
+		        // Also reset the pop sounds
+		        nSounds = 0;
+		        for (String file : new File(Preferences.skinFolderLocation).list()) {
+		        	if (file.contains(".wav")) nSounds++;
+				}
+		        
+		        popEffects = new Clip[nSounds];
+		        for (int i = 0; i < popEffects.length; i++) {
+					popEffects[i] = AudioSystem.getClip();
+					popEffects[i].open(AudioSystem.getAudioInputStream(new File(Preferences.skinFolderLocation + "/pop" + (i+1) + ".wav")));
+				}
+		        
+		        gameMusic.loop(Clip.LOOP_CONTINUOUSLY);
 			}
-	        
-	        popEffects = new Clip[nSounds];
-	        for (int i = 0; i < popEffects.length; i++) {
-				popEffects[i] = AudioSystem.getClip();
-				popEffects[i].open(AudioSystem.getAudioInputStream(new File(Preferences.skinFolderLocation + "/pop" + (i+1) + ".wav")));
-			}
+			catch (Exception e) {e.printStackTrace();}
 		}
-		catch (Exception e) {e.printStackTrace();}
-		
-		gameMusic.loop(Clip.LOOP_CONTINUOUSLY);
 	}
 	public void stopGameMusic() {
 		try {
