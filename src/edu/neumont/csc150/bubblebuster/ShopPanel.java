@@ -16,8 +16,8 @@ public class ShopPanel extends JPanel {
 	private BubbleButton menu;
 	private JLabel title, header1, header2;
 	private ImageIcon background;
-	private ShopItem defaultSkin, alien, pig, robot, muslim,
-			defaultAmbiance, wubble, farm, space, newYork;
+	private ShopItem defaultSkin, pig, robot, alien,
+			defaultAmbiance, wubble, farm, space;
 	
 	public ShopPanel() {
 		background = new ImageIcon("resources/blue.jpg");
@@ -44,27 +44,25 @@ public class ShopPanel extends JPanel {
 		header2.setForeground(Color.WHITE);
 		
 		defaultSkin = new SkinItem("Default Skin", "resources/skins/default", 0);
-		pig  = new SkinItem("Pig Skin", "resources/skins/pig", 10);
-		alien = new SkinItem("Alien Skin", "resources/skins/alien", 100);
-		robot = new SkinItem("Alien Skin", "resources/skins/robot", 50);
-		muslim = new SkinItem("Terrorist Skin", "resources/skins/muslim", 50);
+		robot = new SkinItem("Robot Skin", "resources/skins/robot", 200);
+		pig  = new SkinItem("Pig Skin", "resources/skins/pig", 400);
+		alien = new SkinItem("Alien Skin", "resources/skins/alien", 800);
 		
 		defaultAmbiance = new AmbianceItem("Default Pack", "resources/ambiance/default", 0);
-		wubble  = new AmbianceItem("Wubble Pack", "resources/ambiance/wubble", 10);
-		farm = new AmbianceItem("Farm Pack", "resources/ambiance/farm", 20);
-		space = new AmbianceItem("Space Pack", "resources/ambiance/space", 30);
-		newYork = new AmbianceItem("Fun times Pack", "resources/ambiance/newYork", 30);
+		wubble  = new AmbianceItem("Wubble Pack", "resources/ambiance/wubble", 300);
+		farm = new AmbianceItem("Farm Pack", "resources/ambiance/farm", 500);
+		space = new AmbianceItem("Space Pack", "resources/ambiance/space", 600);
 	}
 	
 	private void addComponents() {
 		setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		c.anchor = GridBagConstraints.CENTER;
+		c.insets = new Insets(10, 10, 10, 10);
 		
 		c.gridx = 0;
 		c.gridy = 0;
 		c.gridwidth = 4;
-		c.insets = new Insets(10, 10, 10, 10);
 		add(title, c);
 		
 		c.gridx = 0;
@@ -80,26 +78,21 @@ public class ShopPanel extends JPanel {
 		c.gridx = 1;
 		c.gridy = 2;
 		c.gridwidth = 1;
-		add(pig, c);
+		add(robot, c);
 		
 		c.gridx = 2;
 		c.gridy = 2;
 		c.gridwidth = 1;
-		add(alien, c);
+		add(pig, c);
 		
 		c.gridx = 3;
 		c.gridy = 2;
 		c.gridwidth = 1;
-		add(robot, c);
-		
-		c.gridx = 4;
-		c.gridy = 2;
-		c.gridwidth = 1;
-		add(muslim, c);
+		add(alien, c);
 		
 		c.gridx = 0;
 		c.gridy = 3;
-		c.gridwidth = 4;
+		c.gridwidth = 5;
 		add(header2, c);
 		
 		c.gridx = 0;
@@ -122,14 +115,9 @@ public class ShopPanel extends JPanel {
 		c.gridwidth = 1;
 		add(space, c);
 		
-		c.gridx = 4;
-		c.gridy = 4;
-		c.gridwidth = 1;
-		add(newYork, c);
-		
 		c.gridx = 0;
 		c.gridy = 5;
-		c.gridwidth = 4;
+		c.gridwidth = 5;
 		add(menu, c);
 	}
 		
