@@ -37,7 +37,7 @@ public class Bubble extends JComponent implements MouseListener {
 		setFocusable(false);
 
 		Random rand = new Random();
-		setDiameter(2 * rand.nextInt(maxDiameter - minDiameter) + minDiameter); // Multiplied by 2 because the bubble part of the skin is 400x400, though the image is 800x800
+		setDiameter(rand.nextInt(maxDiameter - minDiameter) + minDiameter); // Multiplied by 2 because the bubble part of the skin is 400x400, though the image is 800x800
 		setSpeed(rand.nextInt(maxSpeed - minSpeed) + minSpeed);
 		setX(rand.nextInt(GUI.WIDTH - diameter));
 		setY(GUI.HEIGHT);
@@ -48,8 +48,8 @@ public class Bubble extends JComponent implements MouseListener {
 	}
 	
 	public static void resetDifficulty() {
-		minDiameter = 50;
-		maxDiameter = 400;
+		minDiameter = 200;
+		maxDiameter = 800;
 		minSpeed = 3;
 		maxSpeed = 8;
 	}

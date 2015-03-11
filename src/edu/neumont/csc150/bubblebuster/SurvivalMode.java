@@ -38,7 +38,7 @@ public class SurvivalMode extends BubbleBuster {
 	public void waitOrIncreaseDifficulty() {
 		// Wait
 		if (difficultyTimer <= 0) {
-			System.out.println("Increasing difficulty");
+//			System.out.println("Increasing difficulty");
 			Bubble.increaseDifficulty();
 			setMinBubbleInterval(getMinBubbleInterval() - 5);
 			if (getMinBubbleInterval() == 0) {
