@@ -52,6 +52,8 @@ public abstract class BubbleBuster extends JPanel implements ActionListener, Key
 		
 		background = new ImageIcon(Preferences.ambianceFolderLocation + "/background.jpg");
 		background.setImage(background.getImage().getScaledInstance(GUI.WIDTH, GUI.HEIGHT, Image.SCALE_SMOOTH));
+		
+		Sound.getInstance().startGameMusic();
 	}
 	
 	@Override

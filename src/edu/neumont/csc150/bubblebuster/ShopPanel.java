@@ -69,7 +69,7 @@ public class ShopPanel extends JPanel implements Observer {
 		c.gridx = 0;
 		c.gridy = 1;
 		c.gridwidth = 4;
-//		c.insets = new Insets(20, 0, 20, 0);
+//		c+.insets = new Insets(20, 0, 20, 0);
 		add(header1, c);
 		
 //		c.gridx = 0;

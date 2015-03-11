@@ -34,7 +34,6 @@ public class GUI extends JFrame implements MouseListener {
 		initializeCursor();
 		addMouseListener(this);
 //		switchTo(new MainMenuPanel());
-		if (Preferences.musicEnabled) Sound.getInstance().startMusic();
 	}
 	private void initializeFrame() {
 		setExtendedState(Frame.MAXIMIZED_BOTH);

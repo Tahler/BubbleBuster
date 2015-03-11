@@ -25,6 +25,8 @@ public class MainMenuPanel extends JPanel {
 		initializeComponents();
 		addComponents();
 		addListeners();
+		
+		Sound.getInstance().startMenuMusic();
 	}
 	private void initializeComponents() {
 		title = new JLabel(new ImageIcon("resources/title.png"), JLabel.CENTER);
