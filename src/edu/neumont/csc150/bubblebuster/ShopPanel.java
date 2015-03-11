@@ -18,8 +18,8 @@ public class ShopPanel extends JPanel implements Observer {
 	private BubbleButton menu;
 	private JLabel title, header1, header2;
 	private ImageIcon background;
-	private ShopItem defaultSkin, alien, pig, robot,
-			defaultAmbiance, wubble, farm, space;
+	private ShopItem defaultSkin, alien, pig, robot, muslim,
+			defaultAmbiance, wubble, farm, space, newYork;
 	
 	public ShopPanel() {
 		background = new ImageIcon("resources/blue.jpg");
@@ -30,8 +30,8 @@ public class ShopPanel extends JPanel implements Observer {
 	private void initializeComponents() {
 		title = new JLabel(new ImageIcon("resources/shop.png"), JLabel.CENTER);
 		
-		header1 = new JLabel("Backgrounds & Music Packs", JLabel.LEFT);
-		header2 = new JLabel("Skins & Sound Effects Packs", JLabel.LEFT);
+		header2 = new JLabel("Backgrounds & Music Packs", JLabel.LEFT);
+		header1 = new JLabel("Skins & Sound Effects Packs", JLabel.LEFT);
 		
 		menu = new BubbleButton("Back to Menu");
 		menu.addActionListener(e -> {
@@ -45,14 +45,17 @@ public class ShopPanel extends JPanel implements Observer {
 		header2.setFont(headerFont);
 		header2.setForeground(Color.WHITE);
 		
-//		defaultSkin = new ShopItem("Default Skin", "resources/skins/default", 0);
-//		pig  = new ShopItem("Pig Skin", "resources/skins/pig", 10);
-//		alien = new ShopItem("Alien Skin", "resources/skins/alien", 0);
+		defaultSkin = new SkinItem("Default Skin", "resources/skins/default", 0);
+		pig  = new SkinItem("Pig Skin", "resources/skins/pig", 10);
+		alien = new SkinItem("Alien Skin", "resources/skins/alien", 100);
+		robot = new SkinItem("Alien Skin", "resources/skins/robot", 50);
+		muslim = new SkinItem("Terrorist Skin", "resources/skins/muslim", 50);
 		
 		defaultAmbiance = new AmbianceItem("Default Pack", "resources/ambiance/default", 0);
 		wubble  = new AmbianceItem("Wubble Pack", "resources/ambiance/wubble", 10);
 		farm = new AmbianceItem("Farm Pack", "resources/ambiance/farm", 20);
 		space = new AmbianceItem("Space Pack", "resources/ambiance/space", 30);
+		newYork = new AmbianceItem("Fun times Pack", "resources/ambiance/newYork", 30);
 	}
 	
 	private void addComponents() {
@@ -72,23 +75,36 @@ public class ShopPanel extends JPanel implements Observer {
 //		c.insets = new Insets(20, 0, 20, 0);
 		add(header1, c);
 		
-//		c.gridx = 0;
-//		c.gridy = 2;
-//		c.gridwidth = 1;
-////		c.insets = new Insets(20, 0, 20, 0);
-//		add(defaultSkin, c);
-//		
-//		c.gridx = 1;
-//		c.gridy = 2;
-//		c.gridwidth = 1;
-////		c.insets = new Insets(20, 0, 20, 0);
-//		add(pig, c);
-//		
-//		c.gridx = 2;
-//		c.gridy = 2;
-//		c.gridwidth = 1;
-////		c.insets = new Insets(20, 0, 20, 0);
-//		add(alien, c);
+		c.gridx = 0;
+		c.gridy = 2;
+		c.gridwidth = 1;
+//		c.insets = new Insets(20, 0, 20, 0);
+		add(defaultSkin, c);
+		
+		c.gridx = 1;
+		c.gridy = 2;
+		c.gridwidth = 1;
+//		c.insets = new Insets(20, 0, 20, 0);
+		add(pig, c);
+		
+		c.gridx = 2;
+		c.gridy = 2;
+		c.gridwidth = 1;
+//		c.insets = new Insets(20, 0, 20, 0);
+		add(alien, c);
+		
+		c.gridx = 3;
+		c.gridy = 2;
+		c.gridwidth = 1;
+//		c.insets = new Insets(20, 0, 20, 0);
+		add(robot, c);
+		
+		c.gridx = 4;
+		c.gridy = 2;
+		c.gridwidth = 1;
+//		c.insets = new Insets(20, 0, 20, 0);
+		add(muslim, c);
+		
 		
 		c.gridx = 0;
 		c.gridy = 3;
@@ -114,6 +130,11 @@ public class ShopPanel extends JPanel implements Observer {
 		c.gridy = 4;
 		c.gridwidth = 1;
 		add(space, c);
+		
+		c.gridx = 4;
+		c.gridy = 4;
+		c.gridwidth = 1;
+		add(newYork, c);
 		
 		c.gridx = 0;
 		c.gridy = 5;
