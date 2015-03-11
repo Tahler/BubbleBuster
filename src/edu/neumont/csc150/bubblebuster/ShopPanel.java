@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class ShopPanel extends JPanel {
 	private BubbleButton menu;
-	private JLabel title, header1, header2;
+	private JLabel title, header1, header2, wallet;
 	private ImageIcon background;
 	private ShopItem defaultSkin, pig, robot, alien,
 			defaultAmbiance, wubble, farm, space;
@@ -26,6 +26,8 @@ public class ShopPanel extends JPanel {
 		addComponents();
 	}
 	private void initializeComponents() {
+		wallet = new JLabel(Statistics.walletCoins + "");
+		wallet.setIcon(new ImageIcon ("resources/coin.png"));
 		title = new JLabel(new ImageIcon("resources/shop.png"), JLabel.CENTER);
 		header2 = new JLabel("Backgrounds & Music Packs", JLabel.LEFT);
 		header1 = new JLabel("Skins & Sound Effects Packs", JLabel.LEFT);
@@ -41,6 +43,8 @@ public class ShopPanel extends JPanel {
 		header1.setForeground(Color.WHITE);
 		header2.setFont(headerFont);
 		header2.setForeground(Color.WHITE);
+		wallet.setFont(headerFont);
+		wallet.setForeground(Color.YELLOW);
 		
 		defaultSkin = new SkinItem("Default Skin", "resources/skins/default", 0);
 		robot = new SkinItem("Robot Skin", "resources/skins/robot", 200);
@@ -63,6 +67,11 @@ public class ShopPanel extends JPanel {
 		c.gridy = 0;
 		c.gridwidth = 4;
 		add(title, c);
+		
+		c.gridx = 3;
+		c.gridy = 0;
+		c.gridwidth = 4;
+		add(wallet, c);
 		
 		c.gridx = 0;
 		c.gridy = 1;
