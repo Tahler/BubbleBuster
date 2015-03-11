@@ -10,6 +10,7 @@ public class TimeTrialMode extends BubbleBuster {
 		super();
 		setMinBubbleInterval(10);
 		setMaxBubbleInterval(20);
+		Bubble.setMaxSpeed(20);
 	}
 	
 	@Override

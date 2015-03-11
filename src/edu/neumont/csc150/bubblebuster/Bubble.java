@@ -60,6 +60,9 @@ public class Bubble extends JComponent implements MouseListener {
 		if (maxDiameter > minDiameter) maxDiameter--;
 		else minDiameter--;
 	}
+	public static void setMaxSpeed(int speed) {
+		maxSpeed = speed;
+	}
 	
 	@Override
 	protected void paintComponent(Graphics g) {
