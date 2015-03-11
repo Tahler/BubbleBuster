@@ -27,7 +27,6 @@ public class ShopPanel extends JPanel {
 	}
 	private void initializeComponents() {
 		title = new JLabel(new ImageIcon("resources/shop.png"), JLabel.CENTER);
-		
 		header2 = new JLabel("Backgrounds & Music Packs", JLabel.LEFT);
 		header1 = new JLabel("Skins & Sound Effects Packs", JLabel.LEFT);
 		
