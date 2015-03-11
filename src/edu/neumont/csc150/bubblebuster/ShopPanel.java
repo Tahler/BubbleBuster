@@ -6,15 +6,13 @@ import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.util.Observable;
-import java.util.Observer;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
-public class ShopPanel extends JPanel implements Observer {
+public class ShopPanel extends JPanel {
 	private BubbleButton menu;
 	private JLabel title, header1, header2;
 	private ImageIcon background;
@@ -72,39 +70,32 @@ public class ShopPanel extends JPanel implements Observer {
 		c.gridx = 0;
 		c.gridy = 1;
 		c.gridwidth = 4;
-//		c+.insets = new Insets(20, 0, 20, 0);
 		add(header1, c);
 		
 		c.gridx = 0;
 		c.gridy = 2;
 		c.gridwidth = 1;
-//		c.insets = new Insets(20, 0, 20, 0);
 		add(defaultSkin, c);
 		
 		c.gridx = 1;
 		c.gridy = 2;
 		c.gridwidth = 1;
-//		c.insets = new Insets(20, 0, 20, 0);
 		add(pig, c);
 		
 		c.gridx = 2;
 		c.gridy = 2;
 		c.gridwidth = 1;
-//		c.insets = new Insets(20, 0, 20, 0);
 		add(alien, c);
 		
 		c.gridx = 3;
 		c.gridy = 2;
 		c.gridwidth = 1;
-//		c.insets = new Insets(20, 0, 20, 0);
 		add(robot, c);
 		
 		c.gridx = 4;
 		c.gridy = 2;
 		c.gridwidth = 1;
-//		c.insets = new Insets(20, 0, 20, 0);
 		add(muslim, c);
-		
 		
 		c.gridx = 0;
 		c.gridy = 3;
@@ -147,10 +138,5 @@ public class ShopPanel extends JPanel implements Observer {
 		g.setColor(Color.WHITE);
 		super.paintComponent(g);
 		g.drawImage(background.getImage(), 0, 0, null);
-	}
-	
-	@Override
-	public void update(Observable o, Object arg) {
-		repaint();
 	}
 }
