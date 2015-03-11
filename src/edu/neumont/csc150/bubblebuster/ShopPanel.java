@@ -48,7 +48,7 @@ public class ShopPanel extends JPanel implements Observer {
 		defaultSkin = new SkinItem("Default Skin", "resources/skins/default", 0);
 		pig  = new SkinItem("Pig Skin", "resources/skins/pig", 10);
 		alien = new SkinItem("Alien Skin", "resources/skins/alien", 100);
-		robot = new SkinItem("Alien Skin", "resources/skins/robot", 50);
+		robot = new SkinItem("Robot Skin", "resources/skins/robot", 50);
 		muslim = new SkinItem("Terrorist Skin", "resources/skins/muslim", 50);
 		
 		defaultAmbiance = new AmbianceItem("Default Pack", "resources/ambiance/default", 0);
@@ -65,13 +65,13 @@ public class ShopPanel extends JPanel implements Observer {
 		
 		c.gridx = 0;
 		c.gridy = 0;
-		c.gridwidth = 4;
+		c.gridwidth = 5;
 		c.insets = new Insets(10, 10, 10, 10);
 		add(title, c);
 		
 		c.gridx = 0;
 		c.gridy = 1;
-		c.gridwidth = 4;
+		c.gridwidth = 5;
 //		c.insets = new Insets(20, 0, 20, 0);
 		add(header1, c);
 		
@@ -85,19 +85,19 @@ public class ShopPanel extends JPanel implements Observer {
 		c.gridy = 2;
 		c.gridwidth = 1;
 //		c.insets = new Insets(20, 0, 20, 0);
-		add(pig, c);
+		add(robot, c);
 		
 		c.gridx = 2;
 		c.gridy = 2;
 		c.gridwidth = 1;
 //		c.insets = new Insets(20, 0, 20, 0);
-		add(alien, c);
+		add(pig, c);
 		
 		c.gridx = 3;
 		c.gridy = 2;
 		c.gridwidth = 1;
 //		c.insets = new Insets(20, 0, 20, 0);
-		add(robot, c);
+		add(alien, c);
 		
 		c.gridx = 4;
 		c.gridy = 2;
@@ -108,7 +108,7 @@ public class ShopPanel extends JPanel implements Observer {
 		
 		c.gridx = 0;
 		c.gridy = 3;
-		c.gridwidth = 4;
+		c.gridwidth = 5;
 		add(header2, c);
 		
 		c.gridx = 0;
@@ -138,7 +138,7 @@ public class ShopPanel extends JPanel implements Observer {
 		
 		c.gridx = 0;
 		c.gridy = 5;
-		c.gridwidth = 4;
+		c.gridwidth = 5;
 		add(menu, c);
 	}
 		
