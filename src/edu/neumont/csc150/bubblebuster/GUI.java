@@ -30,6 +30,7 @@ public class GUI extends JFrame implements MouseListener {
 		super("Bubble Buster");
 		WIDTH = Toolkit.getDefaultToolkit().getScreenSize().width;
 		HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().height;
+		setIconImage(Toolkit.getDefaultToolkit().getImage("resources/coin.png"));
 		initializeFrame();
 		initializeCursor();
 		addMouseListener(this);
