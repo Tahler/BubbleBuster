@@ -84,7 +84,7 @@ public class Bubble extends JComponent implements MouseListener {
 	}
 	
 	public boolean isOffScreen() {
-		return (y + diameter < 0);
+		return (y + diameter * 3/4 < 0);
 	}
 	
 	@Override

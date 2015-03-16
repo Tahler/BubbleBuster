@@ -15,9 +15,10 @@ import javax.swing.JComponent;
 
 @SuppressWarnings("serial")
 public class BubbleButton extends JComponent implements MouseListener, ActionListener {
-	public static final ImageIcon IMG = new ImageIcon("resources/buttonShadow.png");
-	public static final ImageIcon HOVER = new ImageIcon("resources/buttonGlow.png");
-	public static final ImageIcon PRESSED = new ImageIcon("resources/buttonPressed.png");
+	private static final Dimension SCALE = new Dimension(GUI.WIDTH / 5, GUI.HEIGHT / 8);
+	public static ImageIcon IMG = new ImageIcon("resources/buttonShadow.png");
+	public static ImageIcon HOVER = new ImageIcon("resources/buttonGlow.png");
+	public static ImageIcon PRESSED = new ImageIcon("resources/buttonPressed.png");
 	private Image currentImage;
 	private ActionListener actionListener = null;
 	private String text;
@@ -27,6 +28,11 @@ public class BubbleButton extends JComponent implements MouseListener, ActionLis
 	}
 	public BubbleButton(String text) {
 		setText(text);
+		
+		IMG.setImage(IMG.getImage().getScaledInstance(SCALE.width, SCALE.height, Image.SCALE_DEFAULT));
+		HOVER.setImage(HOVER.getImage().getScaledInstance(SCALE.width, SCALE.height, Image.SCALE_DEFAULT));
+		PRESSED.setImage(PRESSED.getImage().getScaledInstance(SCALE.width, SCALE.height, Image.SCALE_DEFAULT));
+		
 		setPreferredSize(new Dimension(IMG.getIconWidth(), IMG.getIconHeight()));
 		setImage(IMG.getImage());
 		addMouseListener(this);

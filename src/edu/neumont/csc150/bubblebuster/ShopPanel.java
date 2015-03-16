@@ -5,7 +5,9 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.Insets;
+import java.awt.Toolkit;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -27,8 +29,9 @@ public class ShopPanel extends JPanel {
 	}
 	private void initializeComponents() {
 		wallet = new JLabel(Statistics.walletCoins + "");
-		wallet.setIcon(new ImageIcon ("resources/coin.png"));
-		title = new JLabel(new ImageIcon("resources/shop.png"), JLabel.CENTER);
+		wallet.setIcon(new ImageIcon("resources/coin.png"));
+		title = new JLabel(new ImageIcon(Toolkit.getDefaultToolkit().getImage("resources/shop.png")
+				.getScaledInstance((int) (GUI.WIDTH / 4.3), (int) (GUI.HEIGHT / 4.9), Image.SCALE_DEFAULT)), JLabel.CENTER);
 		header2 = new JLabel("Backgrounds & Music Packs", JLabel.LEFT);
 		header1 = new JLabel("Skins & Sound Effects Packs", JLabel.LEFT);
 		
@@ -61,7 +64,7 @@ public class ShopPanel extends JPanel {
 		setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		c.anchor = GridBagConstraints.CENTER;
-		c.insets = new Insets(10, 10, 10, 10);
+		c.insets = new Insets(0, 10, 10, 10);
 		
 		c.gridx = 0;
 		c.gridy = 0;

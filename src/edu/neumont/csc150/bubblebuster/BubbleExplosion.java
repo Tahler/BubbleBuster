@@ -17,7 +17,6 @@ public class BubbleExplosion extends JComponent {
 	public BubbleExplosion(int x, int y, int diameter, Bubble caller) {
 		this.caller = caller;
 		
-		// TODO: automate this in a for loop
 		Random rand = new Random();
 		bubbles = new SmallBubble[rand.nextInt(3) + 3]; // Between 3 and 5 bubbles
 		for (int i = 0; i < bubbles.length; i++) {
@@ -40,7 +39,6 @@ public class BubbleExplosion extends JComponent {
 		private float alpha;
 		
 		public SmallBubble(int x, int y, int diameter, int direction) {
-//			super();
 			this.img = Toolkit.getDefaultToolkit().getImage(Preferences.skinFolderLocation + "/bubble.png").getScaledInstance(diameter, diameter, Image.SCALE_DEFAULT);
 			
 			alpha = 1.0f;

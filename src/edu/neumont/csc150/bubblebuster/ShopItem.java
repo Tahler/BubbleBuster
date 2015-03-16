@@ -1,10 +1,12 @@
 package edu.neumont.csc150.bubblebuster;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
@@ -18,6 +20,7 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class ShopItem extends JPanel implements MouseListener {
+	private static final Dimension SCALE = new Dimension(GUI.WIDTH / 6, (int) (GUI.HEIGHT / 5.4));
 	private String title;
 	protected String folderPath;
 	private JLabel imageLabel;
@@ -27,7 +30,9 @@ public class ShopItem extends JPanel implements MouseListener {
 	public ShopItem(String title, String folderPath, int cost) {
 		this.title = title;
 		this.folderPath = folderPath;
-		this.image = new ImageIcon(folderPath + "/preview.png"); // Scaled to 480x300 //.getScaledInstance(480, 300, Image.SCALE_DEFAULT)
+		this.image = new ImageIcon(Toolkit.getDefaultToolkit().getImage(folderPath + "/preview.png")
+				.getScaledInstance(SCALE.width, SCALE.height, Image.SCALE_DEFAULT));
+		imageLabel = new JLabel(image);
 		this.cost = cost;
 		
 		setOpaque(false);
@@ -53,7 +58,7 @@ public class ShopItem extends JPanel implements MouseListener {
 		c.gridy = 0;
 		add(title, c);
 		
-		imageLabel = new JLabel(image);
+//		imageLabel = new JLabel(image);
 		c.gridx = 0;
 		c.gridy = 1;
 		add(imageLabel, c);
@@ -91,7 +96,8 @@ public class ShopItem extends JPanel implements MouseListener {
 	}
 	
 	public void equip() {
-		image.setImage(Toolkit.getDefaultToolkit().getImage(folderPath + "/preview.png"));
+		image.setImage(Toolkit.getDefaultToolkit().getImage(folderPath + "/preview.png")
+				.getScaledInstance(SCALE.width, SCALE.height, Image.SCALE_DEFAULT));
 		imageLabel.setBorder(BorderFactory.createLineBorder(Color.GREEN, 5, true));
 		repaint();
 	}
